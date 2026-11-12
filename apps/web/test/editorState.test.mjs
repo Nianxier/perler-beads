@@ -34,6 +34,7 @@ const {
   resizeDocument,
   transformDocument,
   scaleDocument,
+  replaceColorDocument,
 } = m;
 
 // 1. 初始状态
@@ -153,6 +154,18 @@ assert.equal(s5.history.length, 2, '描边 + 缩放各压一步快照');
 assert.equal(undo(s5), true, '缩放应可撤销');
 assert.equal(s5.pattern.width, 2, '撤销后回到原尺寸');
 assert.equal(s5.pattern.grid[0], 3);
+
+// 11. 批量换色（可撤销）
+const s6 = createEditor(3, 1, 'mard');
+setTool(s6, 'pencil');
+setColor(s6, 2);
+st = startStroke(s6);
+strokeStep(s6, 0, 0, st);
+strokeStep(s6, 2, 0, st);
+replaceColorDocument(s6, 2, 5);
+assert.deepEqual([...s6.pattern.grid], [5, -1, 5], '原 2 号应全换为 5');
+assert.equal(undo(s6), true, '换色应可撤销');
+assert.deepEqual([...s6.pattern.grid], [2, -1, 2]);
 
 // 11. 多文档标签（session 层——防止“点了无反应”类 bug 漏网）
 const sOut = await build({

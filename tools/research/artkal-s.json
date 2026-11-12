@@ -1,0 +1,3342 @@
+{
+ "source": "https://www.artkalfusebeads.com/blogs/artkal-color-chart/artkal-color-chart",
+ "sourceImages": [
+  "https://cdn.shopify.com/s/files/1/1323/8195/files/artkal-beads-S-series-color-chart-_2.webp",
+  "https://cdn.shopify.com/s/files/1/1323/8195/files/Artkal_Beads_S_J_Midi_Beads_Color_Chart.png"
+ ],
+ "series": "S",
+ "name": "Artkal S 系列（Hard Midi 5mm）",
+ "extractMethod": "官方色卡图 OCR 印刷 RGB 值（RapidOCR）；无印刷 RGB 的特殊色用照片色块 Pillow 采样（近似）",
+ "extractedAt": "2026-11-12",
+ "count": 225,
+ "colors": [
+  {
+   "code": "S01",
+   "hex": "#FFFFFF",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S02",
+   "hex": "#FFA38B",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S03",
+   "hex": "#F6B04C",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S04",
+   "hex": "#FF671F",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S05",
+   "hex": "#E10600",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S06",
+   "hex": "#EC86D0",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S07",
+   "hex": "#9B9B9B",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S08",
+   "hex": "#24DE5B",
+   "method": "printed-rgb-ocr",
+   "needsReview": true
+  },
+  {
+   "code": "S09",
+   "hex": "#00685E",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S10",
+   "hex": "#41B6E6",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S11",
+   "hex": "#003399",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S12",
+   "hex": "#A05EB5",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S13",
+   "hex": "#000000",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S14",
+   "hex": "#FAE053",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S15",
+   "hex": "#7A3E2C",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S16",
+   "hex": "#5C4738",
+   "method": "printed-rgb-ocr(merged)",
+   "needsReview": true
+  },
+  {
+   "code": "S17",
+   "hex": "#7B4D35",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S18",
+   "hex": "#CC9966",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S19",
+   "hex": "#FCBFA9",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S20",
+   "hex": "#249E6B",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S21",
+   "hex": "#87D839",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S22",
+   "hex": "#050072",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S23",
+   "hex": "#64359B",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S24",
+   "hex": "#147BD1",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S25",
+   "hex": "#FF34B3",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S26",
+   "hex": "#DB2152",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S27",
+   "hex": "#FFD100",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S28",
+   "hex": "#EAB8E4",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S29",
+   "hex": "#F6EB61",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S30",
+   "hex": "#99D6EA",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S31",
+   "hex": "#9EE5B0",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S32",
+   "hex": "#FFE780",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S33",
+   "hex": "#C5B4E3",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S34",
+   "hex": "#BA0C2F",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S35",
+   "hex": "#F7CED7",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S36",
+   "hex": "#C9809E",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S37",
+   "hex": "#71D8BF",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S38",
+   "hex": "#AB2556",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S39",
+   "hex": "#ED8B00",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S40",
+   "hex": "#F1A7DC",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S41",
+   "hex": "#9A5516",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S42",
+   "hex": "#A09F9D",
+   "method": "printed-rgb-ocr",
+   "needsReview": true
+  },
+  {
+   "code": "S43",
+   "hex": "#767777",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S44",
+   "hex": "#AADCEB",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S45",
+   "hex": "#00B2A9",
+   "method": "printed-rgb-ocr(merged)",
+   "needsReview": true
+  },
+  {
+   "code": "S46",
+   "hex": "#73D33C",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S47",
+   "hex": "#B47E00",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S48",
+   "hex": "#FFC72C",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S49",
+   "hex": "#72195F",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S50",
+   "hex": "#FAAA72",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S51",
+   "hex": "#FCFBCD",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S52",
+   "hex": "#F2F0A1",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S53",
+   "hex": "#69B3E7",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S54",
+   "hex": "#0090DA",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S55",
+   "hex": "#ADDC91",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S56",
+   "hex": "#FF6A13",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S57",
+   "hex": "#A4493D",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S58",
+   "hex": "#A50034",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S59",
+   "hex": "#4A1F87",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S60",
+   "hex": "#A77BCA",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S61",
+   "hex": "#CEDC00",
+   "method": "printed-rgb-ocr",
+   "needsReview": true
+  },
+  {
+   "code": "S62",
+   "hex": "#007C58",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S63",
+   "hex": "#585735",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S64",
+   "hex": "#050849",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S65",
+   "hex": "#F3EA5D",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S66",
+   "hex": "#F4633A",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S67",
+   "hex": "#F3CFB3",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S68",
+   "hex": "#E1C078",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S69",
+   "hex": "#23282B",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S70",
+   "hex": "#9BBC11",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S71",
+   "hex": "#00852B",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S72",
+   "hex": "#59D5D8",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S73",
+   "hex": "#48A9C5",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S74",
+   "hex": "#00AED6",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S75",
+   "hex": "#0085AD",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S76",
+   "hex": "#00AEC7",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S77",
+   "hex": "#EFEFEF",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S78",
+   "hex": "#D1D1D1",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S79",
+   "hex": "#BBBCBC",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S80",
+   "hex": "#999B30",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S81",
+   "hex": "#CDB277",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S82",
+   "hex": "#B58150",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S83",
+   "hex": "#B86125",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S84",
+   "hex": "#AA5761",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S85",
+   "hex": "#5C131B",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S86",
+   "hex": "#EAAA00",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S87",
+   "hex": "#FF6D6A",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S88",
+   "hex": "#DA1884",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S89",
+   "hex": "#484955",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S90",
+   "hex": "#FFC56E",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S91",
+   "hex": "#183028",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S92",
+   "hex": "#DEB947",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S93",
+   "hex": "#DAB698",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S94",
+   "hex": "#F4A999",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S95",
+   "hex": "#EE7D67",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S96",
+   "hex": "#F08661",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S97",
+   "hex": "#D4722A",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S98",
+   "hex": "#64ACDF",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S99",
+   "hex": "#64C2DC",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S100",
+   "hex": "#4F9FB3",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S101",
+   "hex": "#3196DD",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S102",
+   "hex": "#1B6CB6",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S103",
+   "hex": "#083980",
+   "method": "printed-rgb-ocr",
+   "needsReview": true
+  },
+  {
+   "code": "S104",
+   "hex": "#0A668B",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S105",
+   "hex": "#085B6E",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S106",
+   "hex": "#004E78",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S107",
+   "hex": "#005574",
+   "method": "printed-rgb-ocr",
+   "needsReview": true
+  },
+  {
+   "code": "S108",
+   "hex": "#CCBE80",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S109",
+   "hex": "#A49350",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S110",
+   "hex": "#9E883C",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S111",
+   "hex": "#766C2B",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S112",
+   "hex": "#795F26",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S113",
+   "hex": "#BAB8A2",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S114",
+   "hex": "#728C54",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S115",
+   "hex": "#7E7C44",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S116",
+   "hex": "#64692E",
+   "method": "printed-rgb-ocr(merged)",
+   "needsReview": true
+  },
+  {
+   "code": "S117",
+   "hex": "#4E582C",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S118",
+   "hex": "#4A5E2D",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S119",
+   "hex": "#71C452",
+   "method": "printed-rgb-ocr",
+   "needsReview": true
+  },
+  {
+   "code": "S120",
+   "hex": "#66CC99",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S121",
+   "hex": "#569A83",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S122",
+   "hex": "#14C25B",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S123",
+   "hex": "#18A818",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S124",
+   "hex": "#04552E",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S125",
+   "hex": "#136B5A",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S126",
+   "hex": "#054641",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S127",
+   "hex": "#D9B6D6",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S128",
+   "hex": "#AD62A4",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S129",
+   "hex": "#E68CA3",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S130",
+   "hex": "#DE5479",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S131",
+   "hex": "#9E82BA",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S132",
+   "hex": "#E8416B",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S133",
+   "hex": "#B7388F",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S134",
+   "hex": "#581F7E",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S135",
+   "hex": "#8CA3D4",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S136",
+   "hex": "#9A9ACC",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S137",
+   "hex": "#5981C1",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S138",
+   "hex": "#4166B0",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S139",
+   "hex": "#475FAB",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S140",
+   "hex": "#374593",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S141",
+   "hex": "#3D56A5",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S142",
+   "hex": "#294287",
+   "method": "printed-rgb-ocr",
+   "needsReview": true
+  },
+  {
+   "code": "S143",
+   "hex": "#25268A",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S144",
+   "hex": "#1A2F6F",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S145",
+   "hex": "#D3C95D",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S146",
+   "hex": "#510918",
+   "method": "printed-rgb-ocr",
+   "needsReview": true
+  },
+  {
+   "code": "S147",
+   "hex": "#64B39E",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S148",
+   "hex": "#634338",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S149",
+   "hex": "#EDD39E",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S150",
+   "hex": "#6963AB",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S151",
+   "hex": "#2B3F1F",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S152",
+   "hex": "#9791C5",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S153",
+   "hex": "#B8BDE0",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S154",
+   "hex": "#F9C898",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S155",
+   "hex": "#C39069",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S156",
+   "hex": "#44505B",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S157",
+   "hex": "#3E4955",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S158",
+   "hex": "#202830",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "S159",
+   "hex": "#888B8D",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "SE01",
+   "hex": "#D1DDE6",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "SE02",
+   "hex": "#9BB8E3",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "SE03",
+   "hex": "#5E8AB4",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "SE04",
+   "hex": "#6AD1E3",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "SE05",
+   "hex": "#2CD5C4",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "SE06",
+   "hex": "#147BD1",
+   "method": "printed-rgb-ocr",
+   "needsReview": true
+  },
+  {
+   "code": "SE07",
+   "hex": "#BFA5B8",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "SE08",
+   "hex": "#9B7793",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "SE09",
+   "hex": "#693C5E",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "SE10",
+   "hex": "#C964CF",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "SE11",
+   "hex": "#AD1AAC",
+   "method": "printed-rgb-ocr(single-region)",
+   "needsReview": true
+  },
+  {
+   "code": "SE12",
+   "hex": "#FFB25B",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "SE13",
+   "hex": "#E6A65D",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "SE14",
+   "hex": "#D38235",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "SE15",
+   "hex": "#C16C18",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "SE16",
+   "hex": "#F5B6CD",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "SE17",
+   "hex": "#5D2A2C",
+   "method": "printed-rgb-ocr",
+   "needsReview": false
+  },
+  {
+   "code": "ST1",
+   "hex": "#D5D3DA",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  },
+  {
+   "code": "ST2",
+   "hex": "#FA86B9",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  },
+  {
+   "code": "ST3",
+   "hex": "#FB9E62",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  },
+  {
+   "code": "ST4",
+   "hex": "#D0E49A",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  },
+  {
+   "code": "ST5",
+   "hex": "#23D2A4",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  },
+  {
+   "code": "ST6",
+   "hex": "#9094E1",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  },
+  {
+   "code": "ST7",
+   "hex": "#6F6F6F",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  },
+  {
+   "code": "ST8",
+   "hex": "#833432",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  },
+  {
+   "code": "SL1",
+   "hex": "#5BC0E3",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  },
+  {
+   "code": "SL2",
+   "hex": "#0C9D7F",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  },
+  {
+   "code": "SL3",
+   "hex": "#C91D20",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  },
+  {
+   "code": "SL4",
+   "hex": "#D8B616",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  },
+  {
+   "code": "SL5",
+   "hex": "#845FC3",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  },
+  {
+   "code": "SL6",
+   "hex": "#C7C6D1",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  },
+  {
+   "code": "SG1",
+   "hex": "#D3D3D4",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  },
+  {
+   "code": "SG2",
+   "hex": "#DBC5D2",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  },
+  {
+   "code": "SG3",
+   "hex": "#60C6E9",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  },
+  {
+   "code": "SG4",
+   "hex": "#A48DDF",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  },
+  {
+   "code": "SG5",
+   "hex": "#F6B49F",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  },
+  {
+   "code": "SG6",
+   "hex": "#B0DDAC",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  },
+  {
+   "code": "SG7",
+   "hex": "#DD4D54",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  },
+  {
+   "code": "SN1",
+   "hex": "#FD8329",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  },
+  {
+   "code": "SN2",
+   "hex": "#22E88A",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  },
+  {
+   "code": "SN3",
+   "hex": "#DAF06D",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  },
+  {
+   "code": "SN4",
+   "hex": "#FC5D81",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  },
+  {
+   "code": "SP1",
+   "hex": "#9BDCB4",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  },
+  {
+   "code": "SP2",
+   "hex": "#FD935E",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  },
+  {
+   "code": "SP3",
+   "hex": "#EFAB59",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  },
+  {
+   "code": "SP4",
+   "hex": "#DB9AAB",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  },
+  {
+   "code": "SP5",
+   "hex": "#E13742",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  },
+  {
+   "code": "SP6",
+   "hex": "#323E92",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  },
+  {
+   "code": "SP7",
+   "hex": "#57327B",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  },
+  {
+   "code": "SP8",
+   "hex": "#CDCDCE",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  },
+  {
+   "code": "SD1",
+   "hex": "#3A3E4B",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  },
+  {
+   "code": "SD2",
+   "hex": "#7D8189",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  },
+  {
+   "code": "SD3",
+   "hex": "#53B5E8",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  },
+  {
+   "code": "SD4",
+   "hex": "#64A8DE",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  },
+  {
+   "code": "SD5",
+   "hex": "#53B88B",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  },
+  {
+   "code": "SD6",
+   "hex": "#4BC6CA",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  },
+  {
+   "code": "SD7",
+   "hex": "#C55263",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  },
+  {
+   "code": "SD8",
+   "hex": "#F678BF",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  },
+  {
+   "code": "SD9",
+   "hex": "#A187BE",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  },
+  {
+   "code": "SD10",
+   "hex": "#DEB64A",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  },
+  {
+   "code": "SD11",
+   "hex": "#F38B78",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  },
+  {
+   "code": "SD12",
+   "hex": "#338676",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  },
+  {
+   "code": "SUV1",
+   "hex": "#F7BFDB",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  },
+  {
+   "code": "SUV2",
+   "hex": "#EADB7C",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  },
+  {
+   "code": "SUV3",
+   "hex": "#CACCFE",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  },
+  {
+   "code": "SUV4",
+   "hex": "#FEB3FE",
+   "method": "photo-chip-sampled",
+   "needsReview": true
+  }
+ ],
+ "detail": [
+  {
+   "code": "S01",
+   "hex": "#FFFFFF",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:255 G:255 B:255",
+   "photoSample": "#CFCED1",
+   "photoDiff": 49,
+   "needsReview": false
+  },
+  {
+   "code": "S02",
+   "hex": "#FFA38B",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:255 G:163 B:139",
+   "photoSample": "#E89886",
+   "photoDiff": 23,
+   "needsReview": false
+  },
+  {
+   "code": "S03",
+   "hex": "#F6B04C",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:246 G:176 B:76",
+   "photoSample": "#F89A23",
+   "photoDiff": 41,
+   "needsReview": false
+  },
+  {
+   "code": "S04",
+   "hex": "#FF671F",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:255 G:103 B:31",
+   "photoSample": "#FD6631",
+   "photoDiff": 18,
+   "needsReview": false
+  },
+  {
+   "code": "S05",
+   "hex": "#E10600",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:225 G:6 B:0",
+   "photoSample": "#D12B32",
+   "photoDiff": 50,
+   "needsReview": false
+  },
+  {
+   "code": "S06",
+   "hex": "#EC86D0",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:236G:134B:208",
+   "photoSample": "#E987C3",
+   "photoDiff": 13,
+   "needsReview": false
+  },
+  {
+   "code": "S07",
+   "hex": "#9B9B9B",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:155 G:155B:155",
+   "photoSample": "#87888F",
+   "photoDiff": 20,
+   "needsReview": false
+  },
+  {
+   "code": "S08",
+   "hex": "#24DE5B",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:36 G:222 B:91",
+   "photoSample": "#4AE8A2",
+   "photoDiff": 71,
+   "needsReview": true
+  },
+  {
+   "code": "S09",
+   "hex": "#00685E",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:0 G:104B:94",
+   "photoSample": "#096D67",
+   "photoDiff": 9,
+   "needsReview": false
+  },
+  {
+   "code": "S10",
+   "hex": "#41B6E6",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:65 G:182 B:230",
+   "photoSample": "#55B8E5",
+   "photoDiff": 20,
+   "needsReview": false
+  },
+  {
+   "code": "S11",
+   "hex": "#003399",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:0 G:51B:153",
+   "photoSample": "#214DA4",
+   "photoDiff": 33,
+   "needsReview": false
+  },
+  {
+   "code": "S12",
+   "hex": "#A05EB5",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:160 G:94B:181",
+   "photoSample": "#8864B2",
+   "photoDiff": 24,
+   "needsReview": false
+  },
+  {
+   "code": "S13",
+   "hex": "#000000",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:O G:0 B:0",
+   "photoSample": "#1B2027",
+   "photoDiff": 39,
+   "needsReview": false
+  },
+  {
+   "code": "S14",
+   "hex": "#FAE053",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:250 G:224 B:83",
+   "photoSample": "#E0BA3C",
+   "photoDiff": 38,
+   "needsReview": false
+  },
+  {
+   "code": "S15",
+   "hex": "#7A3E2C",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:122 G:62 B:44",
+   "photoSample": "#7C2F30",
+   "photoDiff": 15,
+   "needsReview": false
+  },
+  {
+   "code": "S16",
+   "hex": "#5C4738",
+   "method": "printed-rgb-ocr(merged)",
+   "rawText": "R:92 G:71B:56",
+   "photoSample": "#412F2B",
+   "photoDiff": 27,
+   "needsReview": true
+  },
+  {
+   "code": "S17",
+   "hex": "#7B4D35",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:123 G:77B:53",
+   "photoSample": "#764C46",
+   "photoDiff": 17,
+   "needsReview": false
+  },
+  {
+   "code": "S18",
+   "hex": "#CC9966",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:204G:153B:102",
+   "photoSample": "#C8937A",
+   "photoDiff": 20,
+   "needsReview": false
+  },
+  {
+   "code": "S19",
+   "hex": "#FCBFA9",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:252G:191B:169",
+   "photoSample": "#E6B4B2",
+   "photoDiff": 22,
+   "needsReview": false
+  },
+  {
+   "code": "S20",
+   "hex": "#249E6B",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:36 G:158B:107",
+   "photoSample": "#28A06F",
+   "photoDiff": 4,
+   "needsReview": false
+  },
+  {
+   "code": "S21",
+   "hex": "#87D839",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:135G:216B:57",
+   "photoSample": "#71CA6C",
+   "photoDiff": 51,
+   "needsReview": false
+  },
+  {
+   "code": "S22",
+   "hex": "#050072",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:5I G:0B:114",
+   "photoSample": "#3B2C74",
+   "photoDiff": 54,
+   "needsReview": false
+  },
+  {
+   "code": "S23",
+   "hex": "#64359B",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:100G:53B:155",
+   "photoSample": "#7157A9",
+   "photoDiff": 34,
+   "needsReview": false
+  },
+  {
+   "code": "S24",
+   "hex": "#147BD1",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:20 G:123 B:209",
+   "photoSample": "#239BE1",
+   "photoDiff": 32,
+   "needsReview": false
+  },
+  {
+   "code": "S25",
+   "hex": "#FF34B3",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:255 G:52 B:179",
+   "photoSample": "#FB5FB4",
+   "photoDiff": 43,
+   "needsReview": false
+  },
+  {
+   "code": "S26",
+   "hex": "#DB2152",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:219 G:33B:82",
+   "photoSample": "#FC518A",
+   "photoDiff": 56,
+   "needsReview": false
+  },
+  {
+   "code": "S27",
+   "hex": "#FFD100",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:255 G:209 B:0",
+   "photoSample": "#E6AD1A",
+   "photoDiff": 36,
+   "needsReview": false
+  },
+  {
+   "code": "S28",
+   "hex": "#EAB8E4",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:234G:184B:228",
+   "photoSample": "#D9ADCC",
+   "photoDiff": 24,
+   "needsReview": false
+  },
+  {
+   "code": "S29",
+   "hex": "#F6EB61",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:246 G:235 B:97",
+   "photoSample": "#DAC259",
+   "photoDiff": 41,
+   "needsReview": false
+  },
+  {
+   "code": "S30",
+   "hex": "#99D6EA",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:153G:214 B:234",
+   "photoSample": "#A3CBD6",
+   "photoDiff": 20,
+   "needsReview": false
+  },
+  {
+   "code": "S31",
+   "hex": "#9EE5B0",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:158G:229B:176",
+   "photoSample": "#A1D7D7",
+   "photoDiff": 39,
+   "needsReview": false
+  },
+  {
+   "code": "S32",
+   "hex": "#FFE780",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:255 G:231 B:128",
+   "photoSample": "#DCBF8B",
+   "photoDiff": 40,
+   "needsReview": false
+  },
+  {
+   "code": "S33",
+   "hex": "#C5B4E3",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:197 G:180 B:227",
+   "photoSample": "#BDB8D5",
+   "photoDiff": 14,
+   "needsReview": false
+  },
+  {
+   "code": "S34",
+   "hex": "#BA0C2F",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:186G:12 B:47",
+   "photoSample": "#C31E30",
+   "photoDiff": 18,
+   "needsReview": false
+  },
+  {
+   "code": "S35",
+   "hex": "#F7CED7",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:247 G:206 B:215",
+   "photoSample": "#E0BFC5",
+   "photoDiff": 23,
+   "needsReview": false
+  },
+  {
+   "code": "S36",
+   "hex": "#C9809E",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:201 G:128B:158",
+   "photoSample": "#D27F94",
+   "photoDiff": 10,
+   "needsReview": false
+  },
+  {
+   "code": "S37",
+   "hex": "#71D8BF",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:113G:216B:191",
+   "photoSample": "#7ED2DB",
+   "photoDiff": 28,
+   "needsReview": false
+  },
+  {
+   "code": "S38",
+   "hex": "#AB2556",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:171G:37B:86",
+   "photoSample": "#A51F44",
+   "photoDiff": 18,
+   "needsReview": false
+  },
+  {
+   "code": "S39",
+   "hex": "#ED8B00",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:237 G:139 B:0",
+   "photoSample": "#EF883C",
+   "photoDiff": 60,
+   "needsReview": false
+  },
+  {
+   "code": "S40",
+   "hex": "#F1A7DC",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:241G:167B:220",
+   "photoSample": "#EAA2CD",
+   "photoDiff": 15,
+   "needsReview": false
+  },
+  {
+   "code": "S41",
+   "hex": "#9A5516",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:154G:85B:22",
+   "photoSample": "#9C5133",
+   "photoDiff": 29,
+   "needsReview": false
+  },
+  {
+   "code": "S42",
+   "hex": "#A09F9D",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:160 G:159 B:157",
+   "photoSample": "#5F6774",
+   "photoDiff": 65,
+   "needsReview": true
+  },
+  {
+   "code": "S43",
+   "hex": "#767777",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:118G:119B:119",
+   "photoSample": "#60646E",
+   "photoDiff": 22,
+   "needsReview": false
+  },
+  {
+   "code": "S44",
+   "hex": "#AADCEB",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:170 G:220 B:235",
+   "photoSample": "#9AC9DE",
+   "photoDiff": 19,
+   "needsReview": false
+  },
+  {
+   "code": "S45",
+   "hex": "#00B2A9",
+   "method": "printed-rgb-ocr(merged)",
+   "rawText": "R:0G:178B:169",
+   "photoSample": "#2BC1C5",
+   "photoDiff": 43,
+   "needsReview": true
+  },
+  {
+   "code": "S46",
+   "hex": "#73D33C",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:115G:211B:60",
+   "photoSample": "#A4DB78",
+   "photoDiff": 60,
+   "needsReview": false
+  },
+  {
+   "code": "S47",
+   "hex": "#B47E00",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:180 G:126 B:0",
+   "photoSample": "#9D602B",
+   "photoDiff": 43,
+   "needsReview": false
+  },
+  {
+   "code": "S48",
+   "hex": "#FFC72C",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:255 G:199 B:44",
+   "photoSample": "#EAA918",
+   "photoDiff": 30,
+   "needsReview": false
+  },
+  {
+   "code": "S49",
+   "hex": "#72195F",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:114G:25B:95",
+   "photoSample": "#832657",
+   "photoDiff": 17,
+   "needsReview": false
+  },
+  {
+   "code": "S50",
+   "hex": "#FAAA72",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:250G:170B:114",
+   "photoSample": "#EFA88D",
+   "photoDiff": 27,
+   "needsReview": false
+  },
+  {
+   "code": "S51",
+   "hex": "#FCFBCD",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:252 G:251 B:205",
+   "photoSample": "#D5CCB8",
+   "photoDiff": 47,
+   "needsReview": false
+  },
+  {
+   "code": "S52",
+   "hex": "#F2F0A1",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:242 G:240 B:161",
+   "photoSample": "#DAC77A",
+   "photoDiff": 41,
+   "needsReview": false
+  },
+  {
+   "code": "S53",
+   "hex": "#69B3E7",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:105G:179B:231",
+   "photoSample": "#6AB0E8",
+   "photoDiff": 3,
+   "needsReview": false
+  },
+  {
+   "code": "S54",
+   "hex": "#0090DA",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:0 G:144B:218",
+   "photoSample": "#338BD7",
+   "photoDiff": 51,
+   "needsReview": false
+  },
+  {
+   "code": "S55",
+   "hex": "#ADDC91",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:173 G:220 B:145",
+   "photoSample": "#96D4A2",
+   "photoDiff": 23,
+   "needsReview": false
+  },
+  {
+   "code": "S56",
+   "hex": "#FF6A13",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:255 G:106 B:19",
+   "photoSample": "#FE843A",
+   "photoDiff": 39,
+   "needsReview": false
+  },
+  {
+   "code": "S57",
+   "hex": "#A4493D",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:164G.73B:61",
+   "photoSample": "#9D4E41",
+   "photoDiff": 7,
+   "needsReview": false
+  },
+  {
+   "code": "S58",
+   "hex": "#A50034",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:165 G:0B:52",
+   "photoSample": "#B31A31",
+   "photoDiff": 26,
+   "needsReview": false
+  },
+  {
+   "code": "S59",
+   "hex": "#4A1F87",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:74G:31B:135",
+   "photoSample": "#634E9F",
+   "photoDiff": 47,
+   "needsReview": false
+  },
+  {
+   "code": "S60",
+   "hex": "#A77BCA",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:167 G:123 B:202",
+   "photoSample": "#AC8FCD",
+   "photoDiff": 20,
+   "needsReview": false
+  },
+  {
+   "code": "S61",
+   "hex": "#CEDC00",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:206 G:220 B:0",
+   "photoSample": "#BEB13E",
+   "photoDiff": 62,
+   "needsReview": true
+  },
+  {
+   "code": "S62",
+   "hex": "#007C58",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:0 G:124B:88",
+   "photoSample": "#1B6E5D",
+   "photoDiff": 27,
+   "needsReview": false
+  },
+  {
+   "code": "S63",
+   "hex": "#585735",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:88G:87B:53",
+   "photoSample": "#534D43",
+   "photoDiff": 14,
+   "needsReview": false
+  },
+  {
+   "code": "S64",
+   "hex": "#050849",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:5 G:8 B:73",
+   "photoSample": "#2E395F",
+   "photoDiff": 49,
+   "needsReview": false
+  },
+  {
+   "code": "S65",
+   "hex": "#F3EA5D",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:243 G:234 B:93",
+   "photoSample": "#D7E683",
+   "photoDiff": 38,
+   "needsReview": false
+  },
+  {
+   "code": "S66",
+   "hex": "#F4633A",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:244 G:99 B:58",
+   "photoSample": "#F8563E",
+   "photoDiff": 13,
+   "needsReview": false
+  },
+  {
+   "code": "S67",
+   "hex": "#F3CFB3",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:243 G:207 B:179",
+   "photoSample": "#D1AF9E",
+   "photoDiff": 34,
+   "needsReview": false
+  },
+  {
+   "code": "S68",
+   "hex": "#E1C078",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:225 G:192 B:120",
+   "photoSample": "#B29160",
+   "photoDiff": 47,
+   "needsReview": false
+  },
+  {
+   "code": "S69",
+   "hex": "#23282B",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:35 G:40 B:43",
+   "photoSample": "#252A33",
+   "photoDiff": 8,
+   "needsReview": false
+  },
+  {
+   "code": "S70",
+   "hex": "#9BBC11",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:155G:188B:17",
+   "photoSample": "#9EA52D",
+   "photoDiff": 28,
+   "needsReview": false
+  },
+  {
+   "code": "S71",
+   "hex": "#00852B",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:0 G:133B:43",
+   "photoSample": "#1F803E",
+   "photoDiff": 31,
+   "needsReview": false
+  },
+  {
+   "code": "S72",
+   "hex": "#59D5D8",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:89 G:213B:216",
+   "photoSample": "#78CEE2",
+   "photoDiff": 31,
+   "needsReview": false
+  },
+  {
+   "code": "S73",
+   "hex": "#48A9C5",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:72G:169B:197",
+   "photoSample": "#4FADCD",
+   "photoDiff": 8,
+   "needsReview": false
+  },
+  {
+   "code": "S74",
+   "hex": "#00AED6",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:0G:174B:214",
+   "photoSample": "#3CB2D7",
+   "photoDiff": 60,
+   "needsReview": false
+  },
+  {
+   "code": "S75",
+   "hex": "#0085AD",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:0 G:133B:173",
+   "photoSample": "#2A90BB",
+   "photoDiff": 42,
+   "needsReview": false
+  },
+  {
+   "code": "S76",
+   "hex": "#00AEC7",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:0 G:174B:199",
+   "photoSample": "#2BAEC9",
+   "photoDiff": 43,
+   "needsReview": false
+  },
+  {
+   "code": "S77",
+   "hex": "#EFEFEF",
+   "method": "printed-rgb-ocr",
+   "rawText": "R239 G:239 B:239",
+   "photoSample": "#C1BFBC",
+   "photoDiff": 51,
+   "needsReview": false
+  },
+  {
+   "code": "S78",
+   "hex": "#D1D1D1",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:209 G:209B:209",
+   "photoSample": "#B4B3B2",
+   "photoDiff": 31,
+   "needsReview": false
+  },
+  {
+   "code": "S79",
+   "hex": "#BBBCBC",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:187G:188B:188",
+   "photoSample": "#A0A1A4",
+   "photoDiff": 27,
+   "needsReview": false
+  },
+  {
+   "code": "S80",
+   "hex": "#999B30",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:153G:155B:48",
+   "photoSample": "#7C7F39",
+   "photoDiff": 29,
+   "needsReview": false
+  },
+  {
+   "code": "S81",
+   "hex": "#CDB277",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:205G:178 8:119",
+   "photoSample": "#B49061",
+   "photoDiff": 34,
+   "needsReview": false
+  },
+  {
+   "code": "S82",
+   "hex": "#B58150",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:181 G:129 B:80",
+   "photoSample": "#8C6040",
+   "photoDiff": 41,
+   "needsReview": false
+  },
+  {
+   "code": "S83",
+   "hex": "#B86125",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:184G:97B:37",
+   "photoSample": "#B15723",
+   "photoDiff": 10,
+   "needsReview": false
+  },
+  {
+   "code": "S84",
+   "hex": "#AA5761",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:170 G:87B:97",
+   "photoSample": "#A95B67",
+   "photoDiff": 6,
+   "needsReview": false
+  },
+  {
+   "code": "S85",
+   "hex": "#5C131B",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:92 G:19 B:27",
+   "photoSample": "#762532",
+   "photoDiff": 26,
+   "needsReview": false
+  },
+  {
+   "code": "S86",
+   "hex": "#EAAA00",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:234 G:170B:0",
+   "photoSample": "#E3A111",
+   "photoDiff": 17,
+   "needsReview": false
+  },
+  {
+   "code": "S87",
+   "hex": "#FF6D6A",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:255G:109B:106",
+   "photoSample": "#F36B69",
+   "photoDiff": 12,
+   "needsReview": false
+  },
+  {
+   "code": "S88",
+   "hex": "#DA1884",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:218G:24B:132",
+   "photoSample": "#E53D7C",
+   "photoDiff": 37,
+   "needsReview": false
+  },
+  {
+   "code": "S89",
+   "hex": "#484955",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:72 G:73 B:85",
+   "photoSample": "#414750",
+   "photoDiff": 7,
+   "needsReview": false
+  },
+  {
+   "code": "S90",
+   "hex": "#FFC56E",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:255G:197B:110",
+   "photoSample": "#E5AE54",
+   "photoDiff": 26,
+   "needsReview": false
+  },
+  {
+   "code": "S91",
+   "hex": "#183028",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:24G:48B:40",
+   "photoSample": "#1C2C2E",
+   "photoDiff": 6,
+   "needsReview": false
+  },
+  {
+   "code": "S92",
+   "hex": "#DEB947",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:222 G:185 B:71",
+   "photoSample": "#C49325",
+   "photoDiff": 38,
+   "needsReview": false
+  },
+  {
+   "code": "S93",
+   "hex": "#DAB698",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:218 G:182B:152",
+   "photoSample": "#CEAB8F",
+   "photoDiff": 12,
+   "needsReview": false
+  },
+  {
+   "code": "S94",
+   "hex": "#F4A999",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:244G:169B:153",
+   "photoSample": "#D6847D",
+   "photoDiff": 37,
+   "needsReview": false
+  },
+  {
+   "code": "S95",
+   "hex": "#EE7D67",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:238G:125B:103",
+   "photoSample": "#DB6759",
+   "photoDiff": 22,
+   "needsReview": false
+  },
+  {
+   "code": "S96",
+   "hex": "#F08661",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:240 G:134B:97",
+   "photoSample": "#EF7257",
+   "photoDiff": 20,
+   "needsReview": false
+  },
+  {
+   "code": "S97",
+   "hex": "#D4722A",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:212G:114B:42",
+   "photoSample": "#E16A2B",
+   "photoDiff": 13,
+   "needsReview": false
+  },
+  {
+   "code": "S98",
+   "hex": "#64ACDF",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:100G:172B:223",
+   "photoSample": "#88C6EF",
+   "photoDiff": 36,
+   "needsReview": false
+  },
+  {
+   "code": "S99",
+   "hex": "#64C2DC",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:100G:194B:220",
+   "photoSample": "#72C1D9",
+   "photoDiff": 14,
+   "needsReview": false
+  },
+  {
+   "code": "S100",
+   "hex": "#4F9FB3",
+   "method": "printed-rgb-ocr",
+   "rawText": "R79G:159B:179",
+   "photoSample": "#66B2C2",
+   "photoDiff": 23,
+   "needsReview": false
+  },
+  {
+   "code": "S101",
+   "hex": "#3196DD",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:49 G:150B:221",
+   "photoSample": "#49B8EC",
+   "photoDiff": 34,
+   "needsReview": false
+  },
+  {
+   "code": "S102",
+   "hex": "#1B6CB6",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:27G:108 B:182",
+   "photoSample": "#1F90E3",
+   "photoDiff": 45,
+   "needsReview": false
+  },
+  {
+   "code": "S103",
+   "hex": "#083980",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:8G:57B:128",
+   "photoSample": "#1669BE",
+   "photoDiff": 62,
+   "needsReview": true
+  },
+  {
+   "code": "S104",
+   "hex": "#0A668B",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:10G:102 B:139",
+   "photoSample": "#1893B8",
+   "photoDiff": 45,
+   "needsReview": false
+  },
+  {
+   "code": "S105",
+   "hex": "#085B6E",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:8G:91B:110",
+   "photoSample": "#1589A8",
+   "photoDiff": 58,
+   "needsReview": false
+  },
+  {
+   "code": "S106",
+   "hex": "#004E78",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:0 G:78 B:120",
+   "photoSample": "#1074AD",
+   "photoDiff": 53,
+   "needsReview": false
+  },
+  {
+   "code": "S107",
+   "hex": "#005574",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:0G:85B:116",
+   "photoSample": "#1479B1",
+   "photoDiff": 61,
+   "needsReview": true
+  },
+  {
+   "code": "S108",
+   "hex": "#CCBE80",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:204G:190B:128",
+   "photoSample": "#C5BA83",
+   "photoDiff": 7,
+   "needsReview": false
+  },
+  {
+   "code": "S109",
+   "hex": "#A49350",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:164G:147B:80",
+   "photoSample": "#BAAF7A",
+   "photoDiff": 42,
+   "needsReview": false
+  },
+  {
+   "code": "S110",
+   "hex": "#9E883C",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:158 G:136B:60",
+   "photoSample": "#A59566",
+   "photoDiff": 42,
+   "needsReview": false
+  },
+  {
+   "code": "S111",
+   "hex": "#766C2B",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:118G:108B:43",
+   "photoSample": "#8D7842",
+   "photoDiff": 23,
+   "needsReview": false
+  },
+  {
+   "code": "S112",
+   "hex": "#795F26",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:121 G:95B:38",
+   "photoSample": "#7D6932",
+   "photoDiff": 12,
+   "needsReview": false
+  },
+  {
+   "code": "S113",
+   "hex": "#BAB8A2",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:186 G:184 B:162",
+   "photoSample": "#ACAC94",
+   "photoDiff": 14,
+   "needsReview": false
+  },
+  {
+   "code": "S114",
+   "hex": "#728C54",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:114G:140B:84",
+   "photoSample": "#9E9D70",
+   "photoDiff": 44,
+   "needsReview": false
+  },
+  {
+   "code": "S115",
+   "hex": "#7E7C44",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:126G:124 B:68",
+   "photoSample": "#85885C",
+   "photoDiff": 24,
+   "needsReview": false
+  },
+  {
+   "code": "S116",
+   "hex": "#64692E",
+   "method": "printed-rgb-ocr(merged)",
+   "rawText": "R:100G:105B:46",
+   "photoSample": "#818758",
+   "photoDiff": 42,
+   "needsReview": true
+  },
+  {
+   "code": "S117",
+   "hex": "#4E582C",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:78G:88B:44",
+   "photoSample": "#747A4C",
+   "photoDiff": 38,
+   "needsReview": false
+  },
+  {
+   "code": "S118",
+   "hex": "#4A5E2D",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:74 G:94 B:45",
+   "photoSample": "#4A5D30",
+   "photoDiff": 3,
+   "needsReview": false
+  },
+  {
+   "code": "S119",
+   "hex": "#71C452",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:113G:196B:82",
+   "photoSample": "#90DBD6",
+   "photoDiff": 132,
+   "needsReview": true
+  },
+  {
+   "code": "S120",
+   "hex": "#66CC99",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:102 G:204 B:153",
+   "photoSample": "#85DDBD",
+   "photoDiff": 36,
+   "needsReview": false
+  },
+  {
+   "code": "S121",
+   "hex": "#569A83",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:86 G:154B:131",
+   "photoSample": "#83B4A4",
+   "photoDiff": 45,
+   "needsReview": false
+  },
+  {
+   "code": "S122",
+   "hex": "#14C25B",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:20G:194B:91",
+   "photoSample": "#39CD8F",
+   "photoDiff": 52,
+   "needsReview": false
+  },
+  {
+   "code": "S123",
+   "hex": "#18A818",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:24G:168B:24",
+   "photoSample": "#50C23F",
+   "photoDiff": 56,
+   "needsReview": false
+  },
+  {
+   "code": "S124",
+   "hex": "#04552E",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:4G:85B:46",
+   "photoSample": "#206534",
+   "photoDiff": 28,
+   "needsReview": false
+  },
+  {
+   "code": "S125",
+   "hex": "#136B5A",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:19G:107B:90",
+   "photoSample": "#1C817C",
+   "photoDiff": 34,
+   "needsReview": false
+  },
+  {
+   "code": "S126",
+   "hex": "#054641",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:5 G:70 B:65",
+   "photoSample": "#056F71",
+   "photoDiff": 48,
+   "needsReview": false
+  },
+  {
+   "code": "S127",
+   "hex": "#D9B6D6",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:217G:182B:214",
+   "photoSample": "#E0BDDF",
+   "photoDiff": 9,
+   "needsReview": false
+  },
+  {
+   "code": "S128",
+   "hex": "#AD62A4",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:173 G:98B:164",
+   "photoSample": "#DA92DB",
+   "photoDiff": 55,
+   "needsReview": false
+  },
+  {
+   "code": "S129",
+   "hex": "#E68CA3",
+   "method": "printed-rgb-ocr",
+   "rawText": "R230G:140B:163",
+   "photoSample": "#DEA1B6",
+   "photoDiff": 21,
+   "needsReview": false
+  },
+  {
+   "code": "S130",
+   "hex": "#DE5479",
+   "method": "printed-rgb-ocr",
+   "rawText": "R.222 G:84B:121",
+   "photoSample": "#DF6993",
+   "photoDiff": 26,
+   "needsReview": false
+  },
+  {
+   "code": "S131",
+   "hex": "#9E82BA",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:158G:130B:186",
+   "photoSample": "#C4B1E3",
+   "photoDiff": 47,
+   "needsReview": false
+  },
+  {
+   "code": "S132",
+   "hex": "#E8416B",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:232 G:65B:107",
+   "photoSample": "#F04869",
+   "photoDiff": 8,
+   "needsReview": false
+  },
+  {
+   "code": "S133",
+   "hex": "#B7388F",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:183 G:56 B:143",
+   "photoSample": "#E056BF",
+   "photoDiff": 48,
+   "needsReview": false
+  },
+  {
+   "code": "S134",
+   "hex": "#581F7E",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:88G:31B:126",
+   "photoSample": "#914BAB",
+   "photoDiff": 57,
+   "needsReview": false
+  },
+  {
+   "code": "S135",
+   "hex": "#8CA3D4",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:140G:163B:212",
+   "photoSample": "#A5BBE2",
+   "photoDiff": 25,
+   "needsReview": false
+  },
+  {
+   "code": "S136",
+   "hex": "#9A9ACC",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:154G:154B:204",
+   "photoSample": "#A8B5DF",
+   "photoDiff": 27,
+   "needsReview": false
+  },
+  {
+   "code": "S137",
+   "hex": "#5981C1",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:89 G:129B:193",
+   "photoSample": "#80A8E7",
+   "photoDiff": 39,
+   "needsReview": false
+  },
+  {
+   "code": "S138",
+   "hex": "#4166B0",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:65G:102B:176",
+   "photoSample": "#6896DF",
+   "photoDiff": 48,
+   "needsReview": false
+  },
+  {
+   "code": "S139",
+   "hex": "#475FAB",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:71 G:95B:171",
+   "photoSample": "#7494D9",
+   "photoDiff": 53,
+   "needsReview": false
+  },
+  {
+   "code": "S140",
+   "hex": "#374593",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:55G:69B:147",
+   "photoSample": "#5D79CF",
+   "photoDiff": 60,
+   "needsReview": false
+  },
+  {
+   "code": "S141",
+   "hex": "#3D56A5",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:61 G:86B:165",
+   "photoSample": "#537DD2",
+   "photoDiff": 45,
+   "needsReview": false
+  },
+  {
+   "code": "S142",
+   "hex": "#294287",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:41 G:66B:135",
+   "photoSample": "#446AC8",
+   "photoDiff": 65,
+   "needsReview": true
+  },
+  {
+   "code": "S143",
+   "hex": "#25268A",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:37G:38B:138",
+   "photoSample": "#2A3DA3",
+   "photoDiff": 25,
+   "needsReview": false
+  },
+  {
+   "code": "S144",
+   "hex": "#1A2F6F",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:26G:47B:111",
+   "photoSample": "#173B8C",
+   "photoDiff": 29,
+   "needsReview": false
+  },
+  {
+   "code": "S145",
+   "hex": "#D3C95D",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:211G:201B:93",
+   "photoSample": "#CEC460",
+   "photoDiff": 5,
+   "needsReview": false
+  },
+  {
+   "code": "S146",
+   "hex": "#510918",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:81G:9B:24",
+   "photoSample": "#8E1429",
+   "photoDiff": 61,
+   "needsReview": true
+  },
+  {
+   "code": "S147",
+   "hex": "#64B39E",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:100 G:179B:158",
+   "photoSample": "#82BEAF",
+   "photoDiff": 30,
+   "needsReview": false
+  },
+  {
+   "code": "S148",
+   "hex": "#634338",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:99 G:67 B:56",
+   "photoSample": "#614340",
+   "photoDiff": 8,
+   "needsReview": false
+  },
+  {
+   "code": "S149",
+   "hex": "#EDD39E",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:237G:211B:158",
+   "photoSample": "#DCC098",
+   "photoDiff": 19,
+   "needsReview": false
+  },
+  {
+   "code": "S150",
+   "hex": "#6963AB",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:105G:99B:171",
+   "photoSample": "#8E8CCF",
+   "photoDiff": 41,
+   "needsReview": false
+  },
+  {
+   "code": "S151",
+   "hex": "#2B3F1F",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:43 G:63B:31",
+   "photoSample": "#2A3F27",
+   "photoDiff": 8,
+   "needsReview": false
+  },
+  {
+   "code": "S152",
+   "hex": "#9791C5",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:151G:145B:197",
+   "photoSample": "#B2AFDC",
+   "photoDiff": 30,
+   "needsReview": false
+  },
+  {
+   "code": "S153",
+   "hex": "#B8BDE0",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:184 G:189B:224",
+   "photoSample": "#BABEDE",
+   "photoDiff": 2,
+   "needsReview": false
+  },
+  {
+   "code": "S154",
+   "hex": "#F9C898",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:249 G:200 B:152",
+   "photoSample": "#D1AC92",
+   "photoDiff": 40,
+   "needsReview": false
+  },
+  {
+   "code": "S155",
+   "hex": "#C39069",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:195 G:144B:105",
+   "photoSample": "#AD7453",
+   "photoDiff": 28,
+   "needsReview": false
+  },
+  {
+   "code": "S156",
+   "hex": "#44505B",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:68 G:80 B:91",
+   "photoSample": "#474F59",
+   "photoDiff": 3,
+   "needsReview": false
+  },
+  {
+   "code": "S157",
+   "hex": "#3E4955",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:62 G:73 B:85",
+   "photoSample": "#353C46",
+   "photoDiff": 15,
+   "needsReview": false
+  },
+  {
+   "code": "S158",
+   "hex": "#202830",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:32 G:40 B:48",
+   "photoSample": "#242B35",
+   "photoDiff": 5,
+   "needsReview": false
+  },
+  {
+   "code": "S159",
+   "hex": "#888B8D",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:136G:139B:141",
+   "photoSample": "#777B85",
+   "photoDiff": 17,
+   "needsReview": false
+  },
+  {
+   "code": "SE01",
+   "hex": "#D1DDE6",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:209 G:221B:230",
+   "photoSample": "#9AABB9",
+   "photoDiff": 55,
+   "needsReview": false
+  },
+  {
+   "code": "SE02",
+   "hex": "#9BB8E3",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:155G:184B:227",
+   "photoSample": "#88A4C8",
+   "photoDiff": 27,
+   "needsReview": false
+  },
+  {
+   "code": "SE03",
+   "hex": "#5E8AB4",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:94G:138B:180",
+   "photoSample": "#7396C5",
+   "photoDiff": 21,
+   "needsReview": false
+  },
+  {
+   "code": "SE04",
+   "hex": "#6AD1E3",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:106G:209B:227",
+   "photoSample": "#4CABC0",
+   "photoDiff": 38,
+   "needsReview": false
+  },
+  {
+   "code": "SE05",
+   "hex": "#2CD5C4",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:44G:213B:196",
+   "photoSample": "#4CC2B8",
+   "photoDiff": 32,
+   "needsReview": false
+  },
+  {
+   "code": "SE06",
+   "hex": "#147BD1",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:20G:123B:209",
+   "photoSample": "#5388D4",
+   "photoDiff": 63,
+   "needsReview": true
+  },
+  {
+   "code": "SE07",
+   "hex": "#BFA5B8",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:191G165 B184",
+   "photoSample": "#CFB0D5",
+   "photoDiff": 29,
+   "needsReview": false
+  },
+  {
+   "code": "SE08",
+   "hex": "#9B7793",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:155G:119B:147",
+   "photoSample": "#A86DAB",
+   "photoDiff": 24,
+   "needsReview": false
+  },
+  {
+   "code": "SE09",
+   "hex": "#693C5E",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:105G:60B:94",
+   "photoSample": "#733476",
+   "photoDiff": 24,
+   "needsReview": false
+  },
+  {
+   "code": "SE10",
+   "hex": "#C964CF",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:201G:100 B:207",
+   "photoSample": "#CA61C5",
+   "photoDiff": 10,
+   "needsReview": false
+  },
+  {
+   "code": "SE11",
+   "hex": "#AD1AAC",
+   "method": "printed-rgb-ocr(single-region)",
+   "rawText": "R:173G:26B:172",
+   "photoSample": null,
+   "photoDiff": null,
+   "needsReview": true
+  },
+  {
+   "code": "SE12",
+   "hex": "#FFB25B",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:255G:178B:91",
+   "photoSample": "#FAAD5E",
+   "photoDiff": 5,
+   "needsReview": false
+  },
+  {
+   "code": "SE13",
+   "hex": "#E6A65D",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:230 G:166B:93",
+   "photoSample": "#EEB588",
+   "photoDiff": 43,
+   "needsReview": false
+  },
+  {
+   "code": "SE14",
+   "hex": "#D38235",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:211G:130B:53",
+   "photoSample": "#D79361",
+   "photoDiff": 44,
+   "needsReview": false
+  },
+  {
+   "code": "SE15",
+   "hex": "#C16C18",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:193G:108 B:24",
+   "photoSample": "#AD6F3D",
+   "photoDiff": 37,
+   "needsReview": false
+  },
+  {
+   "code": "SE16",
+   "hex": "#F5B6CD",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:245G:182B:205",
+   "photoSample": "#FAB5D3",
+   "photoDiff": 6,
+   "needsReview": false
+  },
+  {
+   "code": "SE17",
+   "hex": "#5D2A2C",
+   "method": "printed-rgb-ocr",
+   "rawText": "R:93 G:42 B:44",
+   "photoSample": "#4D2620",
+   "photoDiff": 16,
+   "needsReview": false
+  },
+  {
+   "code": "ST1",
+   "hex": "#D5D3DA",
+   "method": "photo-chip-sampled",
+   "photoSample": "#D5D3DA",
+   "photoDiff": 0,
+   "needsReview": true
+  },
+  {
+   "code": "ST2",
+   "hex": "#FA86B9",
+   "method": "photo-chip-sampled",
+   "photoSample": "#FA86B9",
+   "photoDiff": 0,
+   "needsReview": true
+  },
+  {
+   "code": "ST3",
+   "hex": "#FB9E62",
+   "method": "photo-chip-sampled",
+   "photoSample": "#FB9E62",
+   "photoDiff": 0,
+   "needsReview": true
+  },
+  {
+   "code": "ST4",
+   "hex": "#D0E49A",
+   "method": "photo-chip-sampled",
+   "photoSample": "#D0E49A",
+   "photoDiff": 0,
+   "needsReview": true
+  },
+  {
+   "code": "ST5",
+   "hex": "#23D2A4",
+   "method": "photo-chip-sampled",
+   "photoSample": "#23D2A4",
+   "photoDiff": 0,
+   "needsReview": true
+  },
+  {
+   "code": "ST6",
+   "hex": "#9094E1",
+   "method": "photo-chip-sampled",
+   "photoSample": "#9094E1",
+   "photoDiff": 0,
+   "needsReview": true
+  },
+  {
+   "code": "ST7",
+   "hex": "#6F6F6F",
+   "method": "photo-chip-sampled",
+   "photoSample": "#6F6F6F",
+   "photoDiff": 0,
+   "needsReview": true
+  },
+  {
+   "code": "ST8",
+   "hex": "#833432",
+   "method": "photo-chip-sampled",
+   "photoSample": "#833432",
+   "photoDiff": 0,
+   "needsReview": true
+  },
+  {
+   "code": "SL1",
+   "hex": "#5BC0E3",
+   "method": "photo-chip-sampled",
+   "photoSample": "#5BC0E3",
+   "photoDiff": 0,
+   "needsReview": true
+  },
+  {
+   "code": "SL2",
+   "hex": "#0C9D7F",
+   "method": "photo-chip-sampled",
+   "photoSample": "#0C9D7F",
+   "photoDiff": 0,
+   "needsReview": true
+  },
+  {
+   "code": "SL3",
+   "hex": "#C91D20",
+   "method": "photo-chip-sampled",
+   "photoSample": "#C91D20",
+   "photoDiff": 0,
+   "needsReview": true
+  },
+  {
+   "code": "SL4",
+   "hex": "#D8B616",
+   "method": "photo-chip-sampled",
+   "photoSample": "#D8B616",
+   "photoDiff": 0,
+   "needsReview": true
+  },
+  {
+   "code": "SL5",
+   "hex": "#845FC3",
+   "method": "photo-chip-sampled",
+   "photoSample": "#845FC3",
+   "photoDiff": 0,
+   "needsReview": true
+  },
+  {
+   "code": "SL6",
+   "hex": "#C7C6D1",
+   "method": "photo-chip-sampled",
+   "photoSample": "#C7C6D1",
+   "photoDiff": 0,
+   "needsReview": true
+  },
+  {
+   "code": "SG1",
+   "hex": "#D3D3D4",
+   "method": "photo-chip-sampled",
+   "photoSample": "#D3D3D4",
+   "photoDiff": 0,
+   "needsReview": true
+  },
+  {
+   "code": "SG2",
+   "hex": "#DBC5D2",
+   "method": "photo-chip-sampled",
+   "photoSample": "#DBC5D2",
+   "photoDiff": 0,
+   "needsReview": true
+  },
+  {
+   "code": "SG3",
+   "hex": "#60C6E9",
+   "method": "photo-chip-sampled",
+   "photoSample": "#60C6E9",
+   "photoDiff": 0,
+   "needsReview": true
+  },
+  {
+   "code": "SG4",
+   "hex": "#A48DDF",
+   "method": "photo-chip-sampled",
+   "photoSample": "#A48DDF",
+   "photoDiff": 0,
+   "needsReview": true
+  },
+  {
+   "code": "SG5",
+   "hex": "#F6B49F",
+   "method": "photo-chip-sampled",
+   "photoSample": "#F6B49F",
+   "photoDiff": 0,
+   "needsReview": true
+  },
+  {
+   "code": "SG6",
+   "hex": "#B0DDAC",
+   "method": "photo-chip-sampled",
+   "photoSample": "#B0DDAC",
+   "photoDiff": 0,
+   "needsReview": true
+  },
+  {
+   "code": "SG7",
+   "hex": "#DD4D54",
+   "method": "photo-chip-sampled",
+   "photoSample": "#DD4D54",
+   "photoDiff": 0,
+   "needsReview": true
+  },
+  {
+   "code": "SN1",
+   "hex": "#FD8329",
+   "method": "photo-chip-sampled",
+   "photoSample": "#FD8329",
+   "photoDiff": 0,
+   "needsReview": true
+  },
+  {
+   "code": "SN2",
+   "hex": "#22E88A",
+   "method": "photo-chip-sampled",
+   "photoSample": "#22E88A",
+   "photoDiff": 0,
+   "needsReview": true
+  },
+  {
+   "code": "SN3",
+   "hex": "#DAF06D",
+   "method": "photo-chip-sampled",
+   "photoSample": "#DAF06D",
+   "photoDiff": 0,
+   "needsReview": true
+  },
+  {
+   "code": "SN4",
+   "hex": "#FC5D81",
+   "method": "photo-chip-sampled",
+   "photoSample": "#FC5D81",
+   "photoDiff": 0,
+   "needsReview": true
+  },
+  {
+   "code": "SP1",
+   "hex": "#9BDCB4",
+   "method": "photo-chip-sampled",
+   "photoSample": "#9BDCB4",
+   "photoDiff": 0,
+   "needsReview": true
+  },
+  {
+   "code": "SP2",
+   "hex": "#FD935E",
+   "method": "photo-chip-sampled",
+   "photoSample": "#FD935E",
+   "photoDiff": 0,
+   "needsReview": true
+  },
+  {
+   "code": "SP3",
+   "hex": "#EFAB59",
+   "method": "photo-chip-sampled",
+   "photoSample": "#EFAB59",
+   "photoDiff": 0,
+   "needsReview": true
+  },
+  {
+   "code": "SP4",
+   "hex": "#DB9AAB",
+   "method": "photo-chip-sampled",
+   "photoSample": "#DB9AAB",
+   "photoDiff": 0,
+   "needsReview": true
+  },
+  {
+   "code": "SP5",
+   "hex": "#E13742",
+   "method": "photo-chip-sampled",
+   "photoSample": "#E13742",
+   "photoDiff": 0,
+   "needsReview": true
+  },
+  {
+   "code": "SP6",
+   "hex": "#323E92",
+   "method": "photo-chip-sampled",
+   "photoSample": "#323E92",
+   "photoDiff": 0,
+   "needsReview": true
+  },
+  {
+   "code": "SP7",
+   "hex": "#57327B",
+   "method": "photo-chip-sampled",
+   "photoSample": "#57327B",
+   "photoDiff": 0,
+   "needsReview": true
+  },
+  {
+   "code": "SP8",
+   "hex": "#CDCDCE",
+   "method": "photo-chip-sampled",
+   "photoSample": "#CDCDCE",
+   "photoDiff": 0,
+   "needsReview": true
+  },
+  {
+   "code": "SD1",
+   "hex": "#3A3E4B",
+   "method": "photo-chip-sampled",
+   "photoSample": "#3A3E4B",
+   "photoDiff": 0,
+   "needsReview": true
+  },
+  {
+   "code": "SD2",
+   "hex": "#7D8189",
+   "method": "photo-chip-sampled",
+   "photoSample": "#7D8189",
+   "photoDiff": 0,
+   "needsReview": true
+  },
+  {
+   "code": "SD3",
+   "hex": "#53B5E8",
+   "method": "photo-chip-sampled",
+   "photoSample": "#53B5E8",
+   "photoDiff": 0,
+   "needsReview": true
+  },
+  {
+   "code": "SD4",
+   "hex": "#64A8DE",
+   "method": "photo-chip-sampled",
+   "photoSample": "#64A8DE",
+   "photoDiff": 0,
+   "needsReview": true
+  },
+  {
+   "code": "SD5",
+   "hex": "#53B88B",
+   "method": "photo-chip-sampled",
+   "photoSample": "#53B88B",
+   "photoDiff": 0,
+   "needsReview": true
+  },
+  {
+   "code": "SD6",
+   "hex": "#4BC6CA",
+   "method": "photo-chip-sampled",
+   "photoSample": "#4BC6CA",
+   "photoDiff": 0,
+   "needsReview": true
+  },
+  {
+   "code": "SD7",
+   "hex": "#C55263",
+   "method": "photo-chip-sampled",
+   "photoSample": "#C55263",
+   "photoDiff": 0,
+   "needsReview": true
+  },
+  {
+   "code": "SD8",
+   "hex": "#F678BF",
+   "method": "photo-chip-sampled",
+   "photoSample": "#F678BF",
+   "photoDiff": 0,
+   "needsReview": true
+  },
+  {
+   "code": "SD9",
+   "hex": "#A187BE",
+   "method": "photo-chip-sampled",
+   "photoSample": "#A187BE",
+   "photoDiff": 0,
+   "needsReview": true
+  },
+  {
+   "code": "SD10",
+   "hex": "#DEB64A",
+   "method": "photo-chip-sampled",
+   "photoSample": "#DEB64A",
+   "photoDiff": 0,
+   "needsReview": true
+  },
+  {
+   "code": "SD11",
+   "hex": "#F38B78",
+   "method": "photo-chip-sampled",
+   "photoSample": "#F38B78",
+   "photoDiff": 0,
+   "needsReview": true
+  },
+  {
+   "code": "SD12",
+   "hex": "#338676",
+   "method": "photo-chip-sampled",
+   "photoSample": "#338676",
+   "photoDiff": 0,
+   "needsReview": true
+  },
+  {
+   "code": "SUV1",
+   "hex": "#F7BFDB",
+   "method": "photo-chip-sampled",
+   "photoSample": "#F7BFDB",
+   "photoDiff": 0,
+   "needsReview": true
+  },
+  {
+   "code": "SUV2",
+   "hex": "#EADB7C",
+   "method": "photo-chip-sampled",
+   "photoSample": "#EADB7C",
+   "photoDiff": 0,
+   "needsReview": true
+  },
+  {
+   "code": "SUV3",
+   "hex": "#CACCFE",
+   "method": "photo-chip-sampled",
+   "photoSample": "#CACCFE",
+   "photoDiff": 0,
+   "needsReview": true
+  },
+  {
+   "code": "SUV4",
+   "hex": "#FEB3FE",
+   "method": "photo-chip-sampled",
+   "photoSample": "#FEB3FE",
+   "photoDiff": 0,
+   "needsReview": true
+  }
+ ]
+}

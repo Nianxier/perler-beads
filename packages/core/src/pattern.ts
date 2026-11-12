@@ -287,6 +287,15 @@ export function transformPattern(p: Pattern, op: PatternTransform): Pattern {
   return next;
 }
 
+/** 批量换色：把 fromIdx 位置全部替换为 toIdx，返回新图纸 */
+export function replaceColor(p: Pattern, fromIdx: number, toIdx: number): Pattern {
+  const next = createPattern(p.width, p.height, p.paletteId, p.name);
+  for (let i = 0; i < p.grid.length; i++) {
+    next.grid[i] = p.grid[i] === fromIdx ? toIdx : p.grid[i];
+  }
+  return next;
+}
+
 /** 换色卡（近似换色）：源色 HEX 在目标色卡里取最近色，返回转换后的新图纸 */
 export function convertPatternPalette(p: Pattern, targetPaletteId: string): Pattern {  const target = getPalette(targetPaletteId);
   const source = getPalette(p.paletteId);

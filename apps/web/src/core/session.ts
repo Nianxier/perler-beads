@@ -102,6 +102,12 @@ export const showStartWizard = ref(true);
 /** 作品库弹窗显隐 */
 export const showWorks = ref(false);
 
+/** 批量换色弹窗显隐 */
+export const showReplace = ref(false);
+
+/** 分享码弹窗显隐 */
+export const showShare = ref(false);
+
 /** 轻量提示（右下角，自动消失） */
 export const toast = ref('');
 let toastTimer: ReturnType<typeof setTimeout> | undefined;

@@ -8,6 +8,8 @@ import {
   loadDocument,
   showCodes,
   showGrid,
+  showReplace,
+  showShare,
   showStartWizard,
   showToast,
   showWorks,
@@ -276,6 +278,8 @@ async function onJsonPicked(e: Event): Promise<void> {
       <input ref="jsonInput" type="file" accept=".json,application/json" hidden @change="onJsonPicked" />
       <button class="btn" @click="doSaveWork">存作品</button>
       <button class="btn" @click="showWorks = true">作品库</button>
+      <button class="btn" title="把图中某色全部换成另一色" @click="showReplace = true">批量换色</button>
+      <button class="btn" title="生成/打开图纸分享码" @click="showShare = true">分享码</button>
     </div>
   </div>
 </template>

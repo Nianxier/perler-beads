@@ -18,6 +18,9 @@ import {
   splitByBoards,
   scalePattern,
   mergeSimilarColors,
+  replaceColor,
+  encodeShareCode,
+  decodeShareCode,
   rgbToOklab,
   serializePattern,
   setCell,
@@ -211,6 +214,24 @@ const limited = pixelsToPattern(src8, 8, 8, {
   maxColors: 2,
 });
 assert.ok(new Set(limited.grid).size <= 2, '量化 maxColors=2 应收敛到 2 色');
+
+// 16. 批量换色
+const rc = replaceColor(mc, 0, 7);
+assert.equal(rc.grid[0], 7, '原 0 号位应换成 7');
+assert.equal(rc.grid[7], 7, '7 号位不变');
+assert.equal(rc.grid.filter((v) => v === 0).length, 0, '不应残留 0');
+
+// 17. 分享码往返
+const code = encodeShareCode(mc);
+assert.match(code, /^PB1-/);
+const back2 = decodeShareCode(code);
+assert.deepEqual(back2.grid, mc.grid);
+assert.equal(back2.width, 4);
+assert.equal(back2.name, mc.name);
+const named = { ...mc, name: '分享码测试·🎨' };
+assert.equal(decodeShareCode(encodeShareCode(named)).name, '分享码测试·🎨', '中文名应无损');
+assert.throws(() => decodeShareCode('XX-abc'), /分享码/);
+assert.throws(() => decodeShareCode('PB1-!!!!'), /非法字符|失败/);
 
 console.log('SMOKE PASS');
 console.log(`  色系数=${palettes.length} MARD=${mard.colors.length} 色`);

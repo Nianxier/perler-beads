@@ -4,6 +4,7 @@ import {
   createPattern,
   floodFill,
   getCell,
+  replaceColor,
   resizePattern,
   scalePattern,
   setCell,
@@ -119,6 +120,12 @@ export function transformDocument(s: EditorState, op: PatternTransform): void {
 export function scaleDocument(s: EditorState, width: number, height: number): void {
   snapshot(s);
   s.pattern = scalePattern(s.pattern, width, height);
+}
+
+/** 批量换色（可撤销） */
+export function replaceColorDocument(s: EditorState, fromIdx: number, toIdx: number): void {
+  snapshot(s);
+  s.pattern = replaceColor(s.pattern, fromIdx, toIdx);
 }
 
 export function startStroke(_s: EditorState): StrokeSession {

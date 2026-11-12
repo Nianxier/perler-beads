@@ -1,0 +1,25 @@
+{
+  "source": "https://perler.com/",
+  "series": "Fuse Beads (5mm) / Mini 等",
+  "status": "unavailable",
+  "extractMethod": null,
+  "colors": [],
+  "extractedAt": "2026-11-12",
+  "blocked": {
+    "summary": "Perler 现官网已无色卡（Color Charts）入口，无法提取；未编造任何数据。",
+    "details": [
+      "用户给的路径「perler.com 导航栏 Resources → Color Charts → 按形状选高清图档」属于 Perler 旧官网，现已不存在：现站（Shopify 重构版）sitemap_pages 全部 12 个页面、sitemap_articles 全部文章、sitemap_collections 全部集合均无 color chart / resources 类目（逐个核查）。",
+      "FAQ 页（/pages/frequently-asked-questions）无色卡下载链接。",
+      "web.archive.org 与 archive.org 在本网络环境不可达（连接超时），无法取回旧官网色卡图档；DuckDuckGo 不可达，cn.bing.com 被重写为无关结果，无法检索镜像。",
+      "perler.com 对脚本访问持续返回 429（web_fetch 与 Python urllib 均被限流），/products.json 商品数据（仅含官方色名、无 hex）也未能拉取。",
+      "perlerbeads.com 域名已失效（DreamHost 占位页）；perler.eu 无 DNS 记录。",
+      "GitHub 上的 perler 色卡数据均为社区自制（如 jsspace/bead-colors 标注 approximate HEX），非官方数据，按任务要求不采用、不冒充官方。"
+    ],
+    "nextStep": "如需 Perler 官方色号↔HEX：需人工从 Perler 官方纸质/图档色卡（或旧官网存档）录入；beadpatternapp.com 快照公布 Perler 103 色可作为录入后的数量核对基准。荧光/珠光/透明特殊色屏幕显示误差大，录 HEX 时需注明。"
+  },
+  "crossCheck": {
+    "beadpatternappSnapshotCount": 103,
+    "extractedCount": 0,
+    "note": "快照数量 103（仅数量核对，未引用其数据）"
+  }
+}

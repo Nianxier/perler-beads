@@ -14,6 +14,7 @@ exports.scalePattern = scalePattern;
 exports.mergeSimilarColors = mergeSimilarColors;
 exports.splitByBoards = splitByBoards;
 exports.transformPattern = transformPattern;
+exports.replaceColor = replaceColor;
 exports.convertPatternPalette = convertPatternPalette;
 exports.parsePattern = parsePattern;
 /** 图纸模型操作：创建/读写格子/填充/用量统计/跟拼分色/序列化。 */
@@ -265,6 +266,14 @@ function transformPattern(p, op) {
             }
             next.grid[ny * w + nx] = v;
         }
+    }
+    return next;
+}
+/** 批量换色：把 fromIdx 位置全部替换为 toIdx，返回新图纸 */
+function replaceColor(p, fromIdx, toIdx) {
+    const next = createPattern(p.width, p.height, p.paletteId, p.name);
+    for (let i = 0; i < p.grid.length; i++) {
+        next.grid[i] = p.grid[i] === fromIdx ? toIdx : p.grid[i];
     }
     return next;
 }

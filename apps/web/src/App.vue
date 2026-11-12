@@ -2,6 +2,8 @@
 import { computed, onBeforeUnmount, onMounted } from 'vue';
 import EditorCanvas from './components/EditorCanvas.vue';
 import PalettePanel from './components/PalettePanel.vue';
+import ReplaceColorDialog from './components/ReplaceColorDialog.vue';
+import ShareDialog from './components/ShareDialog.vue';
 import StartWizard from './components/StartWizard.vue';
 import StatsPanel from './components/StatsPanel.vue';
 import ToolBar from './components/ToolBar.vue';
@@ -12,6 +14,8 @@ import {
   createDocument,
   editor,
   activeTabId,
+  showReplace,
+  showShare,
   showStartWizard,
   showWorks,
   tabs,
@@ -57,6 +61,8 @@ onBeforeUnmount(() => {
     </main>
     <StartWizard v-if="showStartWizard" />
     <WorksPanel v-if="showWorks" />
+    <ReplaceColorDialog v-if="showReplace" />
+    <ShareDialog v-if="showShare" />
     <div v-if="toast" class="toast">{{ toast }}</div>
     <div class="tabbar">
       <button

@@ -1,0 +1,455 @@
+{
+ "source": "https://www.hamabeads.com/wp-content/uploads/2026/02/Colour-Chart-26.pdf",
+ "sourcePage": "https://www.hamabeads.com/",
+ "size": "Midi (5mm)",
+ "extractMethod": "PDF 文本层定位色号 + 矢量标签条定位照片区域 + Pillow 采样（照片近似值）",
+ "states": {
+  "raw": [
+   {
+    "code": "01",
+    "hex": "#DEE0DF",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "02",
+    "hex": "#EDDFA6",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "03",
+    "hex": "#FBBC00",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "04",
+    "hex": "#E42819",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "05",
+    "hex": "#BC1822",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "06",
+    "hex": "#E06070",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "07",
+    "hex": "#442A56",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "08",
+    "hex": "#293474",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "09",
+    "hex": "#245599",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "10",
+    "hex": "#026037",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "11",
+    "hex": "#0EA879",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "12",
+    "hex": "#3D2D27",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "13",
+    "hex": "#A40E0D",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "14",
+    "hex": "#E3A700",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "15",
+    "hex": "#005090",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "16",
+    "hex": "#00673F",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "17",
+    "hex": "#727071",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "18",
+    "hex": "#2A2828",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "19",
+    "hex": "#C6C7C7",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "20",
+    "hex": "#7C291F",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "21",
+    "hex": "#A85A3B",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "22",
+    "hex": "#AB1B31",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "24",
+    "hex": "#54205A",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "26",
+    "hex": "#DB7258",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "27",
+    "hex": "#D69772",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "28",
+    "hex": "#3F4D3F",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "29",
+    "hex": "#9F1E3D",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "30",
+    "hex": "#52292C",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "31",
+    "hex": "#1F8393",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "32",
+    "hex": "#DD0D3C",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "34",
+    "hex": "#E1C800",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "35",
+    "hex": "#E1131A",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "36",
+    "hex": "#264292",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "37",
+    "hex": "#00983B",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "38",
+    "hex": "#EC6A10",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "43",
+    "hex": "#F5E137",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "44",
+    "hex": "#D75955",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "45",
+    "hex": "#6B4C94",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "46",
+    "hex": "#1AB1DC",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "47",
+    "hex": "#6CB263",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "48",
+    "hex": "#D368A0",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "49",
+    "hex": "#0599AB",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "55",
+    "hex": "#A2BCA8",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "56",
+    "hex": "#E2A499",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "60",
+    "hex": "#DA6625",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "61",
+    "hex": "#AB6D38",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "62",
+    "hex": "#5F6060",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "63",
+    "hex": "#7D653D",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "64",
+    "hex": "#C6AF99",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "70",
+    "hex": "#8A9199",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "71",
+    "hex": "#38383A",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "72",
+    "hex": "#E66C95",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "73",
+    "hex": "#009ACD",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "74",
+    "hex": "#6F549F",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "75",
+    "hex": "#A06F4E",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "76",
+    "hex": "#763D19",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "77",
+    "hex": "#D6CABA",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "78",
+    "hex": "#F6BB8D",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "79",
+    "hex": "#ED7422",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "82",
+    "hex": "#7C1A45",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "83",
+    "hex": "#00608A",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "84",
+    "hex": "#676F2E",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "95",
+    "hex": "#E598B0",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "96",
+    "hex": "#AB8CBA",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "97",
+    "hex": "#81BDE4",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "98",
+    "hex": "#88C69D",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "101",
+    "hex": "#84A178",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "102",
+    "hex": "#305A2B",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "103",
+    "hex": "#D7A010",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "104",
+    "hex": "#9E9401",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "105",
+    "hex": "#CD6620",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "106",
+    "hex": "#918AB2",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "107",
+    "hex": "#54679F",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "108",
+    "hex": "#35173C",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "109",
+    "hex": "#AC9A80",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "110",
+    "hex": "#9D9A4E",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "111",
+    "hex": "#9A5A51",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "112",
+    "hex": "#BA7C6D",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "113",
+    "hex": "#53A984",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "114",
+    "hex": "#A81C24",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "115",
+    "hex": "#5EAB44",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "116",
+    "hex": "#072644",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "117",
+    "hex": "#605A51",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "118",
+    "hex": "#800928",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "119",
+    "hex": "#11699D",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "120",
+    "hex": "#84B2CB",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "121",
+    "hex": "#E33D69",
+    "method": "photo-sampled"
+   },
+   {
+    "code": "122",
+    "hex": "#B36E0B",
+    "method": "photo-sampled"
+   }
+  ],
+  "ironed": []
+ },
+ "notes": "官方 2026 色卡（Art.-nr. 99198）为散珠实拍照片色卡，只有一种状态（未熨烫散珠）；未找到官方已熨烫对照色卡，states.ironed 为空数组=缺失。hex 为照片采样近似值，非官方色值。",
+ "missingStates": [
+  "ironed"
+ ]
+}
