@@ -1,0 +1,14 @@
+{
+  "name": "perler-beads",
+  "private": true,
+  "version": "0.1.0",
+  "description": "拼豆图纸软件：电脑端网页 + 微信小程序，共享核心引擎，纯本地数据",
+  "type": "module",
+  "scripts": {
+    "build:core": "pnpm --filter @perler/core build",
+    "test:core": "pnpm --filter @perler/core test"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

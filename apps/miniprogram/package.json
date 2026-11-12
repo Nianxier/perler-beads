@@ -1,0 +1,13 @@
+{
+  "name": "@perler/miniprogram",
+  "private": true,
+  "version": "0.1.0",
+  "description": "拼豆图纸微信小程序（原生）：JSON 图纸导入、施工图查看、跟拼模式、用量统计",
+  "scripts": {
+    "build": "tsc -p tsconfig.core.json",
+    "test": "node test/logic.test.mjs"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0"
+  }
+}

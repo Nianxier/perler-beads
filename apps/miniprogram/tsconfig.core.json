@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "outDir": "utils/@perler-core",
+    "rootDir": "../../packages/core/src",
+    "declaration": false,
+    "sourceMap": false
+  },
+  "include": ["../../packages/core/src/**/*.ts"]
+}

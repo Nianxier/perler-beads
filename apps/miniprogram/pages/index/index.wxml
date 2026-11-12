@@ -1,0 +1,15 @@
+<view class="page">
+  <button type="primary" bindtap="importJson">从聊天文件导入图纸 JSON</button>
+  <view class="hint">电脑端「保存 JSON」导出图纸后，把文件发到微信（文件传输助手或好友），再从这里导入即可查看和跟拼。</view>
+
+  <view class="list">
+    <view class="card" wx:for="{{works}}" wx:key="id">
+      <view class="main" bindtap="openWork" data-id="{{item.id}}">
+        <view class="name">{{item.name}}</view>
+        <view class="meta">{{item.width}}×{{item.height}} · {{item.date}}</view>
+      </view>
+      <button size="mini" bindtap="removeWork" data-id="{{item.id}}">删除</button>
+    </view>
+    <view wx:if="{{works.length == 0}}" class="empty">还没有图纸，先导入一个 JSON 吧</view>
+  </view>
+</view>

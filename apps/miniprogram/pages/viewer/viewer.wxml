@@ -1,0 +1,51 @@
+<view class="page">
+  <view class="bar">
+    <view class="seg">
+      <view class="seg-item {{tab == 'grid' ? 'on' : ''}}" bindtap="switchTab" data-tab="grid">图纸</view>
+      <view class="seg-item {{tab == 'follow' ? 'on' : ''}}" bindtap="switchTab" data-tab="follow">跟拼</view>
+      <view class="seg-item {{tab == 'usage' ? 'on' : ''}}" bindtap="switchTab" data-tab="usage">用量</view>
+    </view>
+    <view class="info">{{width}}×{{height}} · {{total}} 颗</view>
+  </view>
+
+  <view class="canvas-wrap" style="display:{{tab == 'usage' ? 'none' : 'block'}}">
+    <canvas type="2d" id="board" class="board"
+      catchtouchstart="onTouchStart" catchtouchmove="onTouchMove" catchtouchend="onTouchEnd"></canvas>
+  </view>
+
+  <view class="panel" wx:if="{{tab == 'grid'}}">
+    <label class="chk"><switch checked="{{showGrid}}" bindchange="toggleGrid" size="mini" /> 网格</label>
+    <label class="chk"><switch checked="{{showCodes}}" bindchange="toggleCodes" size="mini" /> 色号</label>
+    <button size="mini" bindtap="zoomIn">＋</button>
+    <button size="mini" bindtap="zoomOut">－</button>
+    <button size="mini" bindtap="fitView">适应</button>
+  </view>
+
+  <view class="panel" wx:if="{{tab == 'follow'}}">
+    <view class="progress">进度：{{doneSteps}}/{{totalSteps}} 色 · {{doneCells}}/{{allCells}} 颗</view>
+    <view class="actions">
+      <button size="mini" type="primary" bindtap="completeCurrent">完成当前色</button>
+      <button size="mini" bindtap="resetFollow">重置进度</button>
+    </view>
+    <scroll-view scroll-y class="steps">
+      <view wx:for="{{steps}}" wx:key="index"
+        class="step {{index == currentIndex ? 'on' : ''}} {{item.done ? 'done' : ''}}"
+        bindtap="selectStep" data-index="{{index}}">
+        <view class="swatch" style="background:{{item.hex}}"></view>
+        <text class="code">{{item.code}}</text>
+        <text class="n">{{item.total}}</text>
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class="panel" wx:if="{{tab == 'usage'}}">
+    <view class="progress">共 {{total}} 颗 · {{usage.length}} 种颜色</view>
+    <scroll-view scroll-y class="steps">
+      <view wx:for="{{usage}}" wx:key="index" class="step">
+        <view class="swatch" style="background:{{item.hex}}"></view>
+        <text class="code">{{item.code}}</text>
+        <text class="n">{{item.count}}</text>
+      </view>
+    </scroll-view>
+  </view>
+</view>
