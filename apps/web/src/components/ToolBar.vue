@@ -18,6 +18,7 @@ import {
   canUndo,
   redo,
   resizeDocument,
+  scaleDocument,
   setTool,
   transformDocument,
   undo,
@@ -37,9 +38,10 @@ const palette = getPalette('mard');
 
 const newWidth = ref(32);
 const newHeight = ref(32);
-const resizeWidth = ref(32);
-const resizeHeight = ref(32);
+const resizeWidth = ref(editor.pattern.width);
+const resizeHeight = ref(editor.pattern.height);
 const resizeAnchor = ref<'topleft' | 'center' | 'bottomright'>('center');
+const resizeMode = ref<'canvas' | 'scale'>('canvas');
 const importWidth = ref(64);
 const importFit = ref<'contain' | 'stretch'>('contain');
 const importDither = ref(false);
@@ -82,16 +84,23 @@ function doRedo(): void {
 function doNew(): void {
   const w = Math.max(1, Math.round(newWidth.value));
   const h = Math.max(1, Math.round(newHeight.value));
-  if (totalBeads.value > 0) {
-    const ok = window.confirm('新建空白图纸会清空当前画面且不可撤销，确定继续？');
-    if (!ok) return;
-  }
-  newDocument(w, h);
-  viewApi.value?.fit();
+  // 新建图纸 = 在新标签页打开空白图纸，不影响当前画面
+  const u = new URL(window.location.href);
+  u.searchParams.set('new', 'blank');
+  u.searchParams.set('w', String(w));
+  u.searchParams.set('h', String(h));
+  window.open(u.toString());
 }
 
-function doResize(): void {  const w = Math.max(1, Math.round(resizeWidth.value));
+function doResize(): void {
+  const w = Math.max(1, Math.round(resizeWidth.value));
   const h = Math.max(1, Math.round(resizeHeight.value));
+  if (resizeMode.value === 'scale') {
+    scaleDocument(editor, w, h);
+    bump();
+    viewApi.value?.fit();
+    return;
+  }
   const oldW = editor.pattern.width;
   const oldH = editor.pattern.height;
   let ox = 0;
@@ -185,19 +194,23 @@ function doLoadDraft(): void {
       <span class="lbl">新建图纸</span>
       <input v-model.number="newWidth" class="num" type="number" min="1" max="500" /> ×
       <input v-model.number="newHeight" class="num" type="number" min="1" max="500" />
-      <button class="btn" title="清空当前画面，创建空白图纸" @click="doNew">新建空白</button>
+      <button class="btn" title="在新标签页创建空白图纸，不影响当前画面" @click="doNew">新标签页新建</button>
     </div>
 
     <div class="group">
-      <span class="lbl">调整大小（保留内容）</span>
+      <span class="lbl">调整大小</span>
       <input v-model.number="resizeWidth" class="num" type="number" min="1" max="500" /> ×
       <input v-model.number="resizeHeight" class="num" type="number" min="1" max="500" />
-      <select v-model="resizeAnchor" class="sel" title="原内容放进新图纸的位置">
+      <select v-model="resizeMode" class="sel" title="扩/裁画布=格子不变；缩放内容=图纸放大/拉伸">
+        <option value="canvas">扩/裁画布</option>
+        <option value="scale">缩放内容</option>
+      </select>
+      <select v-if="resizeMode === 'canvas'" v-model="resizeAnchor" class="sel" title="原内容放进新图纸的位置">
         <option value="topleft">左上对齐</option>
         <option value="center">居中</option>
         <option value="bottomright">右下对齐</option>
       </select>
-      <button class="btn" title="改变图纸尺寸并保留已有内容" @click="doResize">调整</button>
+      <button class="btn" title="改变图纸尺寸（可撤销）" @click="doResize">调整</button>
     </div>
 
     <div class="group">

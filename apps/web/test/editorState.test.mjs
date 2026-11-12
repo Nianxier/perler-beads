@@ -33,6 +33,7 @@ const {
   setColor,
   resizeDocument,
   transformDocument,
+  scaleDocument,
 } = m;
 
 // 1. 初始状态
@@ -137,6 +138,21 @@ assert.equal(s4.pattern.height, 3);
 assert.equal(s4.pattern.grid[0], 4, '撤销后回到旋转前');
 transformDocument(s4, 'flipH');
 assert.equal(s4.pattern.grid[1], 4, '镜像↔ 后内容应从 (0,0) 移到 (1,0)');
+
+// 10. 内容缩放（放大/拉伸，可撤销）
+const s5 = createEditor(2, 2, 'mard');
+setTool(s5, 'pencil');
+setColor(s5, 3);
+st = startStroke(s5);
+strokeStep(s5, 0, 0, st);
+scaleDocument(s5, 4, 4);
+assert.equal(s5.pattern.width, 4);
+assert.equal(s5.pattern.grid[1 * 4 + 1], 3, '放大后内容应铺开');
+assert.equal(s5.pattern.grid[0], 3);
+assert.equal(s5.history.length, 2, '描边 + 缩放各压一步快照');
+assert.equal(undo(s5), true, '缩放应可撤销');
+assert.equal(s5.pattern.width, 2, '撤销后回到原尺寸');
+assert.equal(s5.pattern.grid[0], 3);
 
 rmSync(dir, { recursive: true, force: true });
 console.log('WEB STATE TEST PASS');

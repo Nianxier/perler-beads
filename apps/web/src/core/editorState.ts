@@ -5,6 +5,7 @@ import {
   floodFill,
   getCell,
   resizePattern,
+  scalePattern,
   setCell,
   transformPattern,
   type Pattern,
@@ -112,6 +113,12 @@ export function resizeDocument(
 export function transformDocument(s: EditorState, op: PatternTransform): void {
   snapshot(s);
   s.pattern = transformPattern(s.pattern, op);
+}
+
+/** 缩放图纸内容到新尺寸（放大/拉伸），可撤销 */
+export function scaleDocument(s: EditorState, width: number, height: number): void {
+  snapshot(s);
+  s.pattern = scalePattern(s.pattern, width, height);
 }
 
 export function startStroke(_s: EditorState): StrokeSession {

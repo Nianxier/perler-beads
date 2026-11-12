@@ -5,7 +5,16 @@ import PalettePanel from './components/PalettePanel.vue';
 import StartWizard from './components/StartWizard.vue';
 import StatsPanel from './components/StatsPanel.vue';
 import ToolBar from './components/ToolBar.vue';
-import { editor, showStartWizard, version } from './core/session';
+import { editor, newDocument, showStartWizard, version } from './core/session';
+
+// 支持 ?new=blank&w=&h=：新标签页直接创建空白图纸（跳过向导）
+const params = new URLSearchParams(window.location.search);
+if (params.get('new') === 'blank') {
+  const w = Math.max(1, Math.round(Number(params.get('w')) || 32));
+  const h = Math.max(1, Math.round(Number(params.get('h')) || 32));
+  newDocument(w, h);
+  showStartWizard.value = false;
+}
 
 const docInfo = computed(() => {
   void version.value;

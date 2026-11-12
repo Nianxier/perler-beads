@@ -10,6 +10,7 @@ exports.usageStats = usageStats;
 exports.colorSteps = colorSteps;
 exports.serializePattern = serializePattern;
 exports.resizePattern = resizePattern;
+exports.scalePattern = scalePattern;
 exports.splitByBoards = splitByBoards;
 exports.transformPattern = transformPattern;
 exports.convertPatternPalette = convertPatternPalette;
@@ -138,6 +139,21 @@ function resizePattern(p, width, height, offsetX = 0, offsetY = 0) {
             const v = p.grid[y * p.width + x];
             if (v !== types_js_1.EMPTY)
                 next.grid[ny * width + nx] = v;
+        }
+    }
+    return next;
+}
+/** 缩放图纸内容（最近邻重采样）到新尺寸：放大=色块复制铺开，缩小=抽样合并 */
+function scalePattern(p, width, height) {
+    if (!Number.isInteger(width) || !Number.isInteger(height) || width < 1 || height < 1) {
+        throw new Error('图纸尺寸必须是正整数');
+    }
+    const next = createPattern(width, height, p.paletteId, p.name);
+    for (let y = 0; y < height; y++) {
+        const sy = Math.min(p.height - 1, Math.floor(((y + 0.5) * p.height) / height));
+        for (let x = 0; x < width; x++) {
+            const sx = Math.min(p.width - 1, Math.floor(((x + 0.5) * p.width) / width));
+            next.grid[y * width + x] = p.grid[sy * p.width + sx];
         }
     }
     return next;

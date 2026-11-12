@@ -94,10 +94,15 @@ function buildConstructionCanvas(
   const total = usage.reduce((n, u) => n + u.count, 0);
   const margin = 44;
   const headerH = subtitle ? 80 : 56;
-  const legendRows = Math.max(1, Math.ceil(usage.length / 4));
-  const legendH = 54 + legendRows * 22;
   const gridW = pattern.width * cellSize;
-  const w = Math.max(gridW + margin * 2, margin * 2 + 4 * 170);
+  const legendW = Math.max(gridW, 4 * 170);
+  const chipW = 72;
+  const chipH = 30;
+  const chipGap = 4;
+  const legendCols = Math.max(4, Math.floor(legendW / (chipW + chipGap)));
+  const legendRows = Math.max(1, Math.ceil(usage.length / legendCols));
+  const legendH = 52 + legendRows * (chipH + chipGap);
+  const w = legendW + margin * 2;
   const h = headerH + margin + pattern.height * cellSize + legendH + margin;
   const cv = document.createElement('canvas');
   cv.width = w;
@@ -185,27 +190,27 @@ function buildConstructionCanvas(
     ctx.fillText(String(y + 1), ox - 10, oy + (y + 0.5) * cellSize);
   }
 
-  // 用量图例：色块 + 色号 × 数量（每行 4 项）
+  // 用量图例：紧凑色片（色号 + 数量堆叠在色片内，多列排布，省空间）
   const legendTop = oy + pattern.height * cellSize + 34;
-  const legendW = Math.max(gridW, 4 * 170);
-  const colW = legendW / 4;
   ctx.fillStyle = '#1F2329';
   ctx.font = '600 15px system-ui, sans-serif';
   ctx.textAlign = 'left';
   ctx.textBaseline = 'alphabetic';
-  ctx.fillText(`用量明细（共 ${total} 颗，${usage.length} 种颜色）`, ox, legendTop);
-  ctx.font = '500 13px system-ui, sans-serif';
+  ctx.fillText(`用量明细（共 ${total} 颗 · ${usage.length} 种颜色）`, ox, legendTop);
+  ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
   usage.forEach((u, i) => {
-    const cx = ox + (i % 4) * colW;
-    const cy = legendTop + 26 + Math.floor(i / 4) * 22;
+    const cx = ox + (i % legendCols) * (chipW + chipGap);
+    const cy = legendTop + 22 + Math.floor(i / legendCols) * (chipH + chipGap);
     ctx.fillStyle = u.hex;
-    ctx.fillRect(cx, cy - 7, 14, 14);
+    ctx.fillRect(cx, cy, chipW, chipH);
     ctx.lineWidth = 1;
-    ctx.strokeStyle = 'rgba(0,0,0,0.2)';
-    ctx.strokeRect(cx + 0.5, cy - 6.5, 13, 13);
-    ctx.fillStyle = '#374151';
-    ctx.fillText(`${u.code} × ${u.count}`, cx + 20, cy);
+    ctx.strokeStyle = 'rgba(0,0,0,0.25)';
+    ctx.strokeRect(cx + 0.5, cy + 0.5, chipW - 1, chipH - 1);
+    ctx.fillStyle = contrastText(u.hex);
+    ctx.font = '600 12px system-ui, sans-serif';
+    ctx.fillText(u.code, cx + chipW / 2, cy + chipH / 2 - 7);
+    ctx.fillText(`× ${u.count}`, cx + chipW / 2, cy + chipH / 2 + 8);
   });
 
   return cv;

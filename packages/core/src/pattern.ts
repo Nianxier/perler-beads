@@ -140,6 +140,22 @@ export function resizePattern(
 
 export type PatternTransform = 'flipH' | 'flipV' | 'rotateCW' | 'rotateCCW';
 
+/** 缩放图纸内容（最近邻重采样）到新尺寸：放大=色块复制铺开，缩小=抽样合并 */
+export function scalePattern(p: Pattern, width: number, height: number): Pattern {
+  if (!Number.isInteger(width) || !Number.isInteger(height) || width < 1 || height < 1) {
+    throw new Error('图纸尺寸必须是正整数');
+  }
+  const next = createPattern(width, height, p.paletteId, p.name);
+  for (let y = 0; y < height; y++) {
+    const sy = Math.min(p.height - 1, Math.floor(((y + 0.5) * p.height) / height));
+    for (let x = 0; x < width; x++) {
+      const sx = Math.min(p.width - 1, Math.floor(((x + 0.5) * p.width) / width));
+      next.grid[y * width + x] = p.grid[sy * p.width + sx];
+    }
+  }
+  return next;
+}
+
 /** 分板结果：一块底板覆盖的格子区域（局部 grid 行优先） */
 export interface BoardSheet {
   /** 底板在整图中的列/行号（0 起） */
@@ -215,7 +231,8 @@ export function transformPattern(p: Pattern, op: PatternTransform): Pattern {
 }
 
 /** 换色卡（近似换色）：源色 HEX 在目标色卡里取最近色，返回转换后的新图纸 */
-export function convertPatternPalette(p: Pattern, targetPaletteId: string): Pattern {  const target = getPalette(targetPaletteId);
+export function convertPatternPalette(p: Pattern, targetPaletteId: string): Pattern {
+  const target = getPalette(targetPaletteId);
   const source = getPalette(p.paletteId);
   const map = source.colors.map((c) => {
     const [r, g, b] = hexToRgb(c.hex);

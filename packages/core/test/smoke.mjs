@@ -16,6 +16,7 @@ import {
   convertPatternPalette,
   transformPattern,
   splitByBoards,
+  scalePattern,
   rgbToOklab,
   serializePattern,
   setCell,
@@ -178,6 +179,19 @@ assert.equal(sheets[0].grid[0], 1);
 assert.equal(sheets[4].grid[0], 2, '(29,29) 应落在第 (1,1) 块首格');
 assert.equal(sheets[8].grid[1 * 2 + 1], 3, '右下块末格应是 (59,59)');
 assert.throws(() => splitByBoards(m60, 0), /正整数/);
+
+// 14. 内容缩放（最近邻）
+const sc0 = createPattern(2, 2, 'mard');
+setCell(sc0, 0, 0, 1);
+setCell(sc0, 1, 0, 2);
+setCell(sc0, 0, 1, 3);
+setCell(sc0, 1, 1, 4);
+const up = scalePattern(sc0, 4, 4);
+assert.deepEqual(up.grid.slice(0, 4), [1, 1, 2, 2], '放大应按块复制铺开');
+assert.deepEqual(up.grid.slice(8, 12), [3, 3, 4, 4]);
+const down = scalePattern(up, 2, 2);
+assert.deepEqual(down.grid, [1, 2, 3, 4], '放大再缩回应还原');
+assert.throws(() => scalePattern(up, 0, 2), /正整数/);
 
 console.log('SMOKE PASS');
 console.log(`  色系数=${palettes.length} MARD=${mard.colors.length} 色`);
