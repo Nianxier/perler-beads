@@ -8,11 +8,14 @@ exports.nearestColorWithDelta = nearestColorWithDelta;
 const palettes_js_1 = require("./data/palettes.js");
 const color_js_1 = require("./color.js");
 const oklabCache = new Map();
+/** 旧色卡 id 兼容（早期图纸文件的 paletteId='mard'） */
+const ALIASES = { mard: 'mard-221' };
 function listPalettes() {
     return [...palettes_js_1.PALETTES];
 }
 function getPalette(id) {
-    const p = palettes_js_1.PALETTES.find((x) => x.id === id);
+    const resolved = ALIASES[id] ?? id;
+    const p = palettes_js_1.PALETTES.find((x) => x.id === resolved);
     if (!p) {
         throw new Error(`未找到色卡: ${id}（可用: ${palettes_js_1.PALETTES.map((x) => x.id).join(', ')}）`);
     }

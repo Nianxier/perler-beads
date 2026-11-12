@@ -42,6 +42,17 @@ prog = follow.progress(s);
 assert.equal(prog.doneSteps, 2);
 assert.equal(prog.doneCells, 3);
 
+// 2b. 跟拼进度导出/恢复
+const s2 = follow.createSession(p, core.getPalette('mard'));
+assert.equal(follow.restoreState(s2, { current: 0, done: [true, false] }), true);
+assert.equal(s2.steps[0].done, true);
+assert.equal(follow.currentStep(s2).index, 3, '当前步已完成后应推进到未完成的下一步');
+const st = follow.exportState(s2);
+assert.deepEqual(st.done, [true, false]);
+const s3 = follow.createSession(p, core.getPalette('mard'));
+assert.equal(follow.restoreState(s3, { current: 0, done: [true] }), false, '长度不匹配应拒绝');
+assert.equal(s3.steps[0].done, false, '拒绝时不应改动会话');
+
 // 3. 所有小程序 JS 语法检查（模块体不执行 wx 调用，可安全编译）
 const jsFiles = [
   'app.js',

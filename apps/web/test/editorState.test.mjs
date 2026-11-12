@@ -32,6 +32,7 @@ const {
   setTool,
   setColor,
   resizeDocument,
+  transformDocument,
 } = m;
 
 // 1. 初始状态
@@ -100,7 +101,7 @@ assert.equal(s2.history.length, 3, '快照应被上限裁剪');
 assert.equal(canUndo(s2), true);
 assert.equal(canRedo(s2), false);
 
-// 8. 调整图纸大小（保留内容，历史清空）
+// 8. 调整图纸大小（保留内容，可撤销）
 const s3 = createEditor(4, 4, 'mard');
 setTool(s3, 'pencil');
 setColor(s3, 2);
@@ -110,9 +111,32 @@ resizeDocument(s3, 6, 6, 1, 1);
 assert.equal(s3.pattern.width, 6);
 assert.equal(s3.pattern.grid.length, 36);
 assert.equal(s3.pattern.grid[1 * 6 + 1], 2, '内容应随 offset 平移');
-assert.equal(s3.history.length, 0, '改大小后历史应清空');
+assert.equal(s3.history.length, 2, '描边 + 改大小各压一步快照');
+assert.equal(undo(s3), true, '改大小应可撤销');
+assert.equal(s3.pattern.width, 4);
+assert.equal(s3.pattern.grid[0], 2);
+assert.equal(redo(s3), true, '改大小应可重做');
+assert.equal(s3.pattern.grid[1 * 6 + 1], 2);
 resizeDocument(s3, 1, 1, -1, -1);
 assert.equal(s3.pattern.grid[0], 2, '裁剪后内容保留');
+
+// 9. 镜像/旋转（可撤销）
+const s4 = createEditor(2, 3, 'mard');
+setTool(s4, 'pencil');
+setColor(s4, 4);
+st = startStroke(s4);
+strokeStep(s4, 0, 0, st);
+transformDocument(s4, 'rotateCW');
+assert.equal(s4.pattern.width, 3);
+assert.equal(s4.pattern.height, 2);
+assert.equal(s4.pattern.grid[2 * 1 + 0], 4, '(0,0) 顺时针后应在 (2,0)');
+assert.equal(s4.history.length, 2, '描边 + 变换各压一步快照');
+assert.equal(undo(s4), true, '旋转应可撤销');
+assert.equal(s4.pattern.width, 2);
+assert.equal(s4.pattern.height, 3);
+assert.equal(s4.pattern.grid[0], 4, '撤销后回到旋转前');
+transformDocument(s4, 'flipH');
+assert.equal(s4.pattern.grid[1], 4, '镜像↔ 后内容应从 (0,0) 移到 (1,0)');
 
 rmSync(dir, { recursive: true, force: true });
 console.log('WEB STATE TEST PASS');

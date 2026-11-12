@@ -30,7 +30,9 @@ Page({
     }
     this.pattern = pattern;
     this.palette = core.getPalette(pattern.paletteId);
+    this.workId = query.id;
     this.session = follow.createSession(this.pattern, this.palette);
+    follow.restoreState(this.session, store.loadFollow(this.workId));
     this.view = { cell: 16, ox: 12, oy: 12 };
 
     const usage = core.usageStats(this.pattern, this.palette);
@@ -196,18 +198,21 @@ Page({
 
   selectStep(e) {
     follow.selectStep(this.session, e.currentTarget.dataset.index);
+    store.saveFollow(this.workId, follow.exportState(this.session));
     this.syncFollow();
     this.draw();
   },
 
   completeCurrent() {
     follow.completeCurrent(this.session);
+    store.saveFollow(this.workId, follow.exportState(this.session));
     this.syncFollow();
     this.draw();
   },
 
   resetFollow() {
     this.session = follow.createSession(this.pattern, this.palette);
+    store.clearFollow(this.workId);
     this.syncFollow();
     this.draw();
   },

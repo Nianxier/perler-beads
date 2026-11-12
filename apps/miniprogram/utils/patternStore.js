@@ -32,4 +32,29 @@ function removeWork(id) {
   );
 }
 
-module.exports = { listWorks, saveWork, getWork, removeWork };
+/** 跟拼进度（每张图纸一份） */
+function followKey(id) {
+  return 'perler.follow.' + id;
+}
+
+function saveFollow(id, state) {
+  wx.setStorageSync(followKey(id), state);
+}
+
+function loadFollow(id) {
+  return wx.getStorageSync(followKey(id)) || null;
+}
+
+function clearFollow(id) {
+  wx.removeStorageSync(followKey(id));
+}
+
+module.exports = {
+  listWorks,
+  saveWork,
+  getWork,
+  removeWork,
+  saveFollow,
+  loadFollow,
+  clearFollow,
+};

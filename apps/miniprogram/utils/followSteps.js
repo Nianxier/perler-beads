@@ -42,4 +42,36 @@ function progress(session) {
   };
 }
 
-module.exports = { createSession, currentStep, completeCurrent, selectStep, progress };
+/** 导出进度（可存本地） */
+function exportState(session) {
+  return {
+    current: session.current,
+    done: session.steps.map((s) => s.done),
+  };
+}
+
+/** 恢复进度；state 与步骤数不匹配时返回 false 不做改动 */
+function restoreState(session, state) {
+  if (!state || !Array.isArray(state.done) || state.done.length !== session.steps.length) {
+    return false;
+  }
+  session.steps.forEach((s, i) => {
+    s.done = !!state.done[i];
+  });
+  const cur = state.current;
+  session.current =
+    typeof cur === 'number' && cur >= 0 && cur < session.steps.length && !session.steps[cur].done
+      ? cur
+      : session.steps.findIndex((s) => !s.done);
+  return true;
+}
+
+module.exports = {
+  createSession,
+  currentStep,
+  completeCurrent,
+  selectStep,
+  progress,
+  exportState,
+  restoreState,
+};

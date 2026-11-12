@@ -17,10 +17,10 @@ export interface EditorState {
   pattern: Pattern;
   tool: Tool;
   colorIndex: number;
-  /** 撤销栈：格子快照 */
-  history: number[][];
+  /** 撤销栈：完整图纸快照（含尺寸，改大小/变换也可撤销） */
+  history: Pattern[];
   /** 重做栈 */
-  future: number[][];
+  future: Pattern[];
   maxHistory: number;
 }
 
@@ -49,8 +49,12 @@ export function createEditor(
   };
 }
 
+function clonePattern(p: Pattern): Pattern {
+  return { ...p, grid: [...p.grid] };
+}
+
 export function snapshot(s: EditorState): void {
-  s.history.push([...s.pattern.grid]);
+  s.history.push(clonePattern(s.pattern));
   if (s.history.length > s.maxHistory) s.history.shift();
   s.future.length = 0;
 }
@@ -65,15 +69,15 @@ export function canRedo(s: EditorState): boolean {
 
 export function undo(s: EditorState): boolean {
   if (!canUndo(s)) return false;
-  s.future.push([...s.pattern.grid]);
-  s.pattern.grid = s.history.pop()!;
+  s.future.push(clonePattern(s.pattern));
+  s.pattern = s.history.pop()!;
   return true;
 }
 
 export function redo(s: EditorState): boolean {
   if (!canRedo(s)) return false;
-  s.history.push([...s.pattern.grid]);
-  s.pattern.grid = s.future.pop()!;
+  s.history.push(clonePattern(s.pattern));
+  s.pattern = s.future.pop()!;
   return true;
 }
 
@@ -92,7 +96,7 @@ export function replacePattern(s: EditorState, p: Pattern): void {
   s.future.length = 0;
 }
 
-/** 调整图纸大小（保留内容）。结构变更，历史栈清空重新开始 */
+/** 调整图纸大小（保留内容），可撤销 */
 export function resizeDocument(
   s: EditorState,
   width: number,
@@ -100,12 +104,14 @@ export function resizeDocument(
   offsetX = 0,
   offsetY = 0,
 ): void {
-  replacePattern(s, resizePattern(s.pattern, width, height, offsetX, offsetY));
+  snapshot(s);
+  s.pattern = resizePattern(s.pattern, width, height, offsetX, offsetY);
 }
 
-/** 镜像/旋转。结构变更（旋转换向），历史栈清空 */
+/** 镜像/旋转，可撤销 */
 export function transformDocument(s: EditorState, op: PatternTransform): void {
-  replacePattern(s, transformPattern(s.pattern, op));
+  snapshot(s);
+  s.pattern = transformPattern(s.pattern, op);
 }
 
 export function startStroke(_s: EditorState): StrokeSession {

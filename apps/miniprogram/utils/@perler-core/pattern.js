@@ -10,11 +10,15 @@ exports.usageStats = usageStats;
 exports.colorSteps = colorSteps;
 exports.serializePattern = serializePattern;
 exports.resizePattern = resizePattern;
+exports.splitByBoards = splitByBoards;
+exports.transformPattern = transformPattern;
+exports.convertPatternPalette = convertPatternPalette;
 exports.parsePattern = parsePattern;
 /** 图纸模型操作：创建/读写格子/填充/用量统计/跟拼分色/序列化。 */
 const types_js_1 = require("./types.js");
 const palette_js_1 = require("./palette.js");
-function createPattern(width, height, paletteId = 'mard', name = '未命名') {
+const color_js_1 = require("./color.js");
+function createPattern(width, height, paletteId = 'mard-221', name = '未命名') {
     if (!Number.isInteger(width) || !Number.isInteger(height) || width < 1 || height < 1) {
         throw new Error('图纸尺寸必须是正整数');
     }
@@ -135,6 +139,81 @@ function resizePattern(p, width, height, offsetX = 0, offsetY = 0) {
             if (v !== types_js_1.EMPTY)
                 next.grid[ny * width + nx] = v;
         }
+    }
+    return next;
+}
+/** 按底板尺寸拆分图纸（左上为原点，行优先），用于多板拼接打印 */
+function splitByBoards(p, boardSize) {
+    if (!Number.isInteger(boardSize) || boardSize < 1) {
+        throw new Error('底板尺寸必须是正整数');
+    }
+    const sheets = [];
+    const cols = Math.ceil(p.width / boardSize);
+    const rows = Math.ceil(p.height / boardSize);
+    for (let br = 0; br < rows; br++) {
+        for (let bc = 0; bc < cols; bc++) {
+            const srcX = bc * boardSize;
+            const srcY = br * boardSize;
+            const width = Math.min(boardSize, p.width - srcX);
+            const height = Math.min(boardSize, p.height - srcY);
+            const grid = new Array(width * height).fill(types_js_1.EMPTY);
+            for (let y = 0; y < height; y++) {
+                for (let x = 0; x < width; x++) {
+                    grid[y * width + x] = p.grid[(srcY + y) * p.width + (srcX + x)];
+                }
+            }
+            sheets.push({ boardX: bc, boardY: br, srcX, srcY, width, height, grid });
+        }
+    }
+    return sheets;
+}
+/** 镜像 / 旋转（90°），返回新图纸；rotate 时宽高互换 */
+function transformPattern(p, op) {
+    const rotate = op === 'rotateCW' || op === 'rotateCCW';
+    const w = rotate ? p.height : p.width;
+    const h = rotate ? p.width : p.height;
+    const next = createPattern(w, h, p.paletteId, p.name);
+    for (let y = 0; y < p.height; y++) {
+        for (let x = 0; x < p.width; x++) {
+            const v = p.grid[y * p.width + x];
+            if (v === types_js_1.EMPTY)
+                continue;
+            let nx = x;
+            let ny = y;
+            switch (op) {
+                case 'flipH':
+                    nx = p.width - 1 - x;
+                    break;
+                case 'flipV':
+                    ny = p.height - 1 - y;
+                    break;
+                case 'rotateCW':
+                    nx = p.height - 1 - y;
+                    ny = x;
+                    break;
+                case 'rotateCCW':
+                    nx = y;
+                    ny = p.width - 1 - x;
+                    break;
+            }
+            next.grid[ny * w + nx] = v;
+        }
+    }
+    return next;
+}
+/** 换色卡（近似换色）：源色 HEX 在目标色卡里取最近色，返回转换后的新图纸 */
+function convertPatternPalette(p, targetPaletteId) {
+    const target = (0, palette_js_1.getPalette)(targetPaletteId);
+    const source = (0, palette_js_1.getPalette)(p.paletteId);
+    const map = source.colors.map((c) => {
+        const [r, g, b] = (0, color_js_1.hexToRgb)(c.hex);
+        return (0, palette_js_1.nearestColorIndex)(target, r, g, b);
+    });
+    const next = createPattern(p.width, p.height, target.id, p.name);
+    for (let i = 0; i < p.grid.length; i++) {
+        const v = p.grid[i];
+        if (v !== types_js_1.EMPTY)
+            next.grid[i] = map[v] ?? types_js_1.EMPTY;
     }
     return next;
 }
