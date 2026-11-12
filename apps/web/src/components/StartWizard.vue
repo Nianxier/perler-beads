@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { loadDocument, newDocument, showStartWizard, viewApi } from '../core/session';
+import { createDocument, loadDocument, showStartWizard, viewApi } from '../core/session';
 import { imageFileToPattern } from '../core/fileIO';
 import { textToPattern } from '../core/textToPattern';
 
@@ -60,8 +60,8 @@ function generateText(): void {
 }
 
 function createBlank(): void {
-  newDocument(Math.max(1, Math.round(blankW.value)), Math.max(1, Math.round(blankH.value)));
-  viewApi.value?.fit();
+  // 新建空白 = 底部标签栏新增一个文档（Excel 式多文档）
+  createDocument(Math.max(1, Math.round(blankW.value)), Math.max(1, Math.round(blankH.value)));
   close();
 }
 </script>

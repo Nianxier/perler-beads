@@ -5,21 +5,30 @@ import PalettePanel from './components/PalettePanel.vue';
 import StartWizard from './components/StartWizard.vue';
 import StatsPanel from './components/StatsPanel.vue';
 import ToolBar from './components/ToolBar.vue';
-import { editor, newDocument, showStartWizard, version } from './core/session';
+import {
+  activateTab,
+  closeTab,
+  createDocument,
+  editor,
+  activeTabId,
+  showStartWizard,
+  tabs,
+  version,
+  type DocumentTab,
+} from './core/session';
 
-// 支持 ?new=blank&w=&h=：新标签页直接创建空白图纸（跳过向导）
-const params = new URLSearchParams(window.location.search);
-if (params.get('new') === 'blank') {
-  const w = Math.max(1, Math.round(Number(params.get('w')) || 32));
-  const h = Math.max(1, Math.round(Number(params.get('h')) || 32));
-  newDocument(w, h);
-  showStartWizard.value = false;
-}
+// 底部至少一个文档标签
+if (tabs.value.length === 0) createDocument(32, 32);
 
 const docInfo = computed(() => {
   void version.value;
   return `${editor.pattern.name} · ${editor.pattern.width}×${editor.pattern.height}`;
 });
+
+function tabLabel(t: DocumentTab): string {
+  void version.value;
+  return t.state.pattern.name;
+}
 </script>
 
 <template>
@@ -35,6 +44,19 @@ const docInfo = computed(() => {
       <aside class="side"><StatsPanel /></aside>
     </main>
     <StartWizard v-if="showStartWizard" />
+    <div class="tabbar">
+      <button
+        v-for="t in tabs"
+        :key="t.id"
+        class="tab"
+        :class="{ on: t.id === activeTabId }"
+        @click="activateTab(t.id)"
+      >
+        <span class="name">{{ tabLabel(t) }}</span>
+        <span class="close" title="关闭" @click.stop="closeTab(t.id)">×</span>
+      </button>
+      <button class="tab add" title="新建图纸" @click="createDocument()">＋ 新建</button>
+    </div>
   </div>
 </template>
 
@@ -98,5 +120,49 @@ body {
 .center {
   flex: 1;
   min-width: 0;
+}
+.tabbar {
+  display: flex;
+  align-items: stretch;
+  gap: 2px;
+  padding: 4px 8px 0;
+  background: #e9edf2;
+  border-top: 1px solid #d7dce3;
+  overflow-x: auto;
+  flex: none;
+}
+.tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border: 1px solid #d7dce3;
+  border-bottom: none;
+  border-radius: 6px 6px 0 0;
+  background: #f4f6f9;
+  cursor: pointer;
+  font-size: 12px;
+  color: #4b5563;
+  white-space: nowrap;
+}
+.tab.on {
+  background: #ffffff;
+  color: #1f2329;
+  border-color: #c3cad4;
+}
+.tab .close {
+  color: #9ca3af;
+  font-size: 13px;
+  line-height: 1;
+  padding: 0 2px;
+}
+.tab .close:hover {
+  color: #dc2626;
+}
+.tab.add {
+  color: #6b7280;
+  border: none;
+  background: transparent;
+  cursor: pointer;
 }
 </style>

@@ -3,13 +3,12 @@ import { computed, ref } from 'vue';
 import { getPalette } from '@perler/core';
 import {
   bump,
+  createDocument,
   editor,
   loadDocument,
-  newDocument,
   showCodes,
   showGrid,
   showStartWizard,
-  totalBeads,
   version,
   viewApi,
 } from '../core/session';
@@ -84,12 +83,8 @@ function doRedo(): void {
 function doNew(): void {
   const w = Math.max(1, Math.round(newWidth.value));
   const h = Math.max(1, Math.round(newHeight.value));
-  // 新建图纸 = 在新标签页打开空白图纸，不影响当前画面
-  const u = new URL(window.location.href);
-  u.searchParams.set('new', 'blank');
-  u.searchParams.set('w', String(w));
-  u.searchParams.set('h', String(h));
-  window.open(u.toString());
+  // 新建图纸 = 底部标签栏新增一个文档（Excel 式多文档）
+  createDocument(w, h);
 }
 
 function doResize(): void {
@@ -194,7 +189,7 @@ function doLoadDraft(): void {
       <span class="lbl">新建图纸</span>
       <input v-model.number="newWidth" class="num" type="number" min="1" max="500" /> ×
       <input v-model.number="newHeight" class="num" type="number" min="1" max="500" />
-      <button class="btn" title="在新标签页创建空白图纸，不影响当前画面" @click="doNew">新标签页新建</button>
+      <button class="btn" title="在底部标签栏新建一个图纸文档" @click="doNew">新建图纸</button>
     </div>
 
     <div class="group">

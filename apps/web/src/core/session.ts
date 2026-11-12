@@ -1,15 +1,74 @@
-/** 应用会话层：全局编辑器实例、版本号（驱动重绘/统计刷新）、视图控制。 */
+/** 应用会话层：多文档标签（Excel 式）、活动编辑器、版本号、视图控制。 */
 import { computed, ref } from 'vue';
-import { convertPatternPalette, getPalette, usageStats, type Pattern, type UsageEntry } from '@perler/core';
+import {
+  convertPatternPalette,
+  getPalette,
+  usageStats,
+  type Pattern,
+  type UsageEntry,
+} from '@perler/core';
 import { createEditor, replacePattern, type EditorState } from './editorState';
 
-export const editor: EditorState = createEditor(32, 32, 'mard');
+export interface DocumentTab {
+  id: string;
+  state: EditorState;
+}
+
+/** 文档标签列表（底部标签栏） */
+export const tabs = ref<DocumentTab[]>([]);
+export const activeTabId = ref('');
+
+/** 当前活动文档的编辑器状态（ESM 实时绑定：切换标签后各组件自动读到新文档） */
+export let editor: EditorState = createEditor(32, 32, 'mard-221');
+
+let tabSeq = 0;
 
 /** 变更计数：画布与统计面板据此刷新 */
 export const version = ref(0);
 
 export function bump(): void {
   version.value++;
+}
+
+/** 新建文档并切过去（底部新增一个标签） */
+export function createDocument(width = 32, height = 32, name?: string): void {
+  tabSeq += 1;
+  const state = createEditor(width, height, 'mard-221');
+  state.pattern.name = name ?? `图纸${tabSeq}`;
+  const id = `doc${tabSeq}-${Date.now().toString(36)}`;
+  tabs.value.push({ id, state });
+  activateTab(id);
+}
+
+export function activateTab(id: string): void {
+  const t = tabs.value.find((x) => x.id === id);
+  if (!t) return;
+  activeTabId.value = id;
+  editor = t.state;
+  bump();
+  viewApi.value?.fit();
+}
+
+/** 关闭标签；始终保留至少一个文档（关最后一个 = 清空为新空白） */
+export function closeTab(id: string): void {
+  const idx = tabs.value.findIndex((x) => x.id === id);
+  if (idx < 0) return;
+  if (tabs.value.length === 1) {
+    tabSeq += 1;
+    tabs.value[0].state = createEditor(32, 32, 'mard-221');
+    tabs.value[0].state.pattern.name = `图纸${tabSeq}`;
+    editor = tabs.value[0].state;
+    bump();
+    viewApi.value?.fit();
+    return;
+  }
+  tabs.value.splice(idx, 1);
+  if (activeTabId.value === id) {
+    const next = tabs.value[Math.min(idx, tabs.value.length - 1)];
+    activateTab(next.id);
+  } else {
+    bump();
+  }
 }
 
 export const usage = computed<UsageEntry[]>(() => {
@@ -19,11 +78,7 @@ export const usage = computed<UsageEntry[]>(() => {
 
 export const totalBeads = computed(() => usage.value.reduce((n, u) => n + u.count, 0));
 
-export function newDocument(width: number, height: number): void {
-  replacePattern(editor, createPattern(width, height, 'mard'));
-  bump();
-}
-
+/** 把新图纸载入当前文档（导入图片/打开 JSON 用） */
 export function loadDocument(p: Pattern): void {
   replacePattern(editor, p);
   bump();
@@ -44,7 +99,7 @@ export const showCodes = ref(false);
 /** 首开向导显隐（工具栏「开始向导」可再次打开） */
 export const showStartWizard = ref(true);
 
-/** 画布视图控制句柄（EditorCanvas 挂载后注入，工具栏调用） */
+/** 画布视图控制句柄（EditorCanvas 挂载后注入，工具栏/标签栏调用） */
 export interface ViewApi {
   fit(): void;
   zoomIn(): void;

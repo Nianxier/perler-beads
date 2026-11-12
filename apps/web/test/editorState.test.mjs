@@ -154,5 +154,37 @@ assert.equal(undo(s5), true, '缩放应可撤销');
 assert.equal(s5.pattern.width, 2, '撤销后回到原尺寸');
 assert.equal(s5.pattern.grid[0], 3);
 
+// 11. 多文档标签（session 层——防止“点了无反应”类 bug 漏网）
+const sOut = await build({
+  entryPoints: [join(appRoot, 'src', 'core', 'session.ts')],
+  bundle: true,
+  format: 'esm',
+  write: false,
+  absWorkingDir: appRoot,
+  logLevel: 'silent',
+});
+const sTmp = join(dir, 'session.bundle.mjs');
+writeFileSync(sTmp, sOut.outputFiles[0].text, 'utf8');
+const ses = await import(pathToFileURL(sTmp).href);
+
+assert.equal(ses.tabs.value.length, 0, '初始无标签');
+ses.createDocument(8, 8);
+assert.equal(ses.tabs.value.length, 1);
+assert.equal(ses.editor.pattern.width, 8, '创建后活动文档应为 8×8');
+assert.match(ses.editor.pattern.name, /^图纸\d+$/);
+ses.createDocument(4, 4);
+assert.equal(ses.tabs.value.length, 2);
+assert.equal(ses.editor.pattern.width, 4, '新建后活动文档应切换');
+const firstId = ses.tabs.value[0].id;
+ses.activateTab(firstId);
+assert.equal(ses.editor.pattern.width, 8, '点击标签应切换活动文档');
+ses.closeTab(ses.tabs.value[1].id);
+assert.equal(ses.tabs.value.length, 1);
+assert.equal(ses.editor.pattern.width, 8, '关闭非活动标签不影响当前文档');
+ses.closeTab(ses.tabs.value[0].id);
+assert.equal(ses.tabs.value.length, 1, '始终保留一个标签');
+assert.equal(ses.editor.pattern.width, 32);
+assert.ok(ses.editor.pattern.grid.every((v) => v === -1), '关最后一个应清空为新空白');
+
 rmSync(dir, { recursive: true, force: true });
 console.log('WEB STATE TEST PASS');
