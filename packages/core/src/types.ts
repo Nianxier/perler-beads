@@ -12,6 +12,8 @@ export interface PaletteColor {
   name?: string;
   /** 可选分区（如 A/B/C…，色卡 UI 按此分组） */
   group?: string;
+  /** 近似值标记（来自照片采样等非权威渠道，实物以厂商色卡为准） */
+  review?: boolean;
 }
 
 export interface Palette {

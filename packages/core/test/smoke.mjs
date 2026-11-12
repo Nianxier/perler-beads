@@ -233,6 +233,16 @@ assert.equal(decodeShareCode(encodeShareCode(named)).name, '分享码测试·�
 assert.throws(() => decodeShareCode('XX-abc'), /分享码/);
 assert.throws(() => decodeShareCode('PB1-!!!!'), /非法字符|失败/);
 
+// 18. 官方品牌色卡与 MARD 套装子集
+assert.equal(getPalette('artkal-c').colors.length, 197);
+assert.equal(getPalette('artkal-s').colors.length, 225);
+assert.equal(getPalette('hama-midi').colors.length, 88);
+for (const n of [72, 96, 120, 144]) {
+  const set = getPalette(`mard-set-${n}`);
+  assert.equal(set.colors.length, n, `MARD 套装${n}色数量应吻合`);
+}
+assert.equal(listPalettes().length, 13, '应有 13 套色卡');
+
 console.log('SMOKE PASS');
 console.log(`  色系数=${palettes.length} MARD=${mard.colors.length} 色`);
 console.log(`  红最近色=${mard.colors[near.index].code}(${mard.colors[near.index].hex}) ΔE=${near.delta.toFixed(3)}`);
