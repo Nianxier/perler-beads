@@ -14,6 +14,7 @@ import {
   pixelsToPattern,
   resizePattern,
   convertPatternPalette,
+  transformPattern,
   rgbToOklab,
   serializePattern,
   setCell,
@@ -121,6 +122,45 @@ assert.equal(conv.grid.length, 4);
 assert.notEqual(conv.grid[0], EMPTY);
 assert.notEqual(conv.grid[3], EMPTY);
 assert.equal(conv.grid[1], EMPTY, '空格转换后仍应为空');
+
+// 11. 镜像 / 旋转
+const t0 = createPattern(2, 3, 'mard');
+setCell(t0, 0, 0, 1);
+setCell(t0, 1, 2, 2);
+const fH = transformPattern(t0, 'flipH');
+assert.equal(getCell(fH, 1, 0), 1);
+assert.equal(getCell(fH, 0, 2), 2);
+const fV = transformPattern(t0, 'flipV');
+assert.equal(getCell(fV, 0, 2), 1);
+assert.equal(getCell(fV, 1, 0), 2);
+const rot = transformPattern(t0, 'rotateCW');
+assert.equal(rot.width, 3);
+assert.equal(rot.height, 2);
+assert.equal(getCell(rot, 2, 0), 1);
+const rot2 = transformPattern(rot, 'rotateCW');
+assert.equal(rot2.width, 2);
+assert.equal(getCell(rot2, 1, 2), 1, '转 180° 后 (0,0) 应到 (1,2)');
+const back = transformPattern(rot, 'rotateCCW');
+assert.equal(getCell(back, 0, 0), 1, 'CW 再 CCW 应还原');
+
+// 12. 抖动（Floyd-Steinberg）
+const pal = getPalette('mard-221');
+const [c1r, c1g, c1b] = hexToRgb(pal.colors[0].hex);
+const [c2r, c2g, c2b] = hexToRgb(pal.colors[1].hex);
+const mid = [(c1r + c2r) / 2, (c1g + c2g) / 2, (c1b + c2b) / 2];
+const src8 = new Uint8Array(8 * 8 * 4);
+for (let i = 0; i < 64; i++) {
+  src8[i * 4] = mid[0];
+  src8[i * 4 + 1] = mid[1];
+  src8[i * 4 + 2] = mid[2];
+  src8[i * 4 + 3] = 255;
+}
+const plain = pixelsToPattern(src8, 8, 8, { width: 8, height: 8, fit: 'stretch' });
+const dith = pixelsToPattern(src8, 8, 8, { width: 8, height: 8, fit: 'stretch', dither: true });
+const plainSet = new Set(plain.grid);
+const dithSet = new Set(dith.grid);
+assert.equal(plainSet.size, 1, '纯色不抖动应只用一种豆');
+assert.ok(dithSet.size >= 2, `半程色抖动应出现至少两种豆，实际 ${dithSet.size}`);
 
 console.log('SMOKE PASS');
 console.log(`  色系数=${palettes.length} MARD=${mard.colors.length} 色`);

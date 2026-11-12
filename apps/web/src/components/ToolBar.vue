@@ -19,6 +19,7 @@ import {
   redo,
   resizeDocument,
   setTool,
+  transformDocument,
   undo,
   type Tool,
 } from '../core/editorState';
@@ -40,6 +41,7 @@ const resizeHeight = ref(32);
 const resizeAnchor = ref<'topleft' | 'center' | 'bottomright'>('center');
 const importWidth = ref(64);
 const importFit = ref<'contain' | 'stretch'>('contain');
+const importDither = ref(false);
 const imageInput = ref<HTMLInputElement | null>(null);
 const jsonInput = ref<HTMLInputElement | null>(null);
 
@@ -86,8 +88,7 @@ function doNew(): void {
   viewApi.value?.fit();
 }
 
-function doResize(): void {
-  const w = Math.max(1, Math.round(resizeWidth.value));
+function doResize(): void {  const w = Math.max(1, Math.round(resizeWidth.value));
   const h = Math.max(1, Math.round(resizeHeight.value));
   const oldW = editor.pattern.width;
   const oldH = editor.pattern.height;
@@ -105,6 +106,12 @@ function doResize(): void {
   viewApi.value?.fit();
 }
 
+function doTransform(op: 'flipH' | 'flipV' | 'rotateCW' | 'rotateCCW'): void {
+  transformDocument(editor, op);
+  bump();
+  viewApi.value?.fit();
+}
+
 async function onImagePicked(e: Event): Promise<void> {
   const input = e.target as HTMLInputElement;
   const file = input.files?.[0];
@@ -113,6 +120,7 @@ async function onImagePicked(e: Event): Promise<void> {
   const pat = await imageFileToPattern(file, {
     width: importWidth.value,
     fit: importFit.value,
+    dither: importDither.value,
   });
   loadDocument(pat);
   viewApi.value?.fit();
@@ -191,6 +199,13 @@ function doLoadDraft(): void {
     </div>
 
     <div class="group">
+      <button class="btn" title="左右镜像" @click="doTransform('flipH')">镜像↔</button>
+      <button class="btn" title="上下镜像" @click="doTransform('flipV')">镜像↕</button>
+      <button class="btn" title="顺时针旋转 90°" @click="doTransform('rotateCW')">旋转↻</button>
+      <button class="btn" title="逆时针旋转 90°" @click="doTransform('rotateCCW')">旋转↺</button>
+    </div>
+
+    <div class="group">
       <span class="lbl">图片转图纸</span>
       <span class="lbl">宽</span>
       <input v-model.number="importWidth" class="num" type="number" min="1" max="500" />
@@ -198,6 +213,7 @@ function doLoadDraft(): void {
         <option value="contain">等比留边</option>
         <option value="stretch">拉伸铺满</option>
       </select>
+      <label class="chk" title="Floyd-Steinberg 抖动，细节更丰富" ><input v-model="importDither" type="checkbox" /> 抖动</label>
       <button class="btn" @click="imageInput?.click()">导入图片…</button>
       <input ref="imageInput" type="file" accept="image/*" hidden @change="onImagePicked" />
     </div>

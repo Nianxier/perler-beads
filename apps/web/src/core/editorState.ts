@@ -6,7 +6,9 @@ import {
   getCell,
   resizePattern,
   setCell,
+  transformPattern,
   type Pattern,
+  type PatternTransform,
 } from '@perler/core';
 
 export type Tool = 'pencil' | 'eraser' | 'bucket' | 'picker';
@@ -99,6 +101,11 @@ export function resizeDocument(
   offsetY = 0,
 ): void {
   replacePattern(s, resizePattern(s.pattern, width, height, offsetX, offsetY));
+}
+
+/** 镜像/旋转。结构变更（旋转换向），历史栈清空 */
+export function transformDocument(s: EditorState, op: PatternTransform): void {
+  replacePattern(s, transformPattern(s.pattern, op));
 }
 
 export function startStroke(_s: EditorState): StrokeSession {

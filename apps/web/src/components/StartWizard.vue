@@ -15,6 +15,7 @@ const blankH = ref(32);
 
 const imageWidth = ref(64);
 const imageFit = ref<'contain' | 'stretch'>('contain');
+const imageDither = ref(false);
 const fileInput = ref<HTMLInputElement | null>(null);
 
 function close(): void {
@@ -34,6 +35,7 @@ async function onImagePicked(e: Event): Promise<void> {
     const pat = await imageFileToPattern(file, {
       width: imageWidth.value,
       fit: imageFit.value,
+      dither: imageDither.value,
     });
     loadDocument(pat);
     viewApi.value?.fit();
@@ -96,6 +98,7 @@ function createBlank(): void {
             <option value="contain">等比留边</option>
             <option value="stretch">拉伸铺满</option>
           </select>
+          <label class="chk"><input v-model="imageDither" type="checkbox" /> 抖动</label>
         </div>
       </template>
 

@@ -24,6 +24,8 @@ export interface ImportImageOptions {
   /** 0 = 按宽度和原图比例自动算高度 */
   height?: number;
   fit?: 'contain' | 'stretch';
+  /** Floyd-Steinberg 抖动 */
+  dither?: boolean;
 }
 
 /** 图片文件 → 图纸（浏览器内解码，不上传） */
@@ -49,6 +51,7 @@ export async function imageFileToPattern(
       width,
       height,
       fit: options.fit ?? 'contain',
+      dither: options.dither ?? false,
       name: file.name.replace(/\.[^.]+$/, ''),
     });
   } finally {

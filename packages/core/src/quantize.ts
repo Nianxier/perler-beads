@@ -1,5 +1,6 @@
-/** 图片像素 → 拼豆图纸：面积平均降采样 + OKLab 最近色映射。 */
+/** 图片像素 → 拼豆图纸：面积平均降采样 + OKLab 最近色映射（可选 Floyd-Steinberg 抖动）。 */
 import { getPalette, nearestColorIndex } from './palette.js';
+import { hexToRgb } from './color.js';
 import { EMPTY, type Pattern } from './types.js';
 
 export const DEFAULT_PALETTE_ID = 'mard-221';
@@ -9,7 +10,7 @@ export interface QuantizeOptions {
   width: number;
   /** 目标格数（高） */
   height: number;
-  /** 色卡 id，默认 mard */
+  /** 色卡 id，默认 mard-221 */
   paletteId?: string;
   /** contain=保持比例居中、四周留空；stretch=拉伸铺满 */
   fit?: 'contain' | 'stretch';
@@ -17,11 +18,14 @@ export interface QuantizeOptions {
   name?: string;
   /** 透明像素阈值：alpha < 该值视为无豆（默认 128） */
   alphaThreshold?: number;
+  /** Floyd-Steinberg 抖动：细节更丰富、过渡更自然（默认关） */
+  dither?: boolean;
 }
 
 /**
  * 把 RGBA 像素（行优先，srcWidth*srcHeight*4）量化成图纸。
- * 每个目标格对源图对应区域做面积平均，再映射到色卡最近色。
+ * 每个目标格对源图对应区域做面积平均，再映射到色卡最近色；
+ * dither 开启时在格子之间做误差扩散。
  */
 export function pixelsToPattern(
   rgba: Uint8Array | Uint8ClampedArray,
@@ -55,14 +59,16 @@ export function pixelsToPattern(
     oy = (h - boxH) / 2;
   }
 
-  const grid: number[] = new Array(w * h).fill(EMPTY);
+  // 第一遍：每个目标格的面积平均色
+  const has = new Uint8Array(w * h);
+  const rBuf = new Float64Array(w * h);
+  const gBuf = new Float64Array(w * h);
+  const bBuf = new Float64Array(w * h);
   for (let y = 0; y < h; y++) {
     for (let x = 0; x < w; x++) {
-      // 目标格中心不在有效区域内 → 留空
       if (x + 0.5 < ox || x + 0.5 >= ox + boxW || y + 0.5 < oy || y + 0.5 >= oy + boxH) {
         continue;
       }
-      // 反算源图像素范围（面积平均）
       const sx0 = Math.max(0, Math.floor((x - ox) * (srcWidth / boxW)));
       const sx1 = Math.min(srcWidth, Math.ceil((x + 1 - ox) * (srcWidth / boxW)));
       const sy0 = Math.max(0, Math.floor((y - oy) * (srcHeight / boxH)));
@@ -83,12 +89,34 @@ export function pixelsToPattern(
         }
       }
       if (n === 0) continue; // 全透明 → 留空
-      grid[y * w + x] = nearestColorIndex(
-        palette,
-        rSum / n,
-        gSum / n,
-        bSum / n,
-      );
+      const i = y * w + x;
+      has[i] = 1;
+      rBuf[i] = rSum / n;
+      gBuf[i] = gSum / n;
+      bBuf[i] = bSum / n;
+    }
+  }
+
+  // 第二遍：映射最近色（可选 Floyd-Steinberg 误差扩散）
+  const grid: number[] = new Array(w * h).fill(EMPTY);
+  for (let y = 0; y < h; y++) {
+    for (let x = 0; x < w; x++) {
+      const i = y * w + x;
+      if (!has[i]) continue;
+      const r = clamp255(rBuf[i]);
+      const g = clamp255(gBuf[i]);
+      const b = clamp255(bBuf[i]);
+      const idx = nearestColorIndex(palette, r, g, b);
+      grid[i] = idx;
+      if (!options.dither) continue;
+      const [pr, pg, pb] = hexToRgb(palette.colors[idx].hex);
+      const er = r - pr;
+      const eg = g - pg;
+      const eb = b - pb;
+      spread(has, rBuf, gBuf, bBuf, w, h, x + 1, y, er, eg, eb, 7 / 16);
+      spread(has, rBuf, gBuf, bBuf, w, h, x - 1, y + 1, er, eg, eb, 3 / 16);
+      spread(has, rBuf, gBuf, bBuf, w, h, x, y + 1, er, eg, eb, 5 / 16);
+      spread(has, rBuf, gBuf, bBuf, w, h, x + 1, y + 1, er, eg, eb, 1 / 16);
     }
   }
 
@@ -101,4 +129,30 @@ export function pixelsToPattern(
     height: h,
     grid,
   };
+}
+
+function clamp255(v: number): number {
+  return v < 0 ? 0 : v > 255 ? 255 : v;
+}
+
+function spread(
+  has: Uint8Array,
+  rBuf: Float64Array,
+  gBuf: Float64Array,
+  bBuf: Float64Array,
+  w: number,
+  h: number,
+  x: number,
+  y: number,
+  er: number,
+  eg: number,
+  eb: number,
+  k: number,
+): void {
+  if (x < 0 || x >= w || y < 0 || y >= h) return;
+  const i = y * w + x;
+  if (!has[i]) return;
+  rBuf[i] += er * k;
+  gBuf[i] += eg * k;
+  bBuf[i] += eb * k;
 }

@@ -138,9 +138,44 @@ export function resizePattern(
   return next;
 }
 
+export type PatternTransform = 'flipH' | 'flipV' | 'rotateCW' | 'rotateCCW';
+
+/** 镜像 / 旋转（90°），返回新图纸；rotate 时宽高互换 */
+export function transformPattern(p: Pattern, op: PatternTransform): Pattern {
+  const rotate = op === 'rotateCW' || op === 'rotateCCW';
+  const w = rotate ? p.height : p.width;
+  const h = rotate ? p.width : p.height;
+  const next = createPattern(w, h, p.paletteId, p.name);
+  for (let y = 0; y < p.height; y++) {
+    for (let x = 0; x < p.width; x++) {
+      const v = p.grid[y * p.width + x];
+      if (v === EMPTY) continue;
+      let nx = x;
+      let ny = y;
+      switch (op) {
+        case 'flipH':
+          nx = p.width - 1 - x;
+          break;
+        case 'flipV':
+          ny = p.height - 1 - y;
+          break;
+        case 'rotateCW':
+          nx = p.height - 1 - y;
+          ny = x;
+          break;
+        case 'rotateCCW':
+          nx = y;
+          ny = p.width - 1 - x;
+          break;
+      }
+      next.grid[ny * w + nx] = v;
+    }
+  }
+  return next;
+}
+
 /** 换色卡（近似换色）：源色 HEX 在目标色卡里取最近色，返回转换后的新图纸 */
-export function convertPatternPalette(p: Pattern, targetPaletteId: string): Pattern {
-  const target = getPalette(targetPaletteId);
+export function convertPatternPalette(p: Pattern, targetPaletteId: string): Pattern {  const target = getPalette(targetPaletteId);
   const source = getPalette(p.paletteId);
   const map = source.colors.map((c) => {
     const [r, g, b] = hexToRgb(c.hex);
