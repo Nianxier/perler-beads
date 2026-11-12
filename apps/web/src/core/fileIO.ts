@@ -4,6 +4,7 @@ import {
   parsePattern,
   pixelsToPattern,
   serializePattern,
+  splitByBoards,
   usageStats,
   type Palette,
   type Pattern,
@@ -82,12 +83,17 @@ export function exportCsv(pattern: Pattern, palette?: Palette): void {
 }
 
 /** 施工图 PNG：色块 + 逐格色号 + 每 5 格坐标标记 + 标题栏 */
-export function exportConstructionPng(pattern: Pattern, palette?: Palette, cellSize = 28): void {
+function buildConstructionCanvas(
+  pattern: Pattern,
+  palette: Palette | undefined,
+  cellSize: number,
+  subtitle = '',
+): HTMLCanvasElement {
   const pal = palette ?? getPalette(pattern.paletteId);
   const usage = usageStats(pattern, pal);
   const total = usage.reduce((n, u) => n + u.count, 0);
   const margin = 44;
-  const headerH = 56;
+  const headerH = subtitle ? 80 : 56;
   const legendRows = Math.max(1, Math.ceil(usage.length / 4));
   const legendH = 54 + legendRows * 22;
   const gridW = pattern.width * cellSize;
@@ -110,8 +116,13 @@ export function exportConstructionPng(pattern: Pattern, palette?: Palette, cellS
   ctx.fillText(
     `${pattern.name || '拼豆图纸'} · ${pal.name} · ${pattern.width}×${pattern.height} · 共 ${total} 颗`,
     margin,
-    headerH - 16,
+    subtitle ? 30 : headerH - 16,
   );
+  if (subtitle) {
+    ctx.fillStyle = '#6B7280';
+    ctx.font = '500 13px system-ui, sans-serif';
+    ctx.fillText(subtitle, margin, 56);
+  }
 
   const ox = margin;
   const oy = headerH + margin;
@@ -197,9 +208,42 @@ export function exportConstructionPng(pattern: Pattern, palette?: Palette, cellS
     ctx.fillText(`${u.code} × ${u.count}`, cx + 20, cy);
   });
 
+  return cv;
+}
+
+export function exportConstructionPng(pattern: Pattern, palette?: Palette, cellSize = 28): void {
+  const cv = buildConstructionCanvas(pattern, palette, cellSize);
   cv.toBlob((blob) => {
     if (blob) downloadBlob(blob, `${pattern.name || '拼豆图纸'}-施工图.png`);
   }, 'image/png');
+}
+
+/** 分板导出：按底板（29×29 / 52×52）拆成多张施工图 PNG，每张标注全局位置 */
+export function exportBoardSheets(pattern: Pattern, palette?: Palette, boardSize = 29): void {
+  const pal = palette ?? getPalette(pattern.paletteId);
+  const sheets = splitByBoards(pattern, boardSize);
+  for (const s of sheets) {
+    const sub: Pattern = {
+      schema: 'perler-pattern',
+      version: 1,
+      name: `${pattern.name || '拼豆图纸'}·板${s.boardY + 1}-${s.boardX + 1}`,
+      paletteId: pattern.paletteId,
+      width: s.width,
+      height: s.height,
+      grid: s.grid,
+    };
+    const x0 = s.srcX + 1;
+    const x1 = s.srcX + s.width;
+    const y0 = s.srcY + 1;
+    const y1 = s.srcY + s.height;
+    const subtitle = `整图位置：第 ${s.boardY + 1} 行 第 ${s.boardX + 1} 列（全局列 ${x0}~${x1}、行 ${y0}~${y1}） · 共 ${sheets.length} 块板`;
+    const cv = buildConstructionCanvas(sub, pal, 28, subtitle);
+    cv.toBlob((blob) => {
+      if (blob) {
+        downloadBlob(blob, `${pattern.name || '拼豆图纸'}-板${s.boardY + 1}-${s.boardX + 1}.png`);
+      }
+    }, 'image/png');
+  }
 }
 
 const DRAFT_KEY = 'perler.web.draft';

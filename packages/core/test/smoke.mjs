@@ -15,6 +15,7 @@ import {
   resizePattern,
   convertPatternPalette,
   transformPattern,
+  splitByBoards,
   rgbToOklab,
   serializePattern,
   setCell,
@@ -161,6 +162,22 @@ const plainSet = new Set(plain.grid);
 const dithSet = new Set(dith.grid);
 assert.equal(plainSet.size, 1, '纯色不抖动应只用一种豆');
 assert.ok(dithSet.size >= 2, `半程色抖动应出现至少两种豆，实际 ${dithSet.size}`);
+
+// 13. 底板拆分（29×29 板）
+const m60 = createPattern(60, 60, 'mard');
+setCell(m60, 0, 0, 1);
+setCell(m60, 29, 29, 2);
+setCell(m60, 59, 59, 3);
+const sheets = splitByBoards(m60, 29);
+assert.equal(sheets.length, 9, '60×60 按 29 板应拆 3×3=9 块');
+assert.equal(sheets[0].width, 29);
+assert.equal(sheets[0].height, 29);
+assert.equal(sheets[2].srcX, 58);
+assert.equal(sheets[2].width, 2, '末列只剩 2 列');
+assert.equal(sheets[0].grid[0], 1);
+assert.equal(sheets[4].grid[0], 2, '(29,29) 应落在第 (1,1) 块首格');
+assert.equal(sheets[8].grid[1 * 2 + 1], 3, '右下块末格应是 (59,59)');
+assert.throws(() => splitByBoards(m60, 0), /正整数/);
 
 console.log('SMOKE PASS');
 console.log(`  色系数=${palettes.length} MARD=${mard.colors.length} 色`);

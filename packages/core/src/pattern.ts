@@ -140,6 +140,46 @@ export function resizePattern(
 
 export type PatternTransform = 'flipH' | 'flipV' | 'rotateCW' | 'rotateCCW';
 
+/** 分板结果：一块底板覆盖的格子区域（局部 grid 行优先） */
+export interface BoardSheet {
+  /** 底板在整图中的列/行号（0 起） */
+  boardX: number;
+  boardY: number;
+  /** 该板左上角在整图中的格坐标 */
+  srcX: number;
+  srcY: number;
+  /** 该板实际覆盖的格数（右/下边缘可能不满一板） */
+  width: number;
+  height: number;
+  grid: number[];
+}
+
+/** 按底板尺寸拆分图纸（左上为原点，行优先），用于多板拼接打印 */
+export function splitByBoards(p: Pattern, boardSize: number): BoardSheet[] {
+  if (!Number.isInteger(boardSize) || boardSize < 1) {
+    throw new Error('底板尺寸必须是正整数');
+  }
+  const sheets: BoardSheet[] = [];
+  const cols = Math.ceil(p.width / boardSize);
+  const rows = Math.ceil(p.height / boardSize);
+  for (let br = 0; br < rows; br++) {
+    for (let bc = 0; bc < cols; bc++) {
+      const srcX = bc * boardSize;
+      const srcY = br * boardSize;
+      const width = Math.min(boardSize, p.width - srcX);
+      const height = Math.min(boardSize, p.height - srcY);
+      const grid: number[] = new Array(width * height).fill(EMPTY);
+      for (let y = 0; y < height; y++) {
+        for (let x = 0; x < width; x++) {
+          grid[y * width + x] = p.grid[(srcY + y) * p.width + (srcX + x)];
+        }
+      }
+      sheets.push({ boardX: bc, boardY: br, srcX, srcY, width, height, grid });
+    }
+  }
+  return sheets;
+}
+
 /** 镜像 / 旋转（90°），返回新图纸；rotate 时宽高互换 */
 export function transformPattern(p: Pattern, op: PatternTransform): Pattern {
   const rotate = op === 'rotateCW' || op === 'rotateCCW';
