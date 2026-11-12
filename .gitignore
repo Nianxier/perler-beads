@@ -5,3 +5,5 @@ dist/
 .DS_Store
 # 微信开发者工具私有配置（机器本地）
 apps/miniprogram/project.private.config.json
+# 色卡提取的临时工作目录（解包的第三方库/中间产物）
+tools/research/tmp/
