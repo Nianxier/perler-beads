@@ -8,6 +8,7 @@ import {
   newDocument,
   showCodes,
   showGrid,
+  showStartWizard,
   totalBeads,
   version,
   viewApi,
@@ -140,6 +141,10 @@ function doLoadDraft(): void {
 
 <template>
   <div class="toolbar">
+    <div class="group">
+      <button class="btn" title="重新打开开始向导" @click="showStartWizard = true">开始向导</button>
+    </div>
+
     <div class="group">
       <button
         v-for="t in tools"

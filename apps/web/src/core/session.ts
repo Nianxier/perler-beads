@@ -33,6 +33,9 @@ export function loadDocument(p: Pattern): void {
 export const showGrid = ref(true);
 export const showCodes = ref(false);
 
+/** 首开向导显隐（工具栏「开始向导」可再次打开） */
+export const showStartWizard = ref(true);
+
 /** 画布视图控制句柄（EditorCanvas 挂载后注入，工具栏调用） */
 export interface ViewApi {
   fit(): void;

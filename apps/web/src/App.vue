@@ -2,9 +2,10 @@
 import { computed } from 'vue';
 import EditorCanvas from './components/EditorCanvas.vue';
 import PalettePanel from './components/PalettePanel.vue';
+import StartWizard from './components/StartWizard.vue';
 import StatsPanel from './components/StatsPanel.vue';
 import ToolBar from './components/ToolBar.vue';
-import { editor, version } from './core/session';
+import { editor, showStartWizard, version } from './core/session';
 
 const docInfo = computed(() => {
   void version.value;
@@ -24,6 +25,7 @@ const docInfo = computed(() => {
       <section class="center"><EditorCanvas /></section>
       <aside class="side"><StatsPanel /></aside>
     </main>
+    <StartWizard v-if="showStartWizard" />
   </div>
 </template>
 
