@@ -186,5 +186,55 @@ assert.equal(ses.tabs.value.length, 1, '始终保留一个标签');
 assert.equal(ses.editor.pattern.width, 32);
 assert.ok(ses.editor.pattern.grid.every((v) => v === -1), '关最后一个应清空为新空白');
 
-rmSync(dir, { recursive: true, force: true });
+const dir2 = mkdtempSync(join(tmpdir(), 'perler-web-test2-'));
+
+// 12. 作品库 CRUD（node 下退化为内存存储）
+const wOut = await build({
+  entryPoints: [join(appRoot, 'src', 'core', 'works.ts')],
+  bundle: true,
+  format: 'esm',
+  write: false,
+  absWorkingDir: appRoot,
+  logLevel: 'silent',
+});
+const wTmp = join(dir2, 'works.bundle.mjs');
+writeFileSync(wTmp, wOut.outputFiles[0].text, 'utf8');
+const works = await import(pathToFileURL(wTmp).href);
+const wid = works.saveWork(s5.pattern);
+assert.ok(wid);
+assert.equal(works.listWorks().length, 1);
+const loaded = works.getWork(wid);
+assert.equal(loaded.width, 2, 's5 末尾已撤销回 2×2');
+assert.deepEqual(loaded.grid, s5.pattern.grid);
+works.removeWork(wid);
+assert.equal(works.listWorks().length, 0);
+
+// 13. 自动暂存与恢复（跨 bundle 共享内存存储）
+const buildAuto = (name) =>
+  build({
+    entryPoints: [join(appRoot, 'src', 'core', 'autoSave.ts')],
+    bundle: true,
+    format: 'esm',
+    write: false,
+    absWorkingDir: appRoot,
+    logLevel: 'silent',
+  }).then((r) => {
+    const p = join(dir2, name);
+    writeFileSync(p, r.outputFiles[0].text, 'utf8');
+    return import(pathToFileURL(p).href);
+  });
+const a1 = await buildAuto('autoA.mjs');
+a1.createDocument(6, 6, '暂存甲');
+a1.createDocument(2, 2, '暂存乙');
+assert.equal(a1.tabs.value.length, 2);
+a1.saveSession();
+const a2 = await buildAuto('autoB.mjs');
+assert.equal(a2.restoreSession(), true, '应恢复上次会话');
+assert.equal(a2.tabs.value.length, 2);
+assert.equal(a2.editor.pattern.name, '暂存乙');
+assert.equal(a2.editor.pattern.width, 2);
+a2.clearSession();
+assert.equal(a2.restoreSession(), false, '清除后不再恢复');
+
+rmSync(dir2, { recursive: true, force: true });
 console.log('WEB STATE TEST PASS');

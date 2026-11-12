@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, onBeforeUnmount, onMounted } from 'vue';
 import EditorCanvas from './components/EditorCanvas.vue';
 import PalettePanel from './components/PalettePanel.vue';
 import StartWizard from './components/StartWizard.vue';
 import StatsPanel from './components/StatsPanel.vue';
 import ToolBar from './components/ToolBar.vue';
+import WorksPanel from './components/WorksPanel.vue';
 import {
   activateTab,
   closeTab,
@@ -12,13 +13,16 @@ import {
   editor,
   activeTabId,
   showStartWizard,
+  showWorks,
   tabs,
+  toast,
   version,
   type DocumentTab,
 } from './core/session';
+import { restoreSession, startAutoSave } from './core/autoSave';
 
-// 底部至少一个文档标签
-if (tabs.value.length === 0) createDocument(32, 32);
+// 启动：恢复上次会话，否则开一个空白文档（底部至少一个标签）
+if (!restoreSession() && tabs.value.length === 0) createDocument(32, 32);
 
 const docInfo = computed(() => {
   void version.value;
@@ -29,6 +33,14 @@ function tabLabel(t: DocumentTab): string {
   void version.value;
   return t.state.pattern.name;
 }
+
+let stopAutoSave: (() => void) | null = null;
+onMounted(() => {
+  stopAutoSave = startAutoSave();
+});
+onBeforeUnmount(() => {
+  stopAutoSave?.();
+});
 </script>
 
 <template>
@@ -44,6 +56,8 @@ function tabLabel(t: DocumentTab): string {
       <aside class="side"><StatsPanel /></aside>
     </main>
     <StartWizard v-if="showStartWizard" />
+    <WorksPanel v-if="showWorks" />
+    <div v-if="toast" class="toast">{{ toast }}</div>
     <div class="tabbar">
       <button
         v-for="t in tabs"
@@ -164,5 +178,17 @@ body {
   border: none;
   background: transparent;
   cursor: pointer;
+}
+.toast {
+  position: fixed;
+  right: 20px;
+  bottom: 52px;
+  z-index: 30;
+  background: rgba(31, 35, 41, 0.92);
+  color: #ffffff;
+  font-size: 13px;
+  padding: 8px 14px;
+  border-radius: 6px;
+  pointer-events: none;
 }
 </style>

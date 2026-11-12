@@ -99,6 +99,21 @@ export const showCodes = ref(false);
 /** 首开向导显隐（工具栏「开始向导」可再次打开） */
 export const showStartWizard = ref(true);
 
+/** 作品库弹窗显隐 */
+export const showWorks = ref(false);
+
+/** 轻量提示（右下角，自动消失） */
+export const toast = ref('');
+let toastTimer: ReturnType<typeof setTimeout> | undefined;
+
+export function showToast(msg: string, ms = 3000): void {
+  toast.value = msg;
+  if (toastTimer) clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => {
+    toast.value = '';
+  }, ms);
+}
+
 /** 画布视图控制句柄（EditorCanvas 挂载后注入，工具栏/标签栏调用） */
 export interface ViewApi {
   fit(): void;

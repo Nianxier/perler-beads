@@ -9,6 +9,8 @@ import {
   showCodes,
   showGrid,
   showStartWizard,
+  showToast,
+  showWorks,
   version,
   viewApi,
 } from '../core/session';
@@ -28,10 +30,9 @@ import {
   exportConstructionPng,
   exportJson,
   imageFileToPattern,
-  loadDraft,
   openJsonFile,
-  saveDraft,
 } from '../core/fileIO';
+import { saveWork } from '../core/works';
 
 const palette = getPalette('mard');
 
@@ -96,6 +97,7 @@ function doResize(): void {
     viewApi.value?.fit();
     return;
   }
+  const before = editor.pattern.grid.filter((v) => v !== -1).length;
   const oldW = editor.pattern.width;
   const oldH = editor.pattern.height;
   let ox = 0;
@@ -110,6 +112,13 @@ function doResize(): void {
   resizeDocument(editor, w, h, ox, oy);
   bump();
   viewApi.value?.fit();
+  const cropped = before - editor.pattern.grid.filter((v) => v !== -1).length;
+  if (cropped > 0) showToast(`调整大小：已裁掉 ${cropped} 格豆子`);
+}
+
+function doSaveWork(): void {
+  saveWork(editor.pattern);
+  showToast('已保存到作品库（可在「作品库」中打开）');
 }
 
 function doTransform(op: 'flipH' | 'flipV' | 'rotateCW' | 'rotateCCW'): void {
@@ -139,17 +148,6 @@ async function onJsonPicked(e: Event): Promise<void> {
   if (!file) return;
   loadDocument(await openJsonFile(file));
   viewApi.value?.fit();
-}
-
-function doSaveDraft(): void {
-  saveDraft(editor.pattern);
-}
-function doLoadDraft(): void {
-  const p = loadDraft();
-  if (p) {
-    loadDocument(p);
-    viewApi.value?.fit();
-  }
 }
 </script>
 
@@ -239,8 +237,8 @@ function doLoadDraft(): void {
       <button class="btn" @click="exportJson(editor.pattern)">保存 JSON</button>
       <button class="btn" @click="jsonInput?.click()">打开 JSON</button>
       <input ref="jsonInput" type="file" accept=".json,application/json" hidden @change="onJsonPicked" />
-      <button class="btn" @click="doSaveDraft">存草稿</button>
-      <button class="btn" @click="doLoadDraft">读草稿</button>
+      <button class="btn" @click="doSaveWork">存作品</button>
+      <button class="btn" @click="showWorks = true">作品库</button>
     </div>
   </div>
 </template>
