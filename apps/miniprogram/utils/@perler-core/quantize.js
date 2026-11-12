@@ -5,6 +5,7 @@ exports.pixelsToPattern = pixelsToPattern;
 /** 图片像素 → 拼豆图纸：面积平均降采样 + OKLab 最近色映射（可选 Floyd-Steinberg 抖动）。 */
 const palette_js_1 = require("./palette.js");
 const color_js_1 = require("./color.js");
+const pattern_js_1 = require("./pattern.js");
 const types_js_1 = require("./types.js");
 exports.DEFAULT_PALETTE_ID = 'mard-221';
 /**
@@ -100,7 +101,7 @@ function pixelsToPattern(rgba, srcWidth, srcHeight, options) {
             spread(has, rBuf, gBuf, bBuf, w, h, x + 1, y + 1, er, eg, eb, 1 / 16);
         }
     }
-    return {
+    const pattern = {
         schema: 'perler-pattern',
         version: 1,
         name: options.name ?? '未命名',
@@ -109,6 +110,8 @@ function pixelsToPattern(rgba, srcWidth, srcHeight, options) {
         height: h,
         grid,
     };
+    // 精细度：超出用色上限时合并类似色
+    return options.maxColors ? (0, pattern_js_1.mergeSimilarColors)(pattern, options.maxColors) : pattern;
 }
 function clamp255(v) {
     return v < 0 ? 0 : v > 255 ? 255 : v;

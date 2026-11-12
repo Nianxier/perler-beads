@@ -1,6 +1,7 @@
 /** 图片像素 → 拼豆图纸：面积平均降采样 + OKLab 最近色映射（可选 Floyd-Steinberg 抖动）。 */
 import { getPalette, nearestColorIndex } from './palette.js';
 import { hexToRgb } from './color.js';
+import { mergeSimilarColors } from './pattern.js';
 import { EMPTY, type Pattern } from './types.js';
 
 export const DEFAULT_PALETTE_ID = 'mard-221';
@@ -20,6 +21,8 @@ export interface QuantizeOptions {
   alphaThreshold?: number;
   /** Floyd-Steinberg 抖动：细节更丰富、过渡更自然（默认关） */
   dither?: boolean;
+  /** 精细度：用色上限（超出时合并类似色；不填=不限） */
+  maxColors?: number;
 }
 
 /**
@@ -120,7 +123,7 @@ export function pixelsToPattern(
     }
   }
 
-  return {
+  const pattern: Pattern = {
     schema: 'perler-pattern',
     version: 1,
     name: options.name ?? '未命名',
@@ -129,6 +132,8 @@ export function pixelsToPattern(
     height: h,
     grid,
   };
+  // 精细度：超出用色上限时合并类似色
+  return options.maxColors ? mergeSimilarColors(pattern, options.maxColors) : pattern;
 }
 
 function clamp255(v: number): number {

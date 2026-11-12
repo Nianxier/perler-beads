@@ -236,5 +236,38 @@ assert.equal(a2.editor.pattern.width, 2);
 a2.clearSession();
 assert.equal(a2.restoreSession(), false, '清除后不再恢复');
 
+// 14. 导入尺寸计算（自适应/指定格数）
+const fOut = await build({
+  entryPoints: [join(appRoot, 'src', 'core', 'fileIO.ts')],
+  bundle: true,
+  format: 'esm',
+  write: false,
+  absWorkingDir: appRoot,
+  logLevel: 'silent',
+});
+const fTmp = join(dir2, 'fileIO.bundle.mjs');
+writeFileSync(fTmp, fOut.outputFiles[0].text, 'utf8');
+const fio = await import(pathToFileURL(fTmp).href);
+assert.deepEqual(fio.computeImportSize(43, 43, { sizeMode: 'auto' }), {
+  width: 43,
+  height: 43,
+  capped: false,
+});
+assert.deepEqual(fio.computeImportSize(800, 600, { sizeMode: 'auto' }), {
+  width: 200,
+  height: 150,
+  capped: true,
+});
+assert.deepEqual(fio.computeImportSize(43, 43, { sizeMode: 'custom', width: 50 }), {
+  width: 50,
+  height: 50,
+  capped: false,
+});
+assert.deepEqual(fio.computeImportSize(100, 50, { sizeMode: 'custom', width: 64 }), {
+  width: 64,
+  height: 32,
+  capped: false,
+});
+
 rmSync(dir2, { recursive: true, force: true });
 console.log('WEB STATE TEST PASS');

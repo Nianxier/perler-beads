@@ -17,6 +17,7 @@ import {
   transformPattern,
   splitByBoards,
   scalePattern,
+  mergeSimilarColors,
   rgbToOklab,
   serializePattern,
   setCell,
@@ -192,6 +193,24 @@ assert.deepEqual(up.grid.slice(8, 12), [3, 3, 4, 4]);
 const down = scalePattern(up, 2, 2);
 assert.deepEqual(down.grid, [1, 2, 3, 4], '放大再缩回应还原');
 assert.throws(() => scalePattern(up, 0, 2), /正整数/);
+
+// 15. 合并类似色（精细度）
+const mc = createPattern(4, 2, 'mard');
+for (let i = 0; i < 8; i++) setCell(mc, i % 4, Math.floor(i / 4), i);
+const merged = mergeSimilarColors(mc, 3);
+assert.ok(new Set(merged.grid).size <= 3, `合并后用色应≤3，实际 ${new Set(merged.grid).size}`);
+assert.equal(merged.grid.length, 8);
+assert.deepEqual(mergeSimilarColors(mc, 8).grid, mc.grid, '未超上限应原样返回');
+assert.throws(() => mergeSimilarColors(mc, 0), /正整数/);
+// 量化端到端：maxColors 生效
+const limited = pixelsToPattern(src8, 8, 8, {
+  width: 8,
+  height: 8,
+  fit: 'stretch',
+  dither: true,
+  maxColors: 2,
+});
+assert.ok(new Set(limited.grid).size <= 2, '量化 maxColors=2 应收敛到 2 色');
 
 console.log('SMOKE PASS');
 console.log(`  色系数=${palettes.length} MARD=${mard.colors.length} 色`);

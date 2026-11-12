@@ -13,9 +13,11 @@ const textBold = ref(true);
 const blankW = ref(32);
 const blankH = ref(32);
 
+const imageSize = ref<'auto' | 'custom'>('auto');
 const imageWidth = ref(64);
 const imageFit = ref<'contain' | 'stretch'>('contain');
 const imageDither = ref(false);
+const imageMaxColors = ref(64);
 const fileInput = ref<HTMLInputElement | null>(null);
 
 function close(): void {
@@ -33,9 +35,11 @@ async function onImagePicked(e: Event): Promise<void> {
   if (!file) return;
   try {
     const pat = await imageFileToPattern(file, {
+      sizeMode: imageSize.value,
       width: imageWidth.value,
       fit: imageFit.value,
       dither: imageDither.value,
+      maxColors: imageMaxColors.value || undefined,
     });
     loadDocument(pat);
     viewApi.value?.fit();
@@ -91,14 +95,26 @@ function createBlank(): void {
           </button>
         </div>
         <div class="imgopts">
-          <span class="lbl">转图宽度</span>
-          <input v-model.number="imageWidth" class="num" type="number" min="1" max="500" />
-          <span class="lbl">格</span>
-          <select v-model="imageFit" class="sel">
-            <option value="contain">等比留边</option>
-            <option value="stretch">拉伸铺满</option>
+          <select v-model="imageSize" class="sel" title="按图片自适应：画布=图片像素尺寸">
+            <option value="auto">按图片自适应</option>
+            <option value="custom">指定格数</option>
           </select>
+          <template v-if="imageSize === 'custom'">
+            <span class="lbl">转图宽度</span>
+            <input v-model.number="imageWidth" class="num" type="number" min="1" max="500" />
+            <span class="lbl">格</span>
+            <select v-model="imageFit" class="sel">
+              <option value="contain">等比留边</option>
+              <option value="stretch">拉伸铺满</option>
+            </select>
+          </template>
           <label class="chk"><input v-model="imageDither" type="checkbox" /> 抖动</label>
+          <select v-model.number="imageMaxColors" class="sel" title="精细度：越粗颜色越少">
+            <option :value="0">不限</option>
+            <option :value="64">细 64</option>
+            <option :value="32">中 32</option>
+            <option :value="16">粗 16</option>
+          </select>
         </div>
       </template>
 

@@ -1,7 +1,7 @@
 /** 图纸模型操作：创建/读写格子/填充/用量统计/跟拼分色/序列化。 */
 import { EMPTY, type ColorStep, type Palette, type Pattern, type UsageEntry } from './types.js';
 import { getPalette, nearestColorIndex } from './palette.js';
-import { hexToRgb } from './color.js';
+import { deltaEOK, hexToRgb, rgbToOklab } from './color.js';
 
 export function createPattern(
   width: number,
@@ -156,6 +156,63 @@ export function scalePattern(p: Pattern, width: number, height: number): Pattern
   return next;
 }
 
+/** 合并类似色（精细度）：按用量保留 maxColors 个代表色，其余并入色差最近的代表色。
+ *  色号始终是色卡中的真实豆色；返回新图纸。 */
+export function mergeSimilarColors(p: Pattern, maxColors: number): Pattern {
+  if (!Number.isInteger(maxColors) || maxColors < 1) {
+    throw new Error('颜色数上限必须是正整数');
+  }
+  const pal = getPalette(p.paletteId);
+  const counts = new Map<number, number>();
+  for (const v of p.grid) {
+    if (v !== EMPTY) counts.set(v, (counts.get(v) ?? 0) + 1);
+  }
+  if (counts.size <= maxColors) return { ...p, grid: [...p.grid] };
+
+  // 用量降序取前 N 个作代表色
+  const seeds = [...counts.entries()]
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, maxColors)
+    .map((e) => e[0]);
+  const remap = new Map<number, number>();
+  for (const idx of counts.keys()) {
+    if (seeds.includes(idx)) {
+      remap.set(idx, idx);
+      continue;
+    }
+    const [r, g, b] = hexToRgb(pal.colors[idx].hex);
+    remap.set(idx, nearestColorIndexInSet(pal, r, g, b, seeds));
+  }
+  const next = createPattern(p.width, p.height, p.paletteId, p.name);
+  for (let i = 0; i < p.grid.length; i++) {
+    const v = p.grid[i];
+    next.grid[i] = v === EMPTY ? EMPTY : (remap.get(v) ?? v);
+  }
+  return next;
+}
+
+/** 在指定候选下标集合内找最近色 */
+function nearestColorIndexInSet(
+  pal: Palette,
+  r: number,
+  g: number,
+  b: number,
+  candidates: number[],
+): number {
+  const target = rgbToOklab(r, g, b);
+  let best = candidates[0];
+  let bestD = Infinity;
+  for (const idx of candidates) {
+    const [pr, pg, pb] = hexToRgb(pal.colors[idx].hex);
+    const d = deltaEOK(target, rgbToOklab(pr, pg, pb));
+    if (d < bestD) {
+      bestD = d;
+      best = idx;
+    }
+  }
+  return best;
+}
+
 /** 分板结果：一块底板覆盖的格子区域（局部 grid 行优先） */
 export interface BoardSheet {
   /** 底板在整图中的列/行号（0 起） */
@@ -231,8 +288,7 @@ export function transformPattern(p: Pattern, op: PatternTransform): Pattern {
 }
 
 /** 换色卡（近似换色）：源色 HEX 在目标色卡里取最近色，返回转换后的新图纸 */
-export function convertPatternPalette(p: Pattern, targetPaletteId: string): Pattern {
-  const target = getPalette(targetPaletteId);
+export function convertPatternPalette(p: Pattern, targetPaletteId: string): Pattern {  const target = getPalette(targetPaletteId);
   const source = getPalette(p.paletteId);
   const map = source.colors.map((c) => {
     const [r, g, b] = hexToRgb(c.hex);

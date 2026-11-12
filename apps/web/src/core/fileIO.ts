@@ -21,12 +21,46 @@ function downloadBlob(blob: Blob, filename: string): void {
 }
 
 export interface ImportImageOptions {
-  width: number;
+  /** auto=按图片像素尺寸自适应画布；custom=指定格数把图片缩放进去 */
+  sizeMode?: 'auto' | 'custom';
+  /** custom 模式：目标格数（宽） */
+  width?: number;
   /** 0 = 按宽度和原图比例自动算高度 */
   height?: number;
   fit?: 'contain' | 'stretch';
   /** Floyd-Steinberg 抖动 */
   dither?: boolean;
+  /** 精细度：用色上限（0/不填 = 不限） */
+  maxColors?: number;
+  /** auto 模式长边格数上限（默认 200） */
+  autoMax?: number;
+}
+
+/** 纯函数：按尺寸模式计算目标格数（可单测） */
+export function computeImportSize(
+  srcWidth: number,
+  srcHeight: number,
+  options: Pick<ImportImageOptions, 'sizeMode' | 'width' | 'height' | 'autoMax'>,
+): { width: number; height: number; capped: boolean } {
+  const autoMax = options.autoMax ?? 200;
+  if ((options.sizeMode ?? 'custom') === 'auto') {
+    const longest = Math.max(srcWidth, srcHeight);
+    if (longest <= autoMax) {
+      return { width: srcWidth, height: srcHeight, capped: false };
+    }
+    const k = autoMax / longest;
+    return {
+      width: Math.max(1, Math.round(srcWidth * k)),
+      height: Math.max(1, Math.round(srcHeight * k)),
+      capped: true,
+    };
+  }
+  const width = Math.max(1, Math.round(options.width ?? 64));
+  const height =
+    options.height && options.height > 0
+      ? Math.round(options.height)
+      : Math.max(1, Math.round((width * srcHeight) / srcWidth));
+  return { width, height, capped: false };
 }
 
 /** 图片文件 → 图纸（浏览器内解码，不上传） */
@@ -43,16 +77,13 @@ export async function imageFileToPattern(
     if (!ctx) throw new Error('无法创建画布');
     ctx.drawImage(bitmap, 0, 0);
     const { data } = ctx.getImageData(0, 0, cv.width, cv.height);
-    const width = Math.max(1, Math.round(options.width));
-    const height =
-      options.height && options.height > 0
-        ? Math.round(options.height)
-        : Math.max(1, Math.round((width * bitmap.height) / bitmap.width));
+    const size = computeImportSize(cv.width, cv.height, options);
     return pixelsToPattern(data, cv.width, cv.height, {
-      width,
-      height,
-      fit: options.fit ?? 'contain',
+      width: size.width,
+      height: size.height,
+      fit: (options.sizeMode ?? 'custom') === 'auto' ? 'stretch' : (options.fit ?? 'contain'),
       dither: options.dither ?? false,
+      maxColors: options.maxColors || undefined,
       name: file.name.replace(/\.[^.]+$/, ''),
     });
   } finally {

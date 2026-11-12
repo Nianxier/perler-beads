@@ -42,10 +42,12 @@ const newHeight = ref(32);
 const resizeWidth = ref(editor.pattern.width);
 const resizeHeight = ref(editor.pattern.height);
 const resizeAnchor = ref<'topleft' | 'center' | 'bottomright'>('center');
-const resizeMode = ref<'canvas' | 'scale'>('canvas');
+const resizeMode = ref<'canvas' | 'scale'>('scale');
+const importSize = ref<'auto' | 'custom'>('auto');
 const importWidth = ref(64);
 const importFit = ref<'contain' | 'stretch'>('contain');
 const importDither = ref(false);
+const importMaxColors = ref(64);
 const boardSize = ref(29);
 const imageInput = ref<HTMLInputElement | null>(null);
 const jsonInput = ref<HTMLInputElement | null>(null);
@@ -101,14 +103,30 @@ function doResize(): void {
   const before = editor.pattern.grid.filter((v) => v !== -1).length;
   const oldW = editor.pattern.width;
   const oldH = editor.pattern.height;
+  const centerOff = (n: number) => (n >= 0 ? Math.round(n) : -Math.round(-n));
   let ox = 0;
   let oy = 0;
   if (resizeAnchor.value === 'center') {
-    ox = Math.round((w - oldW) / 2);
-    oy = Math.round((h - oldH) / 2);
+    ox = centerOff((w - oldW) / 2);
+    oy = centerOff((h - oldH) / 2);
   } else if (resizeAnchor.value === 'bottomright') {
     ox = w - oldW;
     oy = h - oldH;
+  }
+  // 裁剪前确认
+  let willCrop = 0;
+  const p0 = editor.pattern;
+  for (let y = 0; y < p0.height; y++) {
+    for (let x = 0; x < p0.width; x++) {
+      if (p0.grid[y * p0.width + x] === -1) continue;
+      const nx = x + ox;
+      const ny = y + oy;
+      if (nx < 0 || nx >= w || ny < 0 || ny >= h) willCrop++;
+    }
+  }
+  if (willCrop > 0) {
+    const ok = window.confirm(`扩/裁画布会裁掉 ${willCrop} 格豆子，确定继续？（推荐改用「缩放内容」）`);
+    if (!ok) return;
   }
   resizeDocument(editor, w, h, ox, oy);
   bump();
@@ -134,12 +152,17 @@ async function onImagePicked(e: Event): Promise<void> {
   input.value = '';
   if (!file) return;
   const pat = await imageFileToPattern(file, {
+    sizeMode: importSize.value,
     width: importWidth.value,
     fit: importFit.value,
     dither: importDither.value,
+    maxColors: importMaxColors.value || undefined,
   });
   loadDocument(pat);
   viewApi.value?.fit();
+  if (importSize.value === 'auto' && (pat.width === 200 || pat.height === 200)) {
+    showToast('图片较大，已按长边 200 格自适应（可用「调整大小」再改）');
+  }
 }
 
 async function onJsonPicked(e: Event): Promise<void> {
@@ -195,9 +218,9 @@ async function onJsonPicked(e: Event): Promise<void> {
       <span class="lbl">调整大小</span>
       <input v-model.number="resizeWidth" class="num" type="number" min="1" max="500" /> ×
       <input v-model.number="resizeHeight" class="num" type="number" min="1" max="500" />
-      <select v-model="resizeMode" class="sel" title="扩/裁画布=格子不变；缩放内容=图纸放大/拉伸">
+      <select v-model="resizeMode" class="sel" title="缩放内容=图纸随尺寸放大缩小；扩/裁画布=仅增减空格、超出会裁">
+        <option value="scale">缩放内容（推荐）</option>
         <option value="canvas">扩/裁画布</option>
-        <option value="scale">缩放内容</option>
       </select>
       <select v-if="resizeMode === 'canvas'" v-model="resizeAnchor" class="sel" title="原内容放进新图纸的位置">
         <option value="topleft">左上对齐</option>
@@ -216,13 +239,25 @@ async function onJsonPicked(e: Event): Promise<void> {
 
     <div class="group">
       <span class="lbl">图片转图纸</span>
-      <span class="lbl">宽</span>
-      <input v-model.number="importWidth" class="num" type="number" min="1" max="500" />
-      <select v-model="importFit" class="sel">
-        <option value="contain">等比留边</option>
-        <option value="stretch">拉伸铺满</option>
+      <select v-model="importSize" class="sel" title="按图片自适应：画布=图片像素尺寸；指定格数：图片缩放进画布">
+        <option value="auto">按图片自适应</option>
+        <option value="custom">指定格数</option>
       </select>
-      <label class="chk" title="Floyd-Steinberg 抖动，细节更丰富" ><input v-model="importDither" type="checkbox" /> 抖动</label>
+      <template v-if="importSize === 'custom'">
+        <span class="lbl">宽</span>
+        <input v-model.number="importWidth" class="num" type="number" min="1" max="500" />
+        <select v-model="importFit" class="sel">
+          <option value="contain">等比留边</option>
+          <option value="stretch">拉伸铺满</option>
+        </select>
+      </template>
+      <label class="chk" title="Floyd-Steinberg 抖动，细节更丰富"><input v-model="importDither" type="checkbox" /> 抖动</label>
+      <select v-model.number="importMaxColors" class="sel" title="精细度：越粗颜色越少（合并类似色）">
+        <option :value="0">精细度·不限</option>
+        <option :value="64">精细·64色</option>
+        <option :value="32">中·32色</option>
+        <option :value="16">粗·16色</option>
+      </select>
       <button class="btn" @click="imageInput?.click()">导入图片…</button>
       <input ref="imageInput" type="file" accept="image/*" hidden @change="onImagePicked" />
     </div>

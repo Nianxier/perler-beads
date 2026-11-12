@@ -11,6 +11,7 @@ exports.colorSteps = colorSteps;
 exports.serializePattern = serializePattern;
 exports.resizePattern = resizePattern;
 exports.scalePattern = scalePattern;
+exports.mergeSimilarColors = mergeSimilarColors;
 exports.splitByBoards = splitByBoards;
 exports.transformPattern = transformPattern;
 exports.convertPatternPalette = convertPatternPalette;
@@ -157,6 +158,56 @@ function scalePattern(p, width, height) {
         }
     }
     return next;
+}
+/** 合并类似色（精细度）：按用量保留 maxColors 个代表色，其余并入色差最近的代表色。
+ *  色号始终是色卡中的真实豆色；返回新图纸。 */
+function mergeSimilarColors(p, maxColors) {
+    if (!Number.isInteger(maxColors) || maxColors < 1) {
+        throw new Error('颜色数上限必须是正整数');
+    }
+    const pal = (0, palette_js_1.getPalette)(p.paletteId);
+    const counts = new Map();
+    for (const v of p.grid) {
+        if (v !== types_js_1.EMPTY)
+            counts.set(v, (counts.get(v) ?? 0) + 1);
+    }
+    if (counts.size <= maxColors)
+        return { ...p, grid: [...p.grid] };
+    // 用量降序取前 N 个作代表色
+    const seeds = [...counts.entries()]
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, maxColors)
+        .map((e) => e[0]);
+    const remap = new Map();
+    for (const idx of counts.keys()) {
+        if (seeds.includes(idx)) {
+            remap.set(idx, idx);
+            continue;
+        }
+        const [r, g, b] = (0, color_js_1.hexToRgb)(pal.colors[idx].hex);
+        remap.set(idx, nearestColorIndexInSet(pal, r, g, b, seeds));
+    }
+    const next = createPattern(p.width, p.height, p.paletteId, p.name);
+    for (let i = 0; i < p.grid.length; i++) {
+        const v = p.grid[i];
+        next.grid[i] = v === types_js_1.EMPTY ? types_js_1.EMPTY : (remap.get(v) ?? v);
+    }
+    return next;
+}
+/** 在指定候选下标集合内找最近色 */
+function nearestColorIndexInSet(pal, r, g, b, candidates) {
+    const target = (0, color_js_1.rgbToOklab)(r, g, b);
+    let best = candidates[0];
+    let bestD = Infinity;
+    for (const idx of candidates) {
+        const [pr, pg, pb] = (0, color_js_1.hexToRgb)(pal.colors[idx].hex);
+        const d = (0, color_js_1.deltaEOK)(target, (0, color_js_1.rgbToOklab)(pr, pg, pb));
+        if (d < bestD) {
+            bestD = d;
+            best = idx;
+        }
+    }
+    return best;
 }
 /** 按底板尺寸拆分图纸（左上为原点，行优先），用于多板拼接打印 */
 function splitByBoards(p, boardSize) {
