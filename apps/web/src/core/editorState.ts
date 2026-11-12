@@ -34,7 +34,7 @@ export type StrokeResult = 'changed' | 'picked' | 'none';
 export function createEditor(
   width = 32,
   height = 32,
-  paletteId = 'mard',
+  paletteId = 'mard-221',
   maxHistory = 50,
 ): EditorState {
   return {

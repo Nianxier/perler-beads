@@ -2,7 +2,7 @@
 import { getPalette, nearestColorIndex } from './palette.js';
 import { EMPTY, type Pattern } from './types.js';
 
-export const DEFAULT_PALETTE_ID = 'mard';
+export const DEFAULT_PALETTE_ID = 'mard-221';
 
 export interface QuantizeOptions {
   /** 目标格数（宽） */

@@ -1,0 +1,1752 @@
+{
+  "source": "maxcleme/beadcolors@94b99999652866f1a1879d6369fe735f811949e5:gen/v1/mard.csv (mirrored at zwhy149/bead-grid-studio:src/palettes/provenance/mard-291.csv@main and Jett-Wu/Perler_Beads_Generator:src/palette.ts@main)",
+  "license": "MIT",
+  "colors": [
+    {
+      "code": "A1",
+      "hex": "#FAF4C8",
+      "group": "A",
+      "name": ""
+    },
+    {
+      "code": "A2",
+      "hex": "#FFFFD5",
+      "group": "A",
+      "name": ""
+    },
+    {
+      "code": "A3",
+      "hex": "#FEFF8B",
+      "group": "A",
+      "name": ""
+    },
+    {
+      "code": "A4",
+      "hex": "#FBED56",
+      "group": "A",
+      "name": ""
+    },
+    {
+      "code": "A5",
+      "hex": "#F4D738",
+      "group": "A",
+      "name": ""
+    },
+    {
+      "code": "A6",
+      "hex": "#FEAC4C",
+      "group": "A",
+      "name": ""
+    },
+    {
+      "code": "A7",
+      "hex": "#FE8B4C",
+      "group": "A",
+      "name": ""
+    },
+    {
+      "code": "A8",
+      "hex": "#FFDA45",
+      "group": "A",
+      "name": ""
+    },
+    {
+      "code": "A9",
+      "hex": "#FF995B",
+      "group": "A",
+      "name": ""
+    },
+    {
+      "code": "A10",
+      "hex": "#F77C31",
+      "group": "A",
+      "name": ""
+    },
+    {
+      "code": "A11",
+      "hex": "#FFDD99",
+      "group": "A",
+      "name": ""
+    },
+    {
+      "code": "A12",
+      "hex": "#FE9F72",
+      "group": "A",
+      "name": ""
+    },
+    {
+      "code": "A13",
+      "hex": "#FFC365",
+      "group": "A",
+      "name": ""
+    },
+    {
+      "code": "A14",
+      "hex": "#FD543D",
+      "group": "A",
+      "name": ""
+    },
+    {
+      "code": "A15",
+      "hex": "#FFF365",
+      "group": "A",
+      "name": ""
+    },
+    {
+      "code": "A16",
+      "hex": "#FFFF9F",
+      "group": "A",
+      "name": ""
+    },
+    {
+      "code": "A17",
+      "hex": "#FFE36E",
+      "group": "A",
+      "name": ""
+    },
+    {
+      "code": "A18",
+      "hex": "#FEBE7D",
+      "group": "A",
+      "name": ""
+    },
+    {
+      "code": "A19",
+      "hex": "#FD7C72",
+      "group": "A",
+      "name": ""
+    },
+    {
+      "code": "A20",
+      "hex": "#FFD568",
+      "group": "A",
+      "name": ""
+    },
+    {
+      "code": "A21",
+      "hex": "#FFE395",
+      "group": "A",
+      "name": ""
+    },
+    {
+      "code": "A22",
+      "hex": "#F4F57D",
+      "group": "A",
+      "name": ""
+    },
+    {
+      "code": "A23",
+      "hex": "#E6C9B7",
+      "group": "A",
+      "name": ""
+    },
+    {
+      "code": "A24",
+      "hex": "#F7F8A2",
+      "group": "A",
+      "name": ""
+    },
+    {
+      "code": "A25",
+      "hex": "#FFD67D",
+      "group": "A",
+      "name": ""
+    },
+    {
+      "code": "A26",
+      "hex": "#FFC830",
+      "group": "A",
+      "name": ""
+    },
+    {
+      "code": "B1",
+      "hex": "#E6EE31",
+      "group": "B",
+      "name": ""
+    },
+    {
+      "code": "B2",
+      "hex": "#63F347",
+      "group": "B",
+      "name": ""
+    },
+    {
+      "code": "B3",
+      "hex": "#9EF780",
+      "group": "B",
+      "name": ""
+    },
+    {
+      "code": "B4",
+      "hex": "#5DE035",
+      "group": "B",
+      "name": ""
+    },
+    {
+      "code": "B5",
+      "hex": "#35E352",
+      "group": "B",
+      "name": ""
+    },
+    {
+      "code": "B6",
+      "hex": "#65E2A6",
+      "group": "B",
+      "name": ""
+    },
+    {
+      "code": "B7",
+      "hex": "#3DAF80",
+      "group": "B",
+      "name": ""
+    },
+    {
+      "code": "B8",
+      "hex": "#1C9C4F",
+      "group": "B",
+      "name": ""
+    },
+    {
+      "code": "B9",
+      "hex": "#27523A",
+      "group": "B",
+      "name": ""
+    },
+    {
+      "code": "B10",
+      "hex": "#95D3C2",
+      "group": "B",
+      "name": ""
+    },
+    {
+      "code": "B11",
+      "hex": "#5D722A",
+      "group": "B",
+      "name": ""
+    },
+    {
+      "code": "B12",
+      "hex": "#166F41",
+      "group": "B",
+      "name": ""
+    },
+    {
+      "code": "B13",
+      "hex": "#CAEB7B",
+      "group": "B",
+      "name": ""
+    },
+    {
+      "code": "B14",
+      "hex": "#ADE946",
+      "group": "B",
+      "name": ""
+    },
+    {
+      "code": "B15",
+      "hex": "#2E5132",
+      "group": "B",
+      "name": ""
+    },
+    {
+      "code": "B16",
+      "hex": "#C5ED9C",
+      "group": "B",
+      "name": ""
+    },
+    {
+      "code": "B17",
+      "hex": "#9BB13A",
+      "group": "B",
+      "name": ""
+    },
+    {
+      "code": "B18",
+      "hex": "#E6EE49",
+      "group": "B",
+      "name": ""
+    },
+    {
+      "code": "B19",
+      "hex": "#24B88C",
+      "group": "B",
+      "name": ""
+    },
+    {
+      "code": "B20",
+      "hex": "#C2F0CC",
+      "group": "B",
+      "name": ""
+    },
+    {
+      "code": "B21",
+      "hex": "#156A6B",
+      "group": "B",
+      "name": ""
+    },
+    {
+      "code": "B22",
+      "hex": "#0B3C43",
+      "group": "B",
+      "name": ""
+    },
+    {
+      "code": "B23",
+      "hex": "#303A21",
+      "group": "B",
+      "name": ""
+    },
+    {
+      "code": "B24",
+      "hex": "#EEFCA5",
+      "group": "B",
+      "name": ""
+    },
+    {
+      "code": "B25",
+      "hex": "#4E846D",
+      "group": "B",
+      "name": ""
+    },
+    {
+      "code": "B26",
+      "hex": "#8D7A35",
+      "group": "B",
+      "name": ""
+    },
+    {
+      "code": "B27",
+      "hex": "#CCE1AF",
+      "group": "B",
+      "name": ""
+    },
+    {
+      "code": "B28",
+      "hex": "#9EE5B9",
+      "group": "B",
+      "name": ""
+    },
+    {
+      "code": "B29",
+      "hex": "#C5E254",
+      "group": "B",
+      "name": ""
+    },
+    {
+      "code": "B30",
+      "hex": "#E2FCB1",
+      "group": "B",
+      "name": ""
+    },
+    {
+      "code": "B31",
+      "hex": "#B0E792",
+      "group": "B",
+      "name": ""
+    },
+    {
+      "code": "B32",
+      "hex": "#9CAB5A",
+      "group": "B",
+      "name": ""
+    },
+    {
+      "code": "C1",
+      "hex": "#E8FFE7",
+      "group": "C",
+      "name": ""
+    },
+    {
+      "code": "C2",
+      "hex": "#A9F9FC",
+      "group": "C",
+      "name": ""
+    },
+    {
+      "code": "C3",
+      "hex": "#A0E2FB",
+      "group": "C",
+      "name": ""
+    },
+    {
+      "code": "C4",
+      "hex": "#41CCFF",
+      "group": "C",
+      "name": ""
+    },
+    {
+      "code": "C5",
+      "hex": "#01ACEB",
+      "group": "C",
+      "name": ""
+    },
+    {
+      "code": "C6",
+      "hex": "#50AAF0",
+      "group": "C",
+      "name": ""
+    },
+    {
+      "code": "C7",
+      "hex": "#3677D2",
+      "group": "C",
+      "name": ""
+    },
+    {
+      "code": "C8",
+      "hex": "#0F54C0",
+      "group": "C",
+      "name": ""
+    },
+    {
+      "code": "C9",
+      "hex": "#324BCA",
+      "group": "C",
+      "name": ""
+    },
+    {
+      "code": "C10",
+      "hex": "#3EBCE2",
+      "group": "C",
+      "name": ""
+    },
+    {
+      "code": "C11",
+      "hex": "#28DDDE",
+      "group": "C",
+      "name": ""
+    },
+    {
+      "code": "C12",
+      "hex": "#1C334D",
+      "group": "C",
+      "name": ""
+    },
+    {
+      "code": "C13",
+      "hex": "#CDE8FF",
+      "group": "C",
+      "name": ""
+    },
+    {
+      "code": "C14",
+      "hex": "#D5FDFF",
+      "group": "C",
+      "name": ""
+    },
+    {
+      "code": "C15",
+      "hex": "#22C4C6",
+      "group": "C",
+      "name": ""
+    },
+    {
+      "code": "C16",
+      "hex": "#1557A8",
+      "group": "C",
+      "name": ""
+    },
+    {
+      "code": "C17",
+      "hex": "#04D1F6",
+      "group": "C",
+      "name": ""
+    },
+    {
+      "code": "C18",
+      "hex": "#1D3344",
+      "group": "C",
+      "name": ""
+    },
+    {
+      "code": "C19",
+      "hex": "#1887A2",
+      "group": "C",
+      "name": ""
+    },
+    {
+      "code": "C20",
+      "hex": "#176DAF",
+      "group": "C",
+      "name": ""
+    },
+    {
+      "code": "C21",
+      "hex": "#BEDDFF",
+      "group": "C",
+      "name": ""
+    },
+    {
+      "code": "C22",
+      "hex": "#67B4BE",
+      "group": "C",
+      "name": ""
+    },
+    {
+      "code": "C23",
+      "hex": "#C8E2FF",
+      "group": "C",
+      "name": ""
+    },
+    {
+      "code": "C24",
+      "hex": "#7CC4FF",
+      "group": "C",
+      "name": ""
+    },
+    {
+      "code": "C25",
+      "hex": "#A9E5E5",
+      "group": "C",
+      "name": ""
+    },
+    {
+      "code": "C26",
+      "hex": "#3CAED8",
+      "group": "C",
+      "name": ""
+    },
+    {
+      "code": "C27",
+      "hex": "#D3DFFA",
+      "group": "C",
+      "name": ""
+    },
+    {
+      "code": "C28",
+      "hex": "#BBCFED",
+      "group": "C",
+      "name": ""
+    },
+    {
+      "code": "C29",
+      "hex": "#34488E",
+      "group": "C",
+      "name": ""
+    },
+    {
+      "code": "D1",
+      "hex": "#AEB4F2",
+      "group": "D",
+      "name": ""
+    },
+    {
+      "code": "D2",
+      "hex": "#858EDD",
+      "group": "D",
+      "name": ""
+    },
+    {
+      "code": "D3",
+      "hex": "#2F54AF",
+      "group": "D",
+      "name": ""
+    },
+    {
+      "code": "D4",
+      "hex": "#182A84",
+      "group": "D",
+      "name": ""
+    },
+    {
+      "code": "D5",
+      "hex": "#B843C5",
+      "group": "D",
+      "name": ""
+    },
+    {
+      "code": "D6",
+      "hex": "#AC7BDE",
+      "group": "D",
+      "name": ""
+    },
+    {
+      "code": "D7",
+      "hex": "#8854B3",
+      "group": "D",
+      "name": ""
+    },
+    {
+      "code": "D8",
+      "hex": "#E2D3FF",
+      "group": "D",
+      "name": ""
+    },
+    {
+      "code": "D9",
+      "hex": "#D5B9F8",
+      "group": "D",
+      "name": ""
+    },
+    {
+      "code": "D10",
+      "hex": "#361851",
+      "group": "D",
+      "name": ""
+    },
+    {
+      "code": "D11",
+      "hex": "#B9BAE1",
+      "group": "D",
+      "name": ""
+    },
+    {
+      "code": "D12",
+      "hex": "#DE9AD4",
+      "group": "D",
+      "name": ""
+    },
+    {
+      "code": "D13",
+      "hex": "#B90095",
+      "group": "D",
+      "name": ""
+    },
+    {
+      "code": "D14",
+      "hex": "#8B279B",
+      "group": "D",
+      "name": ""
+    },
+    {
+      "code": "D15",
+      "hex": "#2F1F90",
+      "group": "D",
+      "name": ""
+    },
+    {
+      "code": "D16",
+      "hex": "#E3E1EE",
+      "group": "D",
+      "name": ""
+    },
+    {
+      "code": "D17",
+      "hex": "#C4D4F6",
+      "group": "D",
+      "name": ""
+    },
+    {
+      "code": "D18",
+      "hex": "#A45EC7",
+      "group": "D",
+      "name": ""
+    },
+    {
+      "code": "D19",
+      "hex": "#D8C3D7",
+      "group": "D",
+      "name": ""
+    },
+    {
+      "code": "D20",
+      "hex": "#9C32B2",
+      "group": "D",
+      "name": ""
+    },
+    {
+      "code": "D21",
+      "hex": "#9A009B",
+      "group": "D",
+      "name": ""
+    },
+    {
+      "code": "D22",
+      "hex": "#333A95",
+      "group": "D",
+      "name": ""
+    },
+    {
+      "code": "D23",
+      "hex": "#EBDAFC",
+      "group": "D",
+      "name": ""
+    },
+    {
+      "code": "D24",
+      "hex": "#7786E5",
+      "group": "D",
+      "name": ""
+    },
+    {
+      "code": "D25",
+      "hex": "#494FC7",
+      "group": "D",
+      "name": ""
+    },
+    {
+      "code": "D26",
+      "hex": "#DFC2F8",
+      "group": "D",
+      "name": ""
+    },
+    {
+      "code": "E1",
+      "hex": "#FDD3CC",
+      "group": "E",
+      "name": ""
+    },
+    {
+      "code": "E2",
+      "hex": "#FEC0DF",
+      "group": "E",
+      "name": ""
+    },
+    {
+      "code": "E3",
+      "hex": "#FFB7E7",
+      "group": "E",
+      "name": ""
+    },
+    {
+      "code": "E4",
+      "hex": "#E8649E",
+      "group": "E",
+      "name": ""
+    },
+    {
+      "code": "E5",
+      "hex": "#F551A2",
+      "group": "E",
+      "name": ""
+    },
+    {
+      "code": "E6",
+      "hex": "#F13D74",
+      "group": "E",
+      "name": ""
+    },
+    {
+      "code": "E7",
+      "hex": "#C63478",
+      "group": "E",
+      "name": ""
+    },
+    {
+      "code": "E8",
+      "hex": "#FFDBE9",
+      "group": "E",
+      "name": ""
+    },
+    {
+      "code": "E9",
+      "hex": "#E970CC",
+      "group": "E",
+      "name": ""
+    },
+    {
+      "code": "E10",
+      "hex": "#D33793",
+      "group": "E",
+      "name": ""
+    },
+    {
+      "code": "E11",
+      "hex": "#FCDDD2",
+      "group": "E",
+      "name": ""
+    },
+    {
+      "code": "E12",
+      "hex": "#F78FC3",
+      "group": "E",
+      "name": ""
+    },
+    {
+      "code": "E13",
+      "hex": "#B5006D",
+      "group": "E",
+      "name": ""
+    },
+    {
+      "code": "E14",
+      "hex": "#FFD1BA",
+      "group": "E",
+      "name": ""
+    },
+    {
+      "code": "E15",
+      "hex": "#F8C7C9",
+      "group": "E",
+      "name": ""
+    },
+    {
+      "code": "E16",
+      "hex": "#FFF3EB",
+      "group": "E",
+      "name": ""
+    },
+    {
+      "code": "E17",
+      "hex": "#FFE2EA",
+      "group": "E",
+      "name": ""
+    },
+    {
+      "code": "E18",
+      "hex": "#FFC7DB",
+      "group": "E",
+      "name": ""
+    },
+    {
+      "code": "E19",
+      "hex": "#FEBAD5",
+      "group": "E",
+      "name": ""
+    },
+    {
+      "code": "E20",
+      "hex": "#D8C7D1",
+      "group": "E",
+      "name": ""
+    },
+    {
+      "code": "E21",
+      "hex": "#BD9DA1",
+      "group": "E",
+      "name": ""
+    },
+    {
+      "code": "E22",
+      "hex": "#B785A1",
+      "group": "E",
+      "name": ""
+    },
+    {
+      "code": "E23",
+      "hex": "#937A8D",
+      "group": "E",
+      "name": ""
+    },
+    {
+      "code": "E24",
+      "hex": "#E1BCE8",
+      "group": "E",
+      "name": ""
+    },
+    {
+      "code": "F1",
+      "hex": "#FD957B",
+      "group": "F",
+      "name": ""
+    },
+    {
+      "code": "F2",
+      "hex": "#FC3D46",
+      "group": "F",
+      "name": ""
+    },
+    {
+      "code": "F3",
+      "hex": "#F74941",
+      "group": "F",
+      "name": ""
+    },
+    {
+      "code": "F4",
+      "hex": "#FC283C",
+      "group": "F",
+      "name": ""
+    },
+    {
+      "code": "F5",
+      "hex": "#E7002F",
+      "group": "F",
+      "name": ""
+    },
+    {
+      "code": "F6",
+      "hex": "#943630",
+      "group": "F",
+      "name": ""
+    },
+    {
+      "code": "F7",
+      "hex": "#971937",
+      "group": "F",
+      "name": ""
+    },
+    {
+      "code": "F8",
+      "hex": "#BC0028",
+      "group": "F",
+      "name": ""
+    },
+    {
+      "code": "F9",
+      "hex": "#E2677A",
+      "group": "F",
+      "name": ""
+    },
+    {
+      "code": "F10",
+      "hex": "#8A4526",
+      "group": "F",
+      "name": ""
+    },
+    {
+      "code": "F11",
+      "hex": "#5A2121",
+      "group": "F",
+      "name": ""
+    },
+    {
+      "code": "F12",
+      "hex": "#FD4E6A",
+      "group": "F",
+      "name": ""
+    },
+    {
+      "code": "F13",
+      "hex": "#F35744",
+      "group": "F",
+      "name": ""
+    },
+    {
+      "code": "F14",
+      "hex": "#FFA9AD",
+      "group": "F",
+      "name": ""
+    },
+    {
+      "code": "F15",
+      "hex": "#D30022",
+      "group": "F",
+      "name": ""
+    },
+    {
+      "code": "F16",
+      "hex": "#FEC2A6",
+      "group": "F",
+      "name": ""
+    },
+    {
+      "code": "F17",
+      "hex": "#E69C79",
+      "group": "F",
+      "name": ""
+    },
+    {
+      "code": "F18",
+      "hex": "#D37C46",
+      "group": "F",
+      "name": ""
+    },
+    {
+      "code": "F19",
+      "hex": "#C1444A",
+      "group": "F",
+      "name": ""
+    },
+    {
+      "code": "F20",
+      "hex": "#CD9391",
+      "group": "F",
+      "name": ""
+    },
+    {
+      "code": "F21",
+      "hex": "#F7B4C6",
+      "group": "F",
+      "name": ""
+    },
+    {
+      "code": "F22",
+      "hex": "#FDC0D0",
+      "group": "F",
+      "name": ""
+    },
+    {
+      "code": "F23",
+      "hex": "#F67E66",
+      "group": "F",
+      "name": ""
+    },
+    {
+      "code": "F24",
+      "hex": "#E698AA",
+      "group": "F",
+      "name": ""
+    },
+    {
+      "code": "F25",
+      "hex": "#E54B4F",
+      "group": "F",
+      "name": ""
+    },
+    {
+      "code": "G1",
+      "hex": "#FFE2CE",
+      "group": "G",
+      "name": ""
+    },
+    {
+      "code": "G2",
+      "hex": "#FFC4AA",
+      "group": "G",
+      "name": ""
+    },
+    {
+      "code": "G3",
+      "hex": "#F4C3A5",
+      "group": "G",
+      "name": ""
+    },
+    {
+      "code": "G4",
+      "hex": "#E1B383",
+      "group": "G",
+      "name": ""
+    },
+    {
+      "code": "G5",
+      "hex": "#EDB045",
+      "group": "G",
+      "name": ""
+    },
+    {
+      "code": "G6",
+      "hex": "#E99C17",
+      "group": "G",
+      "name": ""
+    },
+    {
+      "code": "G7",
+      "hex": "#9D5B3E",
+      "group": "G",
+      "name": ""
+    },
+    {
+      "code": "G8",
+      "hex": "#753832",
+      "group": "G",
+      "name": ""
+    },
+    {
+      "code": "G9",
+      "hex": "#E6B483",
+      "group": "G",
+      "name": ""
+    },
+    {
+      "code": "G10",
+      "hex": "#D98C39",
+      "group": "G",
+      "name": ""
+    },
+    {
+      "code": "G11",
+      "hex": "#E0C593",
+      "group": "G",
+      "name": ""
+    },
+    {
+      "code": "G12",
+      "hex": "#FFC890",
+      "group": "G",
+      "name": ""
+    },
+    {
+      "code": "G13",
+      "hex": "#B7714A",
+      "group": "G",
+      "name": ""
+    },
+    {
+      "code": "G14",
+      "hex": "#8D614C",
+      "group": "G",
+      "name": ""
+    },
+    {
+      "code": "G15",
+      "hex": "#FCF9E0",
+      "group": "G",
+      "name": ""
+    },
+    {
+      "code": "G16",
+      "hex": "#F2D9BA",
+      "group": "G",
+      "name": ""
+    },
+    {
+      "code": "G17",
+      "hex": "#78524B",
+      "group": "G",
+      "name": ""
+    },
+    {
+      "code": "G18",
+      "hex": "#FFE4CC",
+      "group": "G",
+      "name": ""
+    },
+    {
+      "code": "G19",
+      "hex": "#E07935",
+      "group": "G",
+      "name": ""
+    },
+    {
+      "code": "G20",
+      "hex": "#A94023",
+      "group": "G",
+      "name": ""
+    },
+    {
+      "code": "G21",
+      "hex": "#B88558",
+      "group": "G",
+      "name": ""
+    },
+    {
+      "code": "H1",
+      "hex": "#FDFBFF",
+      "group": "H",
+      "name": ""
+    },
+    {
+      "code": "H2",
+      "hex": "#FEFFFF",
+      "group": "H",
+      "name": ""
+    },
+    {
+      "code": "H3",
+      "hex": "#B6B1BA",
+      "group": "H",
+      "name": ""
+    },
+    {
+      "code": "H4",
+      "hex": "#89858C",
+      "group": "H",
+      "name": ""
+    },
+    {
+      "code": "H5",
+      "hex": "#48464E",
+      "group": "H",
+      "name": ""
+    },
+    {
+      "code": "H6",
+      "hex": "#2F2B2F",
+      "group": "H",
+      "name": ""
+    },
+    {
+      "code": "H7",
+      "hex": "#000000",
+      "group": "H",
+      "name": ""
+    },
+    {
+      "code": "H8",
+      "hex": "#E7D6DB",
+      "group": "H",
+      "name": ""
+    },
+    {
+      "code": "H9",
+      "hex": "#EDEDED",
+      "group": "H",
+      "name": ""
+    },
+    {
+      "code": "H10",
+      "hex": "#EEE9EA",
+      "group": "H",
+      "name": ""
+    },
+    {
+      "code": "H11",
+      "hex": "#CECDD5",
+      "group": "H",
+      "name": ""
+    },
+    {
+      "code": "H12",
+      "hex": "#FFF5ED",
+      "group": "H",
+      "name": ""
+    },
+    {
+      "code": "H13",
+      "hex": "#F5ECD2",
+      "group": "H",
+      "name": ""
+    },
+    {
+      "code": "H14",
+      "hex": "#CFD7D3",
+      "group": "H",
+      "name": ""
+    },
+    {
+      "code": "H15",
+      "hex": "#98A6A8",
+      "group": "H",
+      "name": ""
+    },
+    {
+      "code": "H16",
+      "hex": "#1D1414",
+      "group": "H",
+      "name": ""
+    },
+    {
+      "code": "H17",
+      "hex": "#F1EDED",
+      "group": "H",
+      "name": ""
+    },
+    {
+      "code": "H18",
+      "hex": "#FFFDF0",
+      "group": "H",
+      "name": ""
+    },
+    {
+      "code": "H19",
+      "hex": "#F6EFE2",
+      "group": "H",
+      "name": ""
+    },
+    {
+      "code": "H20",
+      "hex": "#949FA3",
+      "group": "H",
+      "name": ""
+    },
+    {
+      "code": "H21",
+      "hex": "#FFFBE1",
+      "group": "H",
+      "name": ""
+    },
+    {
+      "code": "H22",
+      "hex": "#CACAD4",
+      "group": "H",
+      "name": ""
+    },
+    {
+      "code": "H23",
+      "hex": "#9A9D94",
+      "group": "H",
+      "name": ""
+    },
+    {
+      "code": "M1",
+      "hex": "#BCC6B8",
+      "group": "M",
+      "name": ""
+    },
+    {
+      "code": "M2",
+      "hex": "#8AA386",
+      "group": "M",
+      "name": ""
+    },
+    {
+      "code": "M3",
+      "hex": "#697D80",
+      "group": "M",
+      "name": ""
+    },
+    {
+      "code": "M4",
+      "hex": "#E3D2BC",
+      "group": "M",
+      "name": ""
+    },
+    {
+      "code": "M5",
+      "hex": "#D0CCAA",
+      "group": "M",
+      "name": ""
+    },
+    {
+      "code": "M6",
+      "hex": "#B0A782",
+      "group": "M",
+      "name": ""
+    },
+    {
+      "code": "M7",
+      "hex": "#B4A497",
+      "group": "M",
+      "name": ""
+    },
+    {
+      "code": "M8",
+      "hex": "#B38281",
+      "group": "M",
+      "name": ""
+    },
+    {
+      "code": "M9",
+      "hex": "#A58767",
+      "group": "M",
+      "name": ""
+    },
+    {
+      "code": "M10",
+      "hex": "#C5B2BC",
+      "group": "M",
+      "name": ""
+    },
+    {
+      "code": "M11",
+      "hex": "#9F7594",
+      "group": "M",
+      "name": ""
+    },
+    {
+      "code": "M12",
+      "hex": "#644749",
+      "group": "M",
+      "name": ""
+    },
+    {
+      "code": "M13",
+      "hex": "#D19066",
+      "group": "M",
+      "name": ""
+    },
+    {
+      "code": "M14",
+      "hex": "#C77362",
+      "group": "M",
+      "name": ""
+    },
+    {
+      "code": "M15",
+      "hex": "#757D78",
+      "group": "M",
+      "name": ""
+    },
+    {
+      "code": "P1",
+      "hex": "#FCF7F8",
+      "group": "P",
+      "name": ""
+    },
+    {
+      "code": "P2",
+      "hex": "#B0A9AC",
+      "group": "P",
+      "name": ""
+    },
+    {
+      "code": "P3",
+      "hex": "#AFDCAB",
+      "group": "P",
+      "name": ""
+    },
+    {
+      "code": "P4",
+      "hex": "#FEA49F",
+      "group": "P",
+      "name": ""
+    },
+    {
+      "code": "P5",
+      "hex": "#EE8C3E",
+      "group": "P",
+      "name": ""
+    },
+    {
+      "code": "P6",
+      "hex": "#5FD0A7",
+      "group": "P",
+      "name": ""
+    },
+    {
+      "code": "P7",
+      "hex": "#EB9270",
+      "group": "P",
+      "name": ""
+    },
+    {
+      "code": "P8",
+      "hex": "#F0D958",
+      "group": "P",
+      "name": ""
+    },
+    {
+      "code": "P9",
+      "hex": "#D9D9D9",
+      "group": "P",
+      "name": ""
+    },
+    {
+      "code": "P10",
+      "hex": "#D9C7EA",
+      "group": "P",
+      "name": ""
+    },
+    {
+      "code": "P11",
+      "hex": "#F3ECC9",
+      "group": "P",
+      "name": ""
+    },
+    {
+      "code": "P12",
+      "hex": "#E6EEF2",
+      "group": "P",
+      "name": ""
+    },
+    {
+      "code": "P13",
+      "hex": "#AACBEF",
+      "group": "P",
+      "name": ""
+    },
+    {
+      "code": "P14",
+      "hex": "#337680",
+      "group": "P",
+      "name": ""
+    },
+    {
+      "code": "P15",
+      "hex": "#668575",
+      "group": "P",
+      "name": ""
+    },
+    {
+      "code": "P16",
+      "hex": "#FEBF45",
+      "group": "P",
+      "name": ""
+    },
+    {
+      "code": "P17",
+      "hex": "#FEA324",
+      "group": "P",
+      "name": ""
+    },
+    {
+      "code": "P18",
+      "hex": "#FEB89F",
+      "group": "P",
+      "name": ""
+    },
+    {
+      "code": "P19",
+      "hex": "#FFFEEC",
+      "group": "P",
+      "name": ""
+    },
+    {
+      "code": "P20",
+      "hex": "#FEBECF",
+      "group": "P",
+      "name": ""
+    },
+    {
+      "code": "P21",
+      "hex": "#ECBEBF",
+      "group": "P",
+      "name": ""
+    },
+    {
+      "code": "P22",
+      "hex": "#E4A89F",
+      "group": "P",
+      "name": ""
+    },
+    {
+      "code": "P23",
+      "hex": "#A56268",
+      "group": "P",
+      "name": ""
+    },
+    {
+      "code": "Q1",
+      "hex": "#F2A5E8",
+      "group": "Q",
+      "name": ""
+    },
+    {
+      "code": "Q2",
+      "hex": "#E9EC91",
+      "group": "Q",
+      "name": ""
+    },
+    {
+      "code": "Q3",
+      "hex": "#FFFF00",
+      "group": "Q",
+      "name": ""
+    },
+    {
+      "code": "Q4",
+      "hex": "#FFEBFA",
+      "group": "Q",
+      "name": ""
+    },
+    {
+      "code": "Q5",
+      "hex": "#76CEDE",
+      "group": "Q",
+      "name": ""
+    },
+    {
+      "code": "R1",
+      "hex": "#D50D21",
+      "group": "R",
+      "name": ""
+    },
+    {
+      "code": "R2",
+      "hex": "#F92F83",
+      "group": "R",
+      "name": ""
+    },
+    {
+      "code": "R3",
+      "hex": "#FD8324",
+      "group": "R",
+      "name": ""
+    },
+    {
+      "code": "R4",
+      "hex": "#F8EC31",
+      "group": "R",
+      "name": ""
+    },
+    {
+      "code": "R5",
+      "hex": "#35C75B",
+      "group": "R",
+      "name": ""
+    },
+    {
+      "code": "R6",
+      "hex": "#238891",
+      "group": "R",
+      "name": ""
+    },
+    {
+      "code": "R7",
+      "hex": "#19779D",
+      "group": "R",
+      "name": ""
+    },
+    {
+      "code": "R8",
+      "hex": "#1A60C3",
+      "group": "R",
+      "name": ""
+    },
+    {
+      "code": "R9",
+      "hex": "#9A56B4",
+      "group": "R",
+      "name": ""
+    },
+    {
+      "code": "R10",
+      "hex": "#FFDB4C",
+      "group": "R",
+      "name": ""
+    },
+    {
+      "code": "R11",
+      "hex": "#FFEBFA",
+      "group": "R",
+      "name": ""
+    },
+    {
+      "code": "R12",
+      "hex": "#D8D5CE",
+      "group": "R",
+      "name": ""
+    },
+    {
+      "code": "R13",
+      "hex": "#55514C",
+      "group": "R",
+      "name": ""
+    },
+    {
+      "code": "R14",
+      "hex": "#9FE4DF",
+      "group": "R",
+      "name": ""
+    },
+    {
+      "code": "R15",
+      "hex": "#77CEE9",
+      "group": "R",
+      "name": ""
+    },
+    {
+      "code": "R16",
+      "hex": "#3ECFCA",
+      "group": "R",
+      "name": ""
+    },
+    {
+      "code": "R17",
+      "hex": "#4A867A",
+      "group": "R",
+      "name": ""
+    },
+    {
+      "code": "R18",
+      "hex": "#7FCD9D",
+      "group": "R",
+      "name": ""
+    },
+    {
+      "code": "R19",
+      "hex": "#CDE55D",
+      "group": "R",
+      "name": ""
+    },
+    {
+      "code": "R20",
+      "hex": "#E8C7B4",
+      "group": "R",
+      "name": ""
+    },
+    {
+      "code": "R21",
+      "hex": "#AD6F3C",
+      "group": "R",
+      "name": ""
+    },
+    {
+      "code": "R22",
+      "hex": "#6C372F",
+      "group": "R",
+      "name": ""
+    },
+    {
+      "code": "R23",
+      "hex": "#FEB872",
+      "group": "R",
+      "name": ""
+    },
+    {
+      "code": "R24",
+      "hex": "#F3C1C0",
+      "group": "R",
+      "name": ""
+    },
+    {
+      "code": "R25",
+      "hex": "#C9675E",
+      "group": "R",
+      "name": ""
+    },
+    {
+      "code": "R26",
+      "hex": "#D293BE",
+      "group": "R",
+      "name": ""
+    },
+    {
+      "code": "R27",
+      "hex": "#EA8CB1",
+      "group": "R",
+      "name": ""
+    },
+    {
+      "code": "R28",
+      "hex": "#9C87D6",
+      "group": "R",
+      "name": ""
+    },
+    {
+      "code": "T1",
+      "hex": "#FFFFFF",
+      "group": "T",
+      "name": ""
+    },
+    {
+      "code": "Y1",
+      "hex": "#FD6FB4",
+      "group": "Y",
+      "name": ""
+    },
+    {
+      "code": "Y2",
+      "hex": "#FEB481",
+      "group": "Y",
+      "name": ""
+    },
+    {
+      "code": "Y3",
+      "hex": "#D7FAA0",
+      "group": "Y",
+      "name": ""
+    },
+    {
+      "code": "Y4",
+      "hex": "#8BDBFA",
+      "group": "Y",
+      "name": ""
+    },
+    {
+      "code": "Y5",
+      "hex": "#E987EA",
+      "group": "Y",
+      "name": ""
+    },
+    {
+      "code": "ZG1",
+      "hex": "#DAABB3",
+      "group": "ZG",
+      "name": ""
+    },
+    {
+      "code": "ZG2",
+      "hex": "#D6AA87",
+      "group": "ZG",
+      "name": ""
+    },
+    {
+      "code": "ZG3",
+      "hex": "#C1BD8D",
+      "group": "ZG",
+      "name": ""
+    },
+    {
+      "code": "ZG4",
+      "hex": "#96869F",
+      "group": "ZG",
+      "name": ""
+    },
+    {
+      "code": "ZG5",
+      "hex": "#8490A6",
+      "group": "ZG",
+      "name": ""
+    },
+    {
+      "code": "ZG6",
+      "hex": "#94BFE2",
+      "group": "ZG",
+      "name": ""
+    },
+    {
+      "code": "ZG7",
+      "hex": "#E2A9D2",
+      "group": "ZG",
+      "name": ""
+    },
+    {
+      "code": "ZG8",
+      "hex": "#AB91C0",
+      "group": "ZG",
+      "name": ""
+    }
+  ]
+}

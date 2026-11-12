@@ -5,12 +5,16 @@ import { deltaEOK, hexToRgb, rgbToOklab, type Oklab } from './color.js';
 
 const oklabCache = new Map<string, Oklab[]>();
 
+/** 旧色卡 id 兼容（早期图纸文件的 paletteId='mard'） */
+const ALIASES: Record<string, string> = { mard: 'mard-221' };
+
 export function listPalettes(): Palette[] {
   return [...PALETTES];
 }
 
 export function getPalette(id: string): Palette {
-  const p = PALETTES.find((x) => x.id === id);
+  const resolved = ALIASES[id] ?? id;
+  const p = PALETTES.find((x) => x.id === resolved);
   if (!p) {
     throw new Error(`未找到色卡: ${id}（可用: ${PALETTES.map((x) => x.id).join(', ')}）`);
   }

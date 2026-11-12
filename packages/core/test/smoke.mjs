@@ -13,6 +13,7 @@ import {
   parsePattern,
   pixelsToPattern,
   resizePattern,
+  convertPatternPalette,
   rgbToOklab,
   serializePattern,
   setCell,
@@ -107,6 +108,19 @@ const cropped = resizePattern(big, 2, 2, -1, -1);
 assert.equal(cropped.grid[0], 1, '左上裁剪后内容回收到原点');
 assert.equal(cropped.grid[1 * 2 + 1], 2);
 assert.throws(() => resizePattern(big, 0, 4), /正整数/);
+
+// 10. 色卡分组 / 旧别名 / 换色卡
+const m221 = getPalette('mard-221');
+assert.equal(m221.colors.length, 221);
+assert.ok(new Set(m221.colors.map((c) => c.group)).size >= 9, '应有 9 个以上分区');
+assert.match(m221.colors[0].code, /^[A-Z]+\d{2}$/, '色号应零填充（A01 风格）');
+assert.equal(getPalette('mard').id, 'mard-221', '旧色卡别名应解析到基础221');
+const conv = convertPatternPalette(small, 'mard-291');
+assert.equal(conv.paletteId, 'mard-291');
+assert.equal(conv.grid.length, 4);
+assert.notEqual(conv.grid[0], EMPTY);
+assert.notEqual(conv.grid[3], EMPTY);
+assert.equal(conv.grid[1], EMPTY, '空格转换后仍应为空');
 
 console.log('SMOKE PASS');
 console.log(`  色系数=${palettes.length} MARD=${mard.colors.length} 色`);

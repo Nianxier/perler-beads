@@ -10,6 +10,8 @@ export interface PaletteColor {
   hex: string;
   /** 可选中文名 */
   name?: string;
+  /** 可选分区（如 A/B/C…，色卡 UI 按此分组） */
+  group?: string;
 }
 
 export interface Palette {

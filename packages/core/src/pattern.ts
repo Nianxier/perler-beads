@@ -1,11 +1,12 @@
 /** 图纸模型操作：创建/读写格子/填充/用量统计/跟拼分色/序列化。 */
 import { EMPTY, type ColorStep, type Palette, type Pattern, type UsageEntry } from './types.js';
-import { getPalette } from './palette.js';
+import { getPalette, nearestColorIndex } from './palette.js';
+import { hexToRgb } from './color.js';
 
 export function createPattern(
   width: number,
   height: number,
-  paletteId = 'mard',
+  paletteId = 'mard-221',
   name = '未命名',
 ): Pattern {
   if (!Number.isInteger(width) || !Number.isInteger(height) || width < 1 || height < 1) {
@@ -133,6 +134,22 @@ export function resizePattern(
       const v = p.grid[y * p.width + x];
       if (v !== EMPTY) next.grid[ny * width + nx] = v;
     }
+  }
+  return next;
+}
+
+/** 换色卡（近似换色）：源色 HEX 在目标色卡里取最近色，返回转换后的新图纸 */
+export function convertPatternPalette(p: Pattern, targetPaletteId: string): Pattern {
+  const target = getPalette(targetPaletteId);
+  const source = getPalette(p.paletteId);
+  const map = source.colors.map((c) => {
+    const [r, g, b] = hexToRgb(c.hex);
+    return nearestColorIndex(target, r, g, b);
+  });
+  const next = createPattern(p.width, p.height, target.id, p.name);
+  for (let i = 0; i < p.grid.length; i++) {
+    const v = p.grid[i];
+    if (v !== EMPTY) next.grid[i] = map[v] ?? EMPTY;
   }
   return next;
 }

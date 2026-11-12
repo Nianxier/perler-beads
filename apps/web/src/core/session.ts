@@ -1,6 +1,6 @@
 /** 应用会话层：全局编辑器实例、版本号（驱动重绘/统计刷新）、视图控制。 */
 import { computed, ref } from 'vue';
-import { usageStats, type Pattern, type UsageEntry } from '@perler/core';
+import { convertPatternPalette, getPalette, usageStats, type Pattern, type UsageEntry } from '@perler/core';
 import { createEditor, replacePattern, type EditorState } from './editorState';
 
 export const editor: EditorState = createEditor(32, 32, 'mard');
@@ -27,6 +27,14 @@ export function newDocument(width: number, height: number): void {
 export function loadDocument(p: Pattern): void {
   replacePattern(editor, p);
   bump();
+}
+
+/** 换色卡：当前图纸按相近颜色转换到目标色卡（结构变更，历史清空） */
+export function switchPalette(targetPaletteId: string): void {
+  const next = convertPatternPalette(editor.pattern, targetPaletteId);
+  const colorCount = getPalette(next.paletteId).colors.length;
+  if (editor.colorIndex >= colorCount) editor.colorIndex = 0;
+  loadDocument(next);
 }
 
 /** 视图开关（画布消费） */
