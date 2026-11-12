@@ -88,6 +88,7 @@ function buildConstructionCanvas(
   palette: Palette | undefined,
   cellSize: number,
   subtitle = '',
+  coord: { x: number; y: number } = { x: 0, y: 0 },
 ): HTMLCanvasElement {
   const pal = palette ?? getPalette(pattern.paletteId);
   const usage = usageStats(pattern, pal);
@@ -177,17 +178,34 @@ function buildConstructionCanvas(
   ctx.strokeStyle = '#6B7280';
   ctx.strokeRect(ox, oy, pattern.width * cellSize, pattern.height * cellSize);
 
-  // 坐标标记（每 5 格）
+  // 坐标标记（每 5 格；coord 为全局偏移，分板图纸显示全局行列号）
   ctx.fillStyle = '#4B5563';
   ctx.font = '500 11px system-ui, sans-serif';
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
   for (let x = 0; x < pattern.width; x += 5) {
-    ctx.fillText(String(x + 1), ox + (x + 0.5) * cellSize, oy - 14);
+    ctx.fillText(String(x + 1 + coord.x), ox + (x + 0.5) * cellSize, oy - 14);
   }
   ctx.textAlign = 'right';
   for (let y = 0; y < pattern.height; y += 5) {
-    ctx.fillText(String(y + 1), ox - 10, oy + (y + 0.5) * cellSize);
+    ctx.fillText(String(y + 1 + coord.y), ox - 10, oy + (y + 0.5) * cellSize);
+  }
+
+  // 行分组编号（每 5 行一组，右侧编号片，方便分段拼）
+  if (pattern.height >= 10) {
+    ctx.font = '600 11px system-ui, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    for (let y = 0; y < pattern.height; y += 5) {
+      const endY = Math.min(y + 5, pattern.height);
+      const gIdx = Math.floor((y + coord.y) / 5) + 1;
+      const cx = ox + pattern.width * cellSize + 10;
+      const cy = oy + ((y + endY) / 2) * cellSize;
+      ctx.fillStyle = '#6B7280';
+      ctx.fillRect(cx, cy - 10, 22, 20);
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillText(String(gIdx), cx + 11, cy);
+    }
   }
 
   // 用量图例：紧凑色片（色号 + 数量堆叠在色片内，多列排布，省空间）
@@ -242,13 +260,81 @@ export function exportBoardSheets(pattern: Pattern, palette?: Palette, boardSize
     const y0 = s.srcY + 1;
     const y1 = s.srcY + s.height;
     const subtitle = `整图位置：第 ${s.boardY + 1} 行 第 ${s.boardX + 1} 列（全局列 ${x0}~${x1}、行 ${y0}~${y1}） · 共 ${sheets.length} 块板`;
-    const cv = buildConstructionCanvas(sub, pal, 28, subtitle);
+    const cv = buildConstructionCanvas(sub, pal, 28, subtitle, { x: s.srcX, y: s.srcY });
     cv.toBlob((blob) => {
       if (blob) {
         downloadBlob(blob, `${pattern.name || '拼豆图纸'}-板${s.boardY + 1}-${s.boardX + 1}.png`);
       }
     }, 'image/png');
   }
+}
+
+/** 拼板总览图：多底板时导出板位示意图（每块板缩略图 + 全局位置标注） */
+export function exportBoardOverview(pattern: Pattern, palette?: Palette, boardSize = 29): void {
+  const pal = palette ?? getPalette(pattern.paletteId);
+  const sheets = splitByBoards(pattern, boardSize);
+  const cols = Math.ceil(pattern.width / boardSize);
+  const rows = Math.ceil(pattern.height / boardSize);
+  const boxW = 150;
+  const boxH = 132;
+  const gap = 12;
+  const margin = 36;
+  const headerH = 50;
+  const w = margin * 2 + cols * boxW + (cols - 1) * gap;
+  const h = headerH + margin + rows * boxH + (rows - 1) * gap + margin;
+  const cv = document.createElement('canvas');
+  cv.width = w;
+  cv.height = h;
+  const ctx = cv.getContext('2d');
+  if (!ctx) throw new Error('无法创建画布');
+
+  ctx.fillStyle = '#FFFFFF';
+  ctx.fillRect(0, 0, w, h);
+  ctx.fillStyle = '#1F2329';
+  ctx.font = '600 17px system-ui, sans-serif';
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'alphabetic';
+  ctx.fillText(
+    `${pattern.name || '拼豆图纸'} · 拼板总览 ${rows}×${cols}=${sheets.length} 块 · 底板 ${boardSize}×${boardSize}`,
+    margin,
+    headerH - 14,
+  );
+
+  for (const s of sheets) {
+    const bx = margin + s.boardX * (boxW + gap);
+    const by = headerH + margin + s.boardY * (boxH + gap);
+    // 缩略图
+    const cell = Math.min((boxW - 16) / s.width, (boxH - 42) / s.height);
+    const tx = bx + (boxW - s.width * cell) / 2;
+    const ty = by + 8;
+    for (let y = 0; y < s.height; y++) {
+      for (let x = 0; x < s.width; x++) {
+        const v = s.grid[y * s.width + x];
+        ctx.fillStyle = v === -1 ? '#F3F4F6' : (pal.colors[v] ? pal.colors[v].hex : '#FF00FF');
+        ctx.fillRect(tx + x * cell, ty + y * cell, cell + 0.4, cell + 0.4);
+      }
+    }
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = '#C9CFD8';
+    ctx.strokeRect(tx, ty, s.width * cell, s.height * cell);
+    // 标注
+    ctx.fillStyle = '#1F2329';
+    ctx.font = '600 13px system-ui, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(`板 ${s.boardY + 1}-${s.boardX + 1}`, bx + boxW / 2, by + boxH - 26);
+    ctx.fillStyle = '#6B7280';
+    ctx.font = '500 11px system-ui, sans-serif';
+    ctx.fillText(
+      `列 ${s.srcX + 1}~${s.srcX + s.width} · 行 ${s.srcY + 1}~${s.srcY + s.height}`,
+      bx + boxW / 2,
+      by + boxH - 11,
+    );
+  }
+
+  cv.toBlob((blob) => {
+    if (blob) downloadBlob(blob, `${pattern.name || '拼豆图纸'}-拼板总览.png`);
+  }, 'image/png');
 }
 
 const DRAFT_KEY = 'perler.web.draft';

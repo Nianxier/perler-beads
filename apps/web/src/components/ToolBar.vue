@@ -26,6 +26,7 @@ import {
   type Tool,
 } from '../core/editorState';
 import {
+  exportBoardOverview,
   exportBoardSheets,
   exportConstructionPng,
   exportJson,
@@ -234,6 +235,7 @@ async function onJsonPicked(e: Event): Promise<void> {
         <option :value="52">52×52</option>
       </select>
       <button class="btn" title="按底板拆成多张施工图 PNG，标注全局位置" @click="exportBoardSheets(editor.pattern, palette, boardSize)">分板导出</button>
+      <button class="btn" title="多底板时导出板位示意图" @click="exportBoardOverview(editor.pattern, palette, boardSize)">拼板总览</button>
       <button class="btn" @click="exportJson(editor.pattern)">保存 JSON</button>
       <button class="btn" @click="jsonInput?.click()">打开 JSON</button>
       <input ref="jsonInput" type="file" accept=".json,application/json" hidden @change="onJsonPicked" />
