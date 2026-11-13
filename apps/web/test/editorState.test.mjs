@@ -162,8 +162,11 @@ setColor(s6, 2);
 st = startStroke(s6);
 strokeStep(s6, 0, 0, st);
 strokeStep(s6, 2, 0, st);
+const nBefore = s6.pattern.grid.filter((v) => v === 2).length;
 replaceColorDocument(s6, 2, 5);
+assert.equal(nBefore, 2, '换色前应有 2 格原色（提示文案取数用）');
 assert.deepEqual([...s6.pattern.grid], [5, -1, 5], '原 2 号应全换为 5');
+assert.equal(s6.pattern.grid.filter((v) => v === 2).length, 0, '换色后原色计数归零');
 assert.equal(undo(s6), true, '换色应可撤销');
 assert.deepEqual([...s6.pattern.grid], [2, -1, 2]);
 

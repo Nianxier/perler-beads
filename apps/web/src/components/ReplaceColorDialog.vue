@@ -32,10 +32,12 @@ function apply(): void {
     window.alert('原颜色和目标颜色相同');
     return;
   }
+  // 先取数量：换色后原色计数会变 0，不能事后再读
+  const n = fromCount.value;
   replaceColorDocument(editor, fromIdx.value, toIdx.value);
   bump();
   close();
-  showToast(`已把 ${fromCount.value} 格换色（可 Ctrl+Z 撤销）`);
+  showToast(`已把 ${n} 格换色（可 Ctrl+Z 撤销）`);
   viewApi.value?.fit();
 }
 </script>
