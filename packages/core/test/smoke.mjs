@@ -19,6 +19,8 @@ import {
   scalePattern,
   mergeSimilarColors,
   replaceColor,
+  extractRegion,
+  stampRegion,
   encodeShareCode,
   decodeShareCode,
   rgbToOklab,
@@ -242,6 +244,29 @@ for (const n of [72, 96, 120, 144]) {
   assert.equal(set.colors.length, n, `MARD 套装${n}色数量应吻合`);
 }
 assert.equal(listPalettes().length, 13, '应有 13 套色卡');
+
+// 19. 选区提取与盖印
+const reg0 = createPattern(3, 3, 'mard');
+setCell(reg0, 0, 0, 1);
+setCell(reg0, 1, 0, 2);
+setCell(reg0, 2, 2, 3);
+const ext = extractRegion(reg0, { x: 1, y: 0, w: 2, h: 2 });
+assert.equal(ext.width, 2);
+assert.equal(ext.grid[0], 2, '(1,0) 应成为提取图左上');
+assert.equal(ext.grid[1], EMPTY);
+const stamped = stampRegion(createPattern(3, 3, 'mard'), ext, 1, 1, 'replace');
+assert.equal(getCell(stamped, 1, 1), 2);
+assert.equal(getCell(stamped, 2, 1), EMPTY);
+assert.equal(getCell(stamped, 3, 3) === EMPTY, true, '越界盖印应裁掉');
+// merge：空格不覆盖
+const base2 = createPattern(2, 2, 'mard');
+setCell(base2, 0, 0, 5);
+setCell(base2, 1, 0, 7);
+const half = extractRegion(reg0, { x: 1, y: 0, w: 2, h: 1 }); // [2, EMPTY]
+const mg = stampRegion(base2, half, 0, 0, 'merge');
+assert.equal(getCell(mg, 0, 0), 2, 'merge 非空格应覆盖');
+assert.equal(getCell(mg, 1, 0), 7, 'merge 空格不应覆盖');
+assert.throws(() => extractRegion(reg0, { x: 0, y: 0, w: 0, h: 1 }), /选区/);
 
 console.log('SMOKE PASS');
 console.log(`  色系数=${palettes.length} MARD=${mard.colors.length} 色`);

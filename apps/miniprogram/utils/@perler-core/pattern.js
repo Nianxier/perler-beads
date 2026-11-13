@@ -10,6 +10,8 @@ exports.usageStats = usageStats;
 exports.colorSteps = colorSteps;
 exports.serializePattern = serializePattern;
 exports.resizePattern = resizePattern;
+exports.extractRegion = extractRegion;
+exports.stampRegion = stampRegion;
 exports.scalePattern = scalePattern;
 exports.mergeSimilarColors = mergeSimilarColors;
 exports.splitByBoards = splitByBoards;
@@ -141,6 +143,39 @@ function resizePattern(p, width, height, offsetX = 0, offsetY = 0) {
             const v = p.grid[y * p.width + x];
             if (v !== types_js_1.EMPTY)
                 next.grid[ny * width + nx] = v;
+        }
+    }
+    return next;
+}
+/** 提取区域为小图纸（区域越界部分留空） */
+function extractRegion(p, rect) {
+    if (rect.w < 1 || rect.h < 1)
+        throw new Error('选区尺寸无效');
+    const next = createPattern(rect.w, rect.h, p.paletteId, p.name);
+    for (let y = 0; y < rect.h; y++) {
+        for (let x = 0; x < rect.w; x++) {
+            const sx = rect.x + x;
+            const sy = rect.y + y;
+            if (sx < 0 || sy < 0 || sx >= p.width || sy >= p.height)
+                continue;
+            next.grid[y * rect.w + x] = p.grid[sy * p.width + sx];
+        }
+    }
+    return next;
+}
+/** 把区域盖印到图纸 (x,y)：replace=全覆盖；merge=空格不覆盖。越界部分裁掉 */
+function stampRegion(p, region, x, y, mode = 'replace') {
+    const next = { ...p, grid: [...p.grid] };
+    for (let ry = 0; ry < region.height; ry++) {
+        for (let rx = 0; rx < region.width; rx++) {
+            const tx = x + rx;
+            const ty = y + ry;
+            if (tx < 0 || ty < 0 || tx >= p.width || ty >= p.height)
+                continue;
+            const v = region.grid[ry * region.width + rx];
+            if (mode === 'merge' && v === types_js_1.EMPTY)
+                continue;
+            next.grid[ty * p.width + tx] = v;
         }
     }
     return next;

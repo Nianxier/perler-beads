@@ -108,6 +108,10 @@ export const showReplace = ref(false);
 /** 分享码弹窗显隐 */
 export const showShare = ref(false);
 
+/** 当前选区（null=无）与拖动预览偏移 */
+export const selection = ref<{ x: number; y: number; w: number; h: number } | null>(null);
+export const selPreview = ref<{ dx: number; dy: number } | null>(null);
+
 /** 轻量提示（右下角，自动消失） */
 export const toast = ref('');
 let toastTimer: ReturnType<typeof setTimeout> | undefined;

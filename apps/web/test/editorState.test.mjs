@@ -35,6 +35,8 @@ const {
   transformDocument,
   scaleDocument,
   replaceColorDocument,
+  moveRegion,
+  clearRegion,
 } = m;
 
 // 1. 初始状态
@@ -169,6 +171,28 @@ assert.deepEqual([...s6.pattern.grid], [5, -1, 5], '原 2 号应全换为 5');
 assert.equal(s6.pattern.grid.filter((v) => v === 2).length, 0, '换色后原色计数归零');
 assert.equal(undo(s6), true, '换色应可撤销');
 assert.deepEqual([...s6.pattern.grid], [2, -1, 2]);
+
+// 12. 选区移动/复制/清空（均可撤销）
+const s7 = createEditor(4, 4, 'mard');
+setTool(s7, 'pencil');
+setColor(s7, 3);
+st = startStroke(s7);
+strokeStep(s7, 0, 0, st);
+strokeStep(s7, 1, 0, st);
+moveRegion(s7, { x: 0, y: 0, w: 2, h: 1 }, 2, 2);
+assert.equal(s7.pattern.grid[2 * 4 + 2], 3, '内容应移到 (2,2)');
+assert.equal(s7.pattern.grid[0], -1, '移动后原区清空');
+assert.equal(s7.pattern.grid[1], -1);
+assert.equal(undo(s7), true, '移动应可撤销');
+assert.equal(s7.pattern.grid[0], 3);
+moveRegion(s7, { x: 0, y: 0, w: 2, h: 1 }, 0, 3, true);
+assert.equal(s7.pattern.grid[0], 3, 'copy 模式保留原区');
+assert.equal(s7.pattern.grid[3 * 4 + 0], 3);
+assert.equal(s7.pattern.grid[3 * 4 + 1], 3);
+clearRegion(s7, { x: 0, y: 0, w: 2, h: 1 });
+assert.equal(s7.pattern.grid[0], -1);
+assert.equal(s7.pattern.grid[3 * 4 + 0], 3, '只清选区内');
+assert.equal(undo(s7), true, '清空应可撤销');
 
 // 11. 多文档标签（session 层——防止“点了无反应”类 bug 漏网）
 const sOut = await build({

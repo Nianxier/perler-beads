@@ -2,7 +2,17 @@
 import { onBeforeUnmount, onMounted, ref, watch } from 'vue';
 import { getPalette, type Palette } from '@perler/core';
 import { editor, bump, showCodes, showGrid, version, viewApi } from '../core/session';
-import { redo, startStroke, strokeLine, strokeStep, undo, type StrokeSession } from '../core/editorState';
+import {
+  redo,
+  startStroke,
+  strokeLine,
+  strokeStep,
+  undo,
+  moveRegion,
+  clearRegion,
+  type StrokeSession,
+} from '../core/editorState';
+import { selection, selPreview } from '../core/session';
 import { renderPattern, type ViewTransform } from '../core/renderPattern';
 
 const container = ref<HTMLDivElement | null>(null);
@@ -24,7 +34,12 @@ function draw(): void {
     editor.pattern,
     palette,
     view,
-    { showGrid: showGrid.value, showCodes: showCodes.value },
+    {
+      showGrid: showGrid.value,
+      showCodes: showCodes.value,
+      selection: selection.value,
+      selOffset: selPreview.value,
+    },
     cssW,
     cssH,
     dpr,
@@ -78,6 +93,7 @@ function zoomBy(factor: number): void {
 let stroke: StrokeSession | null = null;
 let lastCell: [number, number] | null = null;
 let panning = false;
+let selDrag: { mode: 'marquee' | 'move'; startX: number; startY: number; copy: boolean } | null = null;
 const panStart = { x: 0, y: 0, ox: 0, oy: 0 };
 let spaceDown = false;
 
@@ -101,8 +117,20 @@ function onPointerDown(e: PointerEvent): void {
     panStart.oy = view.oy;
     return;
   }
-  stroke = startStroke(editor);
   const [x, y] = toCell(e);
+  if (editor.tool === 'select') {
+    const sel = selection.value;
+    if (sel && x >= sel.x && x < sel.x + sel.w && y >= sel.y && y < sel.y + sel.h) {
+      selDrag = { mode: 'move', startX: x, startY: y, copy: e.altKey };
+    } else {
+      selDrag = { mode: 'marquee', startX: x, startY: y, copy: false };
+      selection.value = { x, y, w: 1, h: 1 };
+      selPreview.value = null;
+    }
+    bump();
+    return;
+  }
+  stroke = startStroke(editor);
   strokeStep(editor, x, y, stroke);
   lastCell = [x, y];
   bump();
@@ -115,8 +143,17 @@ function onPointerMove(e: PointerEvent): void {
     schedule();
     return;
   }
-  if (!stroke) return;
   const [x, y] = toCell(e);
+  if (selDrag) {
+    if (selDrag.mode === 'marquee') {
+      selection.value = normalizeRect(selDrag.startX, selDrag.startY, x, y);
+    } else {
+      selPreview.value = { dx: x - selDrag.startX, dy: y - selDrag.startY };
+    }
+    bump();
+    return;
+  }
+  if (!stroke) return;
   if (lastCell) strokeLine(editor, lastCell[0], lastCell[1], x, y, stroke);
   else strokeStep(editor, x, y, stroke);
   lastCell = [x, y];
@@ -124,9 +161,32 @@ function onPointerMove(e: PointerEvent): void {
 }
 
 function onPointerUp(): void {
+  if (selDrag) {
+    const sel = selection.value;
+    if (selDrag.mode === 'move' && sel) {
+      const pv = selPreview.value;
+      if (pv && (pv.dx !== 0 || pv.dy !== 0)) {
+        moveRegion(editor, sel, pv.dx, pv.dy, selDrag.copy);
+        selection.value = { ...sel, x: sel.x + pv.dx, y: sel.y + pv.dy };
+      }
+      selPreview.value = null;
+    }
+    selDrag = null;
+    bump();
+    return;
+  }
   stroke = null;
   lastCell = null;
   panning = false;
+}
+
+function normalizeRect(x0: number, y0: number, x1: number, y1: number) {
+  return {
+    x: Math.min(x0, x1),
+    y: Math.min(y0, y1),
+    w: Math.abs(x1 - x0) + 1,
+    h: Math.abs(y1 - y0) + 1,
+  };
 }
 
 function onWheel(e: WheelEvent): void {
@@ -157,6 +217,20 @@ function onKeyDown(e: KeyboardEvent): void {
     e.preventDefault();
     return;
   }
+  if (e.key === 'Escape' && selection.value) {
+    selection.value = null;
+    selPreview.value = null;
+    bump();
+    return;
+  }
+  if ((e.key === 'Delete' || e.key === 'Backspace') && selection.value) {
+    clearRegion(editor, selection.value);
+    selection.value = null;
+    selPreview.value = null;
+    bump();
+    e.preventDefault();
+    return;
+  }
   if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'z' && !e.shiftKey) {
     if (undo(editor)) bump();
     e.preventDefault();
@@ -172,6 +246,7 @@ function onKeyDown(e: KeyboardEvent): void {
       e: 'eraser',
       g: 'bucket',
       i: 'picker',
+      s: 'select',
     };
     const t = tools[e.key.toLowerCase()];
     if (t) {

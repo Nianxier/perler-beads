@@ -2,18 +2,21 @@
 import {
   EMPTY,
   createPattern,
+  extractRegion,
   floodFill,
   getCell,
   replaceColor,
   resizePattern,
   scalePattern,
   setCell,
+  stampRegion,
   transformPattern,
   type Pattern,
   type PatternTransform,
+  type Rect,
 } from '@perler/core';
 
-export type Tool = 'pencil' | 'eraser' | 'bucket' | 'picker';
+export type Tool = 'pencil' | 'eraser' | 'bucket' | 'picker' | 'select';
 
 export interface EditorState {
   pattern: Pattern;
@@ -128,6 +131,31 @@ export function replaceColorDocument(s: EditorState, fromIdx: number, toIdx: num
   s.pattern = replaceColor(s.pattern, fromIdx, toIdx);
 }
 
+/** 移动/复制选区内容（copy=原区保留），可撤销 */
+export function moveRegion(
+  s: EditorState,
+  rect: Rect,
+  dx: number,
+  dy: number,
+  copy = false,
+): void {
+  snapshot(s);
+  const region = extractRegion(s.pattern, rect);
+  let next = s.pattern;
+  if (!copy) {
+    const blank = createPattern(rect.w, rect.h, s.pattern.paletteId, s.pattern.name);
+    next = stampRegion(next, blank, rect.x, rect.y, 'replace');
+  }
+  s.pattern = stampRegion(next, region, rect.x + dx, rect.y + dy, 'replace');
+}
+
+/** 清空选区内容（Delete），可撤销 */
+export function clearRegion(s: EditorState, rect: Rect): void {
+  snapshot(s);
+  const blank = createPattern(rect.w, rect.h, s.pattern.paletteId, s.pattern.name);
+  s.pattern = stampRegion(s.pattern, blank, rect.x, rect.y, 'replace');
+}
+
 export function startStroke(_s: EditorState): StrokeSession {
   return { changed: false, picked: false };
 }
@@ -136,6 +164,8 @@ export function startStroke(_s: EditorState): StrokeSession {
 export function strokeStep(s: EditorState, x: number, y: number, st: StrokeSession): StrokeResult {
   const cur = getCell(s.pattern, x, y);
   switch (s.tool) {
+    case 'select':
+      return 'none';
     case 'picker':
       if (st.picked) return 'none';
       st.picked = true;

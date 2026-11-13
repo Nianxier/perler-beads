@@ -12,6 +12,8 @@ export interface ViewTransform {
 export interface RenderOptions {
   showGrid: boolean;
   showCodes: boolean;
+  selection?: { x: number; y: number; w: number; h: number } | null;
+  selOffset?: { dx: number; dy: number } | null;
 }
 
 const BG = '#EEF0F3';
@@ -96,6 +98,25 @@ export function renderPattern(
         ctx.fillText(code, ox + (x + 0.5) * cell, oy + (y + 0.5) * cell);
       }
     }
+  }
+
+  // 选区：源区半透明 + 目标区虚线框（拖动预览）
+  const sel = opts.selection;
+  if (sel) {
+    const dx = opts.selOffset?.dx ?? 0;
+    const dy = opts.selOffset?.dy ?? 0;
+    ctx.fillStyle = 'rgba(37, 99, 235, 0.08)';
+    ctx.fillRect(ox + sel.x * cell, oy + sel.y * cell, sel.w * cell, sel.h * cell);
+    ctx.setLineDash([6, 4]);
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = '#2563EB';
+    ctx.strokeRect(
+      ox + (sel.x + dx) * cell,
+      oy + (sel.y + dy) * cell,
+      sel.w * cell,
+      sel.h * cell,
+    );
+    ctx.setLineDash([]);
   }
 
   // 图纸外框

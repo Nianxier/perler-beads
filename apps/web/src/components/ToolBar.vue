@@ -73,6 +73,7 @@ const tools: Array<{ id: Tool; label: string; key: string }> = [
   { id: 'eraser', label: '橡皮', key: 'E' },
   { id: 'bucket', label: '油漆桶', key: 'G' },
   { id: 'picker', label: '取色', key: 'I' },
+  { id: 'select', label: '选区', key: 'S' },
 ];
 
 function pickTool(t: Tool): void {

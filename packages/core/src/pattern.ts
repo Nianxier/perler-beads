@@ -140,6 +140,50 @@ export function resizePattern(
 
 export type PatternTransform = 'flipH' | 'flipV' | 'rotateCW' | 'rotateCCW';
 
+export interface Rect {
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+}
+
+/** 提取区域为小图纸（区域越界部分留空） */
+export function extractRegion(p: Pattern, rect: Rect): Pattern {
+  if (rect.w < 1 || rect.h < 1) throw new Error('选区尺寸无效');
+  const next = createPattern(rect.w, rect.h, p.paletteId, p.name);
+  for (let y = 0; y < rect.h; y++) {
+    for (let x = 0; x < rect.w; x++) {
+      const sx = rect.x + x;
+      const sy = rect.y + y;
+      if (sx < 0 || sy < 0 || sx >= p.width || sy >= p.height) continue;
+      next.grid[y * rect.w + x] = p.grid[sy * p.width + sx];
+    }
+  }
+  return next;
+}
+
+/** 把区域盖印到图纸 (x,y)：replace=全覆盖；merge=空格不覆盖。越界部分裁掉 */
+export function stampRegion(
+  p: Pattern,
+  region: Pattern,
+  x: number,
+  y: number,
+  mode: 'replace' | 'merge' = 'replace',
+): Pattern {
+  const next: Pattern = { ...p, grid: [...p.grid] };
+  for (let ry = 0; ry < region.height; ry++) {
+    for (let rx = 0; rx < region.width; rx++) {
+      const tx = x + rx;
+      const ty = y + ry;
+      if (tx < 0 || ty < 0 || tx >= p.width || ty >= p.height) continue;
+      const v = region.grid[ry * region.width + rx];
+      if (mode === 'merge' && v === EMPTY) continue;
+      next.grid[ty * p.width + tx] = v;
+    }
+  }
+  return next;
+}
+
 /** 缩放图纸内容（最近邻重采样）到新尺寸：放大=色块复制铺开，缩小=抽样合并 */
 export function scalePattern(p: Pattern, width: number, height: number): Pattern {
   if (!Number.isInteger(width) || !Number.isInteger(height) || width < 1 || height < 1) {
