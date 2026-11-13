@@ -120,9 +120,11 @@ function buildConstructionCanvas(
   cellSize: number,
   subtitle = '',
   coord: { x: number; y: number } = { x: 0, y: 0 },
+  highlight: number | null = null,
 ): HTMLCanvasElement {
   const pal = palette ?? getPalette(pattern.paletteId);
   const usage = usageStats(pattern, pal);
+  const shown = highlight != null ? usage.filter((u) => u.index === highlight) : usage;
   const total = usage.reduce((n, u) => n + u.count, 0);
   const margin = 44;
   const headerH = subtitle ? 80 : 56;
@@ -132,7 +134,7 @@ function buildConstructionCanvas(
   const chipH = 30;
   const chipGap = 4;
   const legendCols = Math.max(4, Math.floor(legendW / (chipW + chipGap)));
-  const legendRows = Math.max(1, Math.ceil(usage.length / legendCols));
+  const legendRows = Math.max(1, Math.ceil(shown.length / legendCols));
   const legendH = 52 + legendRows * (chipH + chipGap);
   const w = legendW + margin * 2;
   const h = headerH + margin + pattern.height * cellSize + legendH + margin;
@@ -174,10 +176,11 @@ function buildConstructionCanvas(
         ctx.fillStyle = '#FFFFFF';
         ctx.fillRect(px, py, cellSize, cellSize);
       } else {
+        const dimmed = highlight != null && v !== highlight;
         const hex = pal.colors[v]?.hex ?? '#FF00FF';
-        ctx.fillStyle = hex;
+        ctx.fillStyle = dimmed ? '#E8EAEE' : hex;
         ctx.fillRect(px, py, cellSize, cellSize);
-        if (cellSize >= 16) {
+        if (cellSize >= 16 && !dimmed) {
           ctx.fillStyle = contrastText(hex);
           ctx.font = `500 ${Math.floor(cellSize * 0.36)}px system-ui, sans-serif`;
           ctx.textAlign = 'center';
@@ -245,10 +248,10 @@ function buildConstructionCanvas(
   ctx.font = '600 15px system-ui, sans-serif';
   ctx.textAlign = 'left';
   ctx.textBaseline = 'alphabetic';
-  ctx.fillText(`用量明细（共 ${total} 颗 · ${usage.length} 种颜色）`, ox, legendTop);
+  ctx.fillText(`用量明细（共 ${total} 颗 · ${shown.length} 种颜色）`, ox, legendTop);
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
-  usage.forEach((u, i) => {
+  shown.forEach((u, i) => {
     const cx = ox + (i % legendCols) * (chipW + chipGap);
     const cy = legendTop + 22 + Math.floor(i / legendCols) * (chipH + chipGap);
     ctx.fillStyle = u.hex;
@@ -366,6 +369,62 @@ export function exportBoardOverview(pattern: Pattern, palette?: Palette, boardSi
   cv.toBlob((blob) => {
     if (blob) downloadBlob(blob, `${pattern.name || '拼豆图纸'}-拼板总览.png`);
   }, 'image/png');
+}
+
+/** PDF 页规划（纯函数，可单测）：总图页 + 每色一页分色施工页 */
+export function planPdfPages(
+  pattern: Pattern,
+  palette?: Palette,
+): Array<{ type: 'overview' } | { type: 'color'; index: number; code: string; count: number }> {
+  const pal = palette ?? getPalette(pattern.paletteId);
+  return [
+    { type: 'overview' },
+    ...usageStats(pattern, pal).map((u) => ({
+      type: 'color' as const,
+      index: u.index,
+      code: u.code,
+      count: u.count,
+    })),
+  ];
+}
+
+/** 导出 PDF：第 1 页施工总图，后续每色一页（该色高亮 + 色号数量） */
+export async function exportPdf(pattern: Pattern, palette?: Palette): Promise<void> {
+  const { jsPDF } = await import('jspdf');
+  const pal = palette ?? getPalette(pattern.paletteId);
+  const pages = planPdfPages(pattern, pal);
+  const landscape = pattern.width >= pattern.height;
+  const orient = landscape ? 'landscape' : 'portrait';
+  const pdf = new jsPDF({ unit: 'mm', format: 'a4', orientation: orient });
+
+  const addCanvas = (cv: HTMLCanvasElement, first: boolean): void => {
+    if (!first) pdf.addPage('a4', orient);
+    const pw = landscape ? 297 : 210;
+    const ph = landscape ? 210 : 297;
+    const margin = 10;
+    const k = Math.min((pw - margin * 2) / cv.width, (ph - margin * 2) / cv.height);
+    const w = cv.width * k;
+    const h = cv.height * k;
+    pdf.addImage(cv.toDataURL('image/png'), 'PNG', (pw - w) / 2, (ph - h) / 2, w, h);
+  };
+
+  let first = true;
+  let colorSeq = 0;
+  const colorTotal = pages.filter((p) => p.type === 'color').length;
+  for (const page of pages) {
+    if (page.type === 'overview') {
+      addCanvas(buildConstructionCanvas(pattern, pal, 28), first);
+    } else {
+      colorSeq += 1;
+      const subtitle = `分色施工页：${page.code} ${pal.colors[page.index]?.hex ?? ''} · ${page.count} 格（第 ${colorSeq}/${colorTotal} 色）`;
+      addCanvas(
+        buildConstructionCanvas(pattern, pal, 28, subtitle, { x: 0, y: 0 }, page.index),
+        first,
+      );
+    }
+    first = false;
+  }
+  pdf.save(`${pattern.name || '拼豆图纸'}-施工图.pdf`);
 }
 
 const DRAFT_KEY = 'perler.web.draft';

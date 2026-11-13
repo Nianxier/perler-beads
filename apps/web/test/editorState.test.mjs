@@ -259,6 +259,7 @@ const fOut = await build({
   format: 'esm',
   write: false,
   absWorkingDir: appRoot,
+  external: ['jspdf'],
   logLevel: 'silent',
 });
 const fTmp = join(dir2, 'fileIO.bundle.mjs');
@@ -284,6 +285,14 @@ assert.deepEqual(fio.computeImportSize(100, 50, { sizeMode: 'custom', width: 64 
   height: 32,
   capped: false,
 });
+
+// 15. PDF 页规划（总图 + 每色一页）
+const pages = fio.planPdfPages(s5.pattern);
+assert.equal(pages[0].type, 'overview', '第一页应为施工总图');
+assert.equal(pages.length, 2, 's5 用 1 种色 → 总图 + 1 分色页');
+assert.equal(pages[1].type, 'color');
+assert.equal(pages[1].count, 1);
+assert.match(pages[1].code, /^[A-Z]+\d{2}$/);
 
 rmSync(dir2, { recursive: true, force: true });
 console.log('WEB STATE TEST PASS');

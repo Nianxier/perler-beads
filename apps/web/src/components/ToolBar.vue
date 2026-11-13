@@ -32,6 +32,7 @@ import {
   exportBoardSheets,
   exportConstructionPng,
   exportJson,
+  exportPdf,
   imageFileToPattern,
   openJsonFile,
 } from '../core/fileIO';
@@ -140,6 +141,15 @@ function doResize(): void {
 function doSaveWork(): void {
   saveWork(editor.pattern);
   showToast('已保存到作品库（可在「作品库」中打开）');
+}
+
+async function doExportPdf(): Promise<void> {
+  try {
+    await exportPdf(editor.pattern, palette);
+    showToast('PDF 已导出（施工总图 + 每色一页）');
+  } catch (err) {
+    window.alert((err as Error).message || 'PDF 导出失败');
+  }
 }
 
 function doTransform(op: 'flipH' | 'flipV' | 'rotateCW' | 'rotateCCW'): void {
@@ -266,6 +276,7 @@ async function onJsonPicked(e: Event): Promise<void> {
 
     <div class="group">
       <button class="btn" @click="exportConstructionPng(editor.pattern, palette)">导出施工图</button>
+      <button class="btn" title="多页 PDF：施工总图 + 每色一页分色施工页" @click="doExportPdf">导出 PDF</button>
       <span class="lbl">底板</span>
       <select v-model.number="boardSize" class="sel">
         <option :value="29">29×29</option>
