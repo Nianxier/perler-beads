@@ -19,4 +19,5 @@ __exportStar(require("./color.js"), exports);
 __exportStar(require("./palette.js"), exports);
 __exportStar(require("./quantize.js"), exports);
 __exportStar(require("./pattern.js"), exports);
+__exportStar(require("./shapes.js"), exports);
 __exportStar(require("./shareCode.js"), exports);

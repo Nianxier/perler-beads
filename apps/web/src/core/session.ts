@@ -112,6 +112,10 @@ export const showShare = ref(false);
 export const selection = ref<{ x: number; y: number; w: number; h: number } | null>(null);
 export const selPreview = ref<{ dx: number; dy: number } | null>(null);
 
+/** 插入文字/形状弹窗显隐；待放置的区域（点画布放置） */
+export const showInsert = ref(false);
+export const pendingStamp = ref<Pattern | null>(null);
+
 /** 轻量提示（右下角，自动消失） */
 export const toast = ref('');
 let toastTimer: ReturnType<typeof setTimeout> | undefined;

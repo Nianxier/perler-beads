@@ -156,6 +156,12 @@ export function clearRegion(s: EditorState, rect: Rect): void {
   s.pattern = stampRegion(s.pattern, blank, rect.x, rect.y, 'replace');
 }
 
+/** 放置文字/形状区域（可撤销） */
+export function stampToolRegion(s: EditorState, region: Pattern, x: number, y: number): void {
+  snapshot(s);
+  s.pattern = stampRegion(s.pattern, region, x, y, 'replace');
+}
+
 export function startStroke(_s: EditorState): StrokeSession {
   return { changed: false, picked: false };
 }

@@ -21,6 +21,9 @@ import {
   replaceColor,
   extractRegion,
   stampRegion,
+  makeRectRegion,
+  makeEllipseRegion,
+  makeTextRegion,
   encodeShareCode,
   decodeShareCode,
   rgbToOklab,
@@ -267,6 +270,34 @@ const mg = stampRegion(base2, half, 0, 0, 'merge');
 assert.equal(getCell(mg, 0, 0), 2, 'merge 非空格应覆盖');
 assert.equal(getCell(mg, 1, 0), 7, 'merge 空格不应覆盖');
 assert.throws(() => extractRegion(reg0, { x: 0, y: 0, w: 0, h: 1 }), /选区/);
+
+// 20. 文字与形状区域
+const rectF = makeRectRegion(4, 3, { color: 2, filled: true });
+assert.equal(rectF.grid.filter((v) => v === 2).length, 12);
+const rectO = makeRectRegion(5, 5, { color: 2, filled: false, thickness: 1 });
+assert.equal(rectO.grid[0], 2);
+assert.equal(rectO.grid[2 * 5 + 2], EMPTY, '描边矩形中心应为空');
+assert.equal(rectO.grid.filter((v) => v === 2).length, 16, '5×5 描边应为 16 格');
+const ell = makeEllipseRegion(9, 9, { color: 3, filled: true });
+assert.equal(ell.grid[4 * 9 + 4], 3, '圆心应填充');
+assert.equal(ell.grid[0], EMPTY, '角上应为空');
+const ellO = makeEllipseRegion(9, 9, { color: 3, filled: false });
+assert.equal(ellO.grid[4 * 9 + 4], EMPTY, '描边圆内部应为空');
+assert.equal(ellO.grid[4 * 9 + 0], 3, '描边圆左右端点应有豆');
+const txt = makeTextRegion('AB', { color: 5, paletteId: 'mard-221' });
+assert.equal(txt.height, 7);
+assert.equal(txt.width, 2 * (5 + 1) - 1);
+assert.ok(txt.grid.filter((v) => v === 5).length > 10, '文字应有笔画像素');
+const txtBig = makeTextRegion('A', { color: 5, paletteId: 'mard-221', scale: 2 });
+assert.equal(txtBig.height, 14);
+const multi = makeTextRegion('A\nB', { color: 5, paletteId: 'mard-221' });
+assert.equal(multi.height, 15, '两行 = 7+1+7');
+assert.deepEqual(
+  makeTextRegion('a', { color: 5, paletteId: 'mard-221' }).grid,
+  makeTextRegion('A', { color: 5, paletteId: 'mard-221' }).grid,
+  '小写应映射为大写 A',
+);
+assert.throws(() => makeRectRegion(0, 3, { color: 1 }), /正整数/);
 
 console.log('SMOKE PASS');
 console.log(`  色系数=${palettes.length} MARD=${mard.colors.length} 色`);

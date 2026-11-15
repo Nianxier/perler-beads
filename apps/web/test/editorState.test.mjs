@@ -37,6 +37,7 @@ const {
   replaceColorDocument,
   moveRegion,
   clearRegion,
+  stampToolRegion,
 } = m;
 
 // 1. 初始状态
@@ -193,6 +194,24 @@ clearRegion(s7, { x: 0, y: 0, w: 2, h: 1 });
 assert.equal(s7.pattern.grid[0], -1);
 assert.equal(s7.pattern.grid[3 * 4 + 0], 3, '只清选区内');
 assert.equal(undo(s7), true, '清空应可撤销');
+
+// 13. 放置文字/形状区域（可撤销）
+const s8 = createEditor(5, 5, 'mard');
+const region = {
+  schema: 'perler-pattern',
+  version: 1,
+  name: 'shape',
+  paletteId: 'mard',
+  width: 2,
+  height: 2,
+  grid: [6, 6, 6, 6],
+};
+stampToolRegion(s8, region, 3, 3);
+assert.equal(s8.pattern.grid[3 * 5 + 3], 6);
+assert.equal(s8.pattern.grid[4 * 5 + 4], 6);
+assert.equal(s8.pattern.grid[0], -1);
+assert.equal(undo(s8), true, '放置应可撤销');
+assert.equal(s8.pattern.grid[3 * 5 + 3], -1);
 
 // 11. 多文档标签（session 层——防止“点了无反应”类 bug 漏网）
 const sOut = await build({

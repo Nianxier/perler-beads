@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted } from 'vue';
 import EditorCanvas from './components/EditorCanvas.vue';
+import InsertDialog from './components/InsertDialog.vue';
 import PalettePanel from './components/PalettePanel.vue';
 import ReplaceColorDialog from './components/ReplaceColorDialog.vue';
 import ShareDialog from './components/ShareDialog.vue';
@@ -14,6 +15,7 @@ import {
   createDocument,
   editor,
   activeTabId,
+  showInsert,
   showReplace,
   showShare,
   showStartWizard,
@@ -63,6 +65,7 @@ onBeforeUnmount(() => {
     <WorksPanel v-if="showWorks" />
     <ReplaceColorDialog v-if="showReplace" />
     <ShareDialog v-if="showShare" />
+    <InsertDialog v-if="showInsert" />
     <div v-if="toast" class="toast">{{ toast }}</div>
     <div class="tabbar">
       <button

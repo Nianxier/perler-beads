@@ -10,9 +10,10 @@ import {
   undo,
   moveRegion,
   clearRegion,
+  stampToolRegion,
   type StrokeSession,
 } from '../core/editorState';
-import { selection, selPreview } from '../core/session';
+import { pendingStamp, selection, selPreview, showToast } from '../core/session';
 import { renderPattern, type ViewTransform } from '../core/renderPattern';
 
 const container = ref<HTMLDivElement | null>(null);
@@ -118,6 +119,13 @@ function onPointerDown(e: PointerEvent): void {
     return;
   }
   const [x, y] = toCell(e);
+  if (pendingStamp.value) {
+    stampToolRegion(editor, pendingStamp.value, x, y);
+    pendingStamp.value = null;
+    showToast('已放置（可 Ctrl+Z 撤销）');
+    bump();
+    return;
+  }
   if (editor.tool === 'select') {
     const sel = selection.value;
     if (sel && x >= sel.x && x < sel.x + sel.w && y >= sel.y && y < sel.y + sel.h) {
@@ -217,11 +225,19 @@ function onKeyDown(e: KeyboardEvent): void {
     e.preventDefault();
     return;
   }
-  if (e.key === 'Escape' && selection.value) {
-    selection.value = null;
-    selPreview.value = null;
-    bump();
-    return;
+  if (e.key === 'Escape') {
+    if (pendingStamp.value) {
+      pendingStamp.value = null;
+      showToast('已取消放置');
+      bump();
+      return;
+    }
+    if (selection.value) {
+      selection.value = null;
+      selPreview.value = null;
+      bump();
+      return;
+    }
   }
   if ((e.key === 'Delete' || e.key === 'Backspace') && selection.value) {
     clearRegion(editor, selection.value);
