@@ -116,6 +116,9 @@ export const selPreview = ref<{ dx: number; dy: number } | null>(null);
 export const showInsert = ref(false);
 export const pendingStamp = ref<Pattern | null>(null);
 
+/** 3D 预览弹窗显隐 */
+export const show3d = ref(false);
+
 /** 轻量提示（右下角，自动消失） */
 export const toast = ref('');
 let toastTimer: ReturnType<typeof setTimeout> | undefined;

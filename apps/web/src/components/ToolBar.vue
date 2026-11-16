@@ -6,6 +6,7 @@ import {
   createDocument,
   editor,
   loadDocument,
+  show3d,
   showCodes,
   showGrid,
   showInsert,
@@ -293,6 +294,7 @@ async function onJsonPicked(e: Event): Promise<void> {
       <button class="btn" @click="showWorks = true">作品库</button>
       <button class="btn" title="把图中某色全部换成另一色" @click="showReplace = true">批量换色</button>
       <button class="btn" title="插入文字/矩形/圆形，点画布放置" @click="showInsert = true">插入</button>
+      <button class="btn" title="圆珠立体预览" @click="show3d = true">3D</button>
       <button class="btn" title="生成/打开图纸分享码" @click="showShare = true">分享码</button>
     </div>
   </div>

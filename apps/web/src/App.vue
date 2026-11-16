@@ -7,6 +7,7 @@ import ReplaceColorDialog from './components/ReplaceColorDialog.vue';
 import ShareDialog from './components/ShareDialog.vue';
 import StartWizard from './components/StartWizard.vue';
 import StatsPanel from './components/StatsPanel.vue';
+import ThreePreview from './components/ThreePreview.vue';
 import ToolBar from './components/ToolBar.vue';
 import WorksPanel from './components/WorksPanel.vue';
 import {
@@ -15,6 +16,7 @@ import {
   createDocument,
   editor,
   activeTabId,
+  show3d,
   showInsert,
   showReplace,
   showShare,
@@ -66,6 +68,7 @@ onBeforeUnmount(() => {
     <ReplaceColorDialog v-if="showReplace" />
     <ShareDialog v-if="showShare" />
     <InsertDialog v-if="showInsert" />
+    <ThreePreview v-if="show3d" />
     <div v-if="toast" class="toast">{{ toast }}</div>
     <div class="tabbar">
       <button

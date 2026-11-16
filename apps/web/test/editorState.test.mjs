@@ -213,6 +213,26 @@ assert.equal(s8.pattern.grid[0], -1);
 assert.equal(undo(s8), true, '放置应可撤销');
 assert.equal(s8.pattern.grid[3 * 5 + 3], -1);
 
+// 14. 3D 场景数据（圆珠实例）
+const t3Out = await build({
+  entryPoints: [join(appRoot, 'src', 'core', 'three3d.ts')],
+  bundle: true,
+  format: 'esm',
+  write: false,
+  absWorkingDir: appRoot,
+  logLevel: 'silent',
+});
+const t3Tmp = join(dir, 'three3d.bundle.mjs');
+writeFileSync(t3Tmp, t3Out.outputFiles[0].text, 'utf8');
+const t3 = await import(pathToFileURL(t3Tmp).href);
+const scene = t3.buildBeadScene(s7.pattern);
+assert.equal(scene.beads.length, 4, 's7 末尾（撤销清空后）有 4 格豆');
+assert.equal(scene.width, 4);
+const xs = scene.beads.map((b) => b.x).sort((a, b) => a - b);
+assert.ok(Math.abs(xs[0] + 1.5) < 1e-9, '坐标应以图纸中心为原点（x=0 → -1.5）');
+assert.match(scene.beads[0].hex, /^#[0-9A-F]{6}$/);
+assert.equal(t3.beadCount(s7.pattern), 4);
+
 // 11. 多文档标签（session 层——防止“点了无反应”类 bug 漏网）
 const sOut = await build({
   entryPoints: [join(appRoot, 'src', 'core', 'session.ts')],
