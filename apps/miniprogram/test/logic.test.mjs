@@ -12,6 +12,7 @@ const root = fileURLToPath(new URL('..', import.meta.url));
 const core = require('../utils/@perler-core/index.js');
 assert.equal(typeof core.parsePattern, 'function');
 assert.equal(typeof core.colorSteps, 'function');
+assert.equal(typeof core.decodeShareCode, 'function');
 const p = core.createPattern(4, 4, 'mard');
 core.setCell(p, 0, 0, 2);
 core.setCell(p, 1, 0, 2);
@@ -21,6 +22,11 @@ const steps = core.colorSteps(p);
 assert.equal(steps.length, 2);
 const json = core.serializePattern(p);
 assert.equal(core.parsePattern(json).grid.length, 16);
+
+// 1b. 分享码在小程序端可解（电脑生成 → 小程序打开的链路）
+const share = core.encodeShareCode(p);
+assert.match(share, /^PB1-/);
+assert.deepEqual(core.decodeShareCode(share).grid, p.grid);
 
 // 2. 跟拼会话逻辑
 const follow = require('../utils/followSteps.js');

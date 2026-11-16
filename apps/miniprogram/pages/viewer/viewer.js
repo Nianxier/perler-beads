@@ -19,6 +19,9 @@ Page({
     totalSteps: 0,
     doneCells: 0,
     allCells: 0,
+    editMode: false,
+    editColor: 0,
+    paletteColors: [],
   },
 
   onLoad(query) {
@@ -36,12 +39,15 @@ Page({
     this.view = { cell: 16, ox: 12, oy: 12 };
 
     const usage = core.usageStats(this.pattern, this.palette);
+    this.undoStack = [];
     this.setData({
       name: pattern.name,
       width: pattern.width,
       height: pattern.height,
       total: usage.reduce((n, u) => n + u.count, 0),
       usage: usage.map((u) => ({ code: u.code, hex: u.hex, count: u.count })),
+      paletteColors: this.palette.colors.map((c, i) => ({ index: i, hex: c.hex, code: c.code })),
+      editColor: usage.length > 0 ? usage[0].index : 0,
     });
     this.syncFollow();
     wx.setNavigationBarTitle({ title: pattern.name || '拼豆图纸' });
@@ -215,5 +221,48 @@ Page({
     store.clearFollow(this.workId);
     this.syncFollow();
     this.draw();
+  },
+
+  // ---- 轻量编辑：点格涂色（自动保存） ----
+  toggleEdit(e) {
+    this.setData({ editMode: e.detail.value });
+  },
+
+  pickEditColor(e) {
+    this.setData({ editColor: Number(e.currentTarget.dataset.index) });
+  },
+
+  onCanvasTap(e) {
+    if (!this.data.editMode) return;
+    const x = Math.floor((e.detail.x - this.view.ox) / this.view.cell);
+    const y = Math.floor((e.detail.y - this.view.oy) / this.view.cell);
+    if (x < 0 || y < 0 || x >= this.pattern.width || y >= this.pattern.height) return;
+    if (core.getCell(this.pattern, x, y) === this.data.editColor) return;
+    this.undoStack.push(this.pattern.grid.slice());
+    if (this.undoStack.length > 20) this.undoStack.shift();
+    core.setCell(this.pattern, x, y, this.data.editColor);
+    store.updateWork(this.workId, this.pattern);
+    this.refreshUsage();
+    this.draw();
+  },
+
+  undoEdit() {
+    const grid = this.undoStack.pop();
+    if (!grid) {
+      wx.showToast({ title: '没有可撤销的编辑', icon: 'none' });
+      return;
+    }
+    this.pattern.grid = grid;
+    store.updateWork(this.workId, this.pattern);
+    this.refreshUsage();
+    this.draw();
+  },
+
+  refreshUsage() {
+    const usage = core.usageStats(this.pattern, this.palette);
+    this.setData({
+      total: usage.reduce((n, u) => n + u.count, 0),
+      usage: usage.map((u) => ({ code: u.code, hex: u.hex, count: u.count })),
+    });
   },
 });

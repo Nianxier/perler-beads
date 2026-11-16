@@ -32,6 +32,20 @@ function removeWork(id) {
   );
 }
 
+/** 更新已有作品（轻量编辑保存用） */
+function updateWork(id, pattern) {
+  const works = listWorks();
+  const idx = works.findIndex((x) => x.id === id);
+  if (idx < 0) return;
+  const w = works[idx];
+  w.name = pattern.name;
+  w.width = pattern.width;
+  w.height = pattern.height;
+  w.updatedAt = Date.now();
+  w.pattern = pattern;
+  wx.setStorageSync(KEY, works);
+}
+
 /** 跟拼进度（每张图纸一份） */
 function followKey(id) {
   return 'perler.follow.' + id;
@@ -54,6 +68,7 @@ module.exports = {
   saveWork,
   getWork,
   removeWork,
+  updateWork,
   saveFollow,
   loadFollow,
   clearFollow,

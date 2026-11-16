@@ -2,6 +2,13 @@
   <button type="primary" bindtap="importJson">从聊天文件导入图纸 JSON</button>
   <view class="hint">电脑端「保存 JSON」导出图纸后，把文件发到微信（文件传输助手或好友），再从这里导入即可查看和跟拼。</view>
 
+  <view class="share-box">
+    <view class="share-title">分享码导入</view>
+    <textarea class="share-ta" value="{{shareCode}}" bindinput="onShareInput"
+      placeholder="粘贴电脑端生成的 PB1- 开头分享码" maxlength="-1"></textarea>
+    <button size="mini" type="primary" bindtap="importShareCode">用分享码打开</button>
+  </view>
+
   <view class="list">
     <view class="card" wx:for="{{works}}" wx:key="id">
       <view class="main" bindtap="openWork" data-id="{{item.id}}">

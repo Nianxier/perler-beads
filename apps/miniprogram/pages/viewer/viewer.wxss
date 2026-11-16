@@ -118,3 +118,45 @@
   color: #6b7280;
   font-variant-numeric: tabular-nums;
 }
+
+.colors {
+  display: flex;
+  white-space: nowrap;
+  margin: 6px 0;
+  width: 100%;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  margin-right: 6px;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  font-size: 11px;
+  flex: none;
+}
+
+.chip.on {
+  border-color: #2563eb;
+  background: #eff6ff;
+}
+
+.sw2 {
+  width: 14px;
+  height: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+  flex: none;
+}
+
+.chip-code {
+  color: #4b5563;
+}
+
+.edit-hint {
+  color: #6b7280;
+  font-size: 11px;
+  margin-top: 4px;
+}

@@ -10,6 +10,7 @@ function formatDate(ts) {
 Page({
   data: {
     works: [],
+    shareCode: '',
   },
 
   onShow() {
@@ -55,6 +56,22 @@ Page({
         });
       },
     });
+  },
+
+  /** 分享码导入（PB1- 开头，粘贴自电脑端「分享码」） */
+  onShareInput(e) {
+    this.setData({ shareCode: e.detail.value });
+  },
+
+  importShareCode() {
+    try {
+      const pattern = core.decodeShareCode(this.data.shareCode);
+      const id = store.saveWork(pattern);
+      this.setData({ shareCode: '' });
+      wx.navigateTo({ url: '/pages/viewer/viewer?id=' + id });
+    } catch (err) {
+      wx.showToast({ title: (err && err.message) || '分享码无效', icon: 'none' });
+    }
   },
 
   openWork(e) {

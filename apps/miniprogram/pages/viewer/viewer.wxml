@@ -9,16 +9,29 @@
   </view>
 
   <view class="canvas-wrap" style="display:{{tab == 'usage' ? 'none' : 'block'}}">
-    <canvas type="2d" id="board" class="board"
+    <canvas type="2d" id="board" class="board" bindtap="onCanvasTap"
       catchtouchstart="onTouchStart" catchtouchmove="onTouchMove" catchtouchend="onTouchEnd"></canvas>
   </view>
 
   <view class="panel" wx:if="{{tab == 'grid'}}">
     <label class="chk"><switch checked="{{showGrid}}" bindchange="toggleGrid" size="mini" /> 网格</label>
     <label class="chk"><switch checked="{{showCodes}}" bindchange="toggleCodes" size="mini" /> 色号</label>
+    <label class="chk"><switch checked="{{editMode}}" bindchange="toggleEdit" size="mini" /> 编辑</label>
     <button size="mini" bindtap="zoomIn">＋</button>
     <button size="mini" bindtap="zoomOut">－</button>
     <button size="mini" bindtap="fitView">适应</button>
+    <block wx:if="{{editMode}}">
+      <scroll-view scroll-x class="colors">
+        <view class="chip {{editColor == -1 ? 'on' : ''}}" bindtap="pickEditColor" data-index="{{-1}}">擦除</view>
+        <view wx:for="{{paletteColors}}" wx:key="index"
+          class="chip {{editColor == item.index ? 'on' : ''}}" bindtap="pickEditColor" data-index="{{item.index}}">
+          <view class="sw2" style="background:{{item.hex}}"></view>
+          <text class="chip-code">{{item.code}}</text>
+        </view>
+      </scroll-view>
+      <button size="mini" bindtap="undoEdit">撤销编辑</button>
+      <view class="edit-hint">编辑模式：点画布格子涂当前色，自动保存</view>
+    </block>
   </view>
 
   <view class="panel" wx:if="{{tab == 'follow'}}">
