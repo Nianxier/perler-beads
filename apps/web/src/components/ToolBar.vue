@@ -336,8 +336,8 @@ async function onJsonPicked(e: Event): Promise<void> {
     border-color 0.12s;
 }
 .btn:hover:not(:disabled) {
-  background: #f9fafb;
-  border-color: #98a2b3;
+  background: #f4f4f5;
+  border-color: #a1a1aa;
 }
 .btn:disabled {
   opacity: 0.45;

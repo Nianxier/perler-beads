@@ -318,7 +318,7 @@ watch([version, showGrid, showCodes], schedule);
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background: #eef0f3;
+  background: #f4f4f5;
 }
 canvas {
   display: block;

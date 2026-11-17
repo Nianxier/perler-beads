@@ -88,19 +88,22 @@ onBeforeUnmount(() => {
 
 <style>
 :root {
-  --bg: #f5f6f8;
+  /* v2 色板：ui-ux-pro-max「Editorial black」体系，唯一强调色=蓝（见 DESIGN.md） */
+  --bg: #fafafa;
   --panel: #ffffff;
-  --line: #e4e7ec;
-  --line-strong: #d0d5dd;
-  --text: #1d2939;
-  --muted: #667085;
+  --line: #e4e4e7;
+  --line-strong: #d4d4d8;
+  --text: #09090b;
+  --muted: #71717a;
   --accent: #2563eb;
   --accent-hover: #1d4ed8;
-  --danger: #d92d20;
+  --primary: #18181b;
+  --primary-hover: #27272a;
+  --danger: #dc2626;
   --radius-card: 12px;
   --radius-ctl: 6px;
   --radius-sm: 4px;
-  --shadow-dialog: 0 16px 48px rgba(16, 24, 40, 0.18);
+  --shadow-dialog: 0 16px 48px rgba(9, 9, 11, 0.16);
 }
 * {
   box-sizing: border-box;
@@ -114,6 +117,7 @@ body,
 body {
   font-family: system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif;
   font-size: 13px;
+  line-height: 1.5;
   color: var(--text);
   background: var(--bg);
   -webkit-font-smoothing: antialiased;
@@ -123,7 +127,7 @@ body {
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(16, 24, 40, 0.4);
+  background: rgba(9, 9, 11, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -187,19 +191,19 @@ body {
     border-color 0.12s;
 }
 .btn:hover:not(:disabled) {
-  background: #f9fafb;
+  background: #f4f4f5;
 }
 .btn.primary {
-  background: var(--accent);
-  border-color: var(--accent);
+  background: var(--primary);
+  border-color: var(--primary);
   color: #ffffff;
 }
 .btn.primary:hover {
-  background: var(--accent-hover);
-  border-color: var(--accent-hover);
+  background: var(--primary-hover);
+  border-color: var(--primary-hover);
 }
 .btn.danger:hover {
-  background: #fef3f2;
+  background: #fef2f2;
   border-color: var(--danger);
   color: var(--danger);
 }

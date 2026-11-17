@@ -60,7 +60,7 @@ const palette = getPalette('mard');
   font-size: 13px;
 }
 .row:hover {
-  background: #f9fafb;
+  background: #f4f4f5;
 }
 .row .swatch {
   width: 14px;
@@ -94,6 +94,6 @@ const palette = getPalette('mard');
   font-weight: 500;
 }
 .btn:hover {
-  background: #f9fafb;
+  background: #f4f4f5;
 }
 </style>
