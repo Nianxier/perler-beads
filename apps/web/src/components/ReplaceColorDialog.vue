@@ -74,44 +74,6 @@ function apply(): void {
 </template>
 
 <style scoped>
-.overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(31, 35, 41, 0.35);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 20;
-}
-.card {
-  width: 520px;
-  background: #ffffff;
-  border-radius: 10px;
-  padding: 18px 20px;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
-}
-.head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.title {
-  font-size: 16px;
-  font-weight: 600;
-}
-.close {
-  border: none;
-  background: none;
-  font-size: 18px;
-  cursor: pointer;
-  color: #6b7280;
-  line-height: 1;
-}
-.sub {
-  margin: 6px 0 14px;
-  color: #6b7280;
-  font-size: 12px;
-}
 .form {
   display: flex;
   align-items: center;
@@ -120,32 +82,8 @@ function apply(): void {
 .sel {
   flex: 1;
   min-width: 0;
-  padding: 6px 8px;
-  border: 1px solid #d1d5db;
-  border-radius: 4px;
 }
 .lbl {
-  color: #6b7280;
-  font-size: 12px;
   flex: none;
-}
-.actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 8px;
-  margin-top: 16px;
-}
-.btn {
-  padding: 7px 16px;
-  border: 1px solid #d1d5db;
-  border-radius: 6px;
-  background: #ffffff;
-  cursor: pointer;
-  font-size: 13px;
-}
-.btn.primary {
-  background: #2563eb;
-  border-color: #2563eb;
-  color: #ffffff;
 }
 </style>

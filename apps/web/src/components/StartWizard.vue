@@ -153,44 +153,6 @@ function createBlank(): void {
 </template>
 
 <style scoped>
-.overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(31, 35, 41, 0.35);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 20;
-}
-.card {
-  width: 460px;
-  background: #ffffff;
-  border-radius: 10px;
-  padding: 18px 20px;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
-}
-.head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.title {
-  font-size: 16px;
-  font-weight: 600;
-}
-.close {
-  border: none;
-  background: none;
-  font-size: 18px;
-  cursor: pointer;
-  color: #6b7280;
-  line-height: 1;
-}
-.sub {
-  margin: 6px 0 14px;
-  color: #6b7280;
-  font-size: 13px;
-}
 .tiles {
   display: flex;
   gap: 10px;
@@ -200,81 +162,36 @@ function createBlank(): void {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  padding: 16px 10px;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  background: #ffffff;
+  padding: 16px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-ctl);
+  background: var(--panel);
   cursor: pointer;
   text-align: left;
+  transition: border-color 0.12s;
 }
 .tile:hover {
-  border-color: #2563eb;
-  background: #f8fafc;
+  border-color: var(--accent);
 }
 .tile-title {
   font-weight: 600;
-  font-size: 14px;
+  font-size: 13px;
 }
 .tile-desc {
-  color: #6b7280;
+  color: var(--muted);
   font-size: 12px;
+  line-height: 1.5;
 }
 .imgopts {
   display: flex;
   align-items: center;
   gap: 6px;
   margin-top: 12px;
+  flex-wrap: wrap;
 }
 .form {
   display: flex;
   align-items: center;
   gap: 6px;
-}
-.num {
-  width: 62px;
-  padding: 5px 6px;
-  border: 1px solid #d1d5db;
-  border-radius: 4px;
-}
-.sel {
-  padding: 5px 6px;
-  border: 1px solid #d1d5db;
-  border-radius: 4px;
-}
-.ta {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 8px 10px;
-  border: 1px solid #d1d5db;
-  border-radius: 6px;
-  font-size: 14px;
-  resize: vertical;
-}
-.lbl {
-  color: #6b7280;
-  font-size: 12px;
-}
-.chk {
-  font-size: 13px;
-  margin-left: 8px;
-}
-.actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 8px;
-  margin-top: 16px;
-}
-.btn {
-  padding: 7px 16px;
-  border: 1px solid #d1d5db;
-  border-radius: 6px;
-  background: #ffffff;
-  cursor: pointer;
-  font-size: 13px;
-}
-.btn.primary {
-  background: #2563eb;
-  border-color: #2563eb;
-  color: #ffffff;
 }
 </style>

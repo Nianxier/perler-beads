@@ -87,6 +87,21 @@ onBeforeUnmount(() => {
 </template>
 
 <style>
+:root {
+  --bg: #f5f6f8;
+  --panel: #ffffff;
+  --line: #e4e7ec;
+  --line-strong: #d0d5dd;
+  --text: #1d2939;
+  --muted: #667085;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --danger: #d92d20;
+  --radius-card: 12px;
+  --radius-ctl: 6px;
+  --radius-sm: 4px;
+  --shadow-dialog: 0 16px 48px rgba(16, 24, 40, 0.18);
+}
 * {
   box-sizing: border-box;
 }
@@ -98,8 +113,148 @@ body,
 }
 body {
   font-family: system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif;
-  color: #1f2329;
-  background: #f7f8fa;
+  font-size: 13px;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---- 弹窗与通用控件（各弹窗共用，勿在组件内重复定义） ---- */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(16, 24, 40, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+}
+.card {
+  width: 480px;
+  max-height: 76vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--panel);
+  border-radius: var(--radius-card);
+  padding: 20px 24px;
+  box-shadow: var(--shadow-dialog);
+}
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.title {
+  font-size: 15px;
+  font-weight: 600;
+}
+.close {
+  border: none;
+  background: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: var(--muted);
+  line-height: 1;
+  padding: 4px;
+}
+.close:hover {
+  color: var(--text);
+}
+.sub {
+  margin: 6px 0 16px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 16px;
+}
+.btn {
+  height: 32px;
+  padding: 0 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-ctl);
+  background: var(--panel);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition:
+    background 0.12s,
+    border-color 0.12s;
+}
+.btn:hover:not(:disabled) {
+  background: #f9fafb;
+}
+.btn.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #ffffff;
+}
+.btn.primary:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+.btn.danger:hover {
+  background: #fef3f2;
+  border-color: var(--danger);
+  color: var(--danger);
+}
+.num,
+.sel {
+  height: 32px;
+  padding: 0 8px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-ctl);
+  background: var(--panel);
+  color: var(--text);
+  font-size: 13px;
+}
+.num {
+  width: 56px;
+}
+.ta {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-ctl);
+  font-size: 13px;
+  resize: vertical;
+}
+.lbl {
+  color: var(--muted);
+  font-size: 12px;
+}
+.chk {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+}
+.seg {
+  display: inline-flex;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-ctl);
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+.seg-item {
+  padding: 6px 16px;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--muted);
+  background: var(--panel);
+}
+.seg-item:hover {
+  color: var(--text);
+}
+.seg-item.on {
+  background: var(--accent);
+  color: #ffffff;
 }
 </style>
 
@@ -113,8 +268,9 @@ body {
   display: flex;
   align-items: baseline;
   gap: 12px;
-  padding: 10px 16px 8px;
-  background: #ffffff;
+  padding: 12px 20px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--line);
 }
 .header h1 {
   margin: 0;
@@ -122,7 +278,7 @@ body {
   font-weight: 600;
 }
 .doc {
-  color: #6b7280;
+  color: var(--muted);
   font-size: 12px;
 }
 .main {
@@ -131,17 +287,17 @@ body {
   min-height: 0;
 }
 .side {
-  width: 250px;
+  width: 248px;
   flex: none;
-  padding: 10px;
-  background: #ffffff;
-  border-right: 1px solid #e5e7eb;
+  padding: 14px 16px;
+  background: var(--panel);
+  border-right: 1px solid var(--line);
   min-height: 0;
   overflow: hidden;
 }
 .side:last-child {
   border-right: none;
-  border-left: 1px solid #e5e7eb;
+  border-left: 1px solid var(--line);
 }
 .center {
   flex: 1;
@@ -151,42 +307,46 @@ body {
   display: flex;
   align-items: stretch;
   gap: 2px;
-  padding: 4px 8px 0;
-  background: #e9edf2;
-  border-top: 1px solid #d7dce3;
+  padding: 4px 12px 0;
+  background: var(--bg);
+  border-top: 1px solid var(--line);
   overflow-x: auto;
   flex: none;
 }
 .tab {
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 5px 10px;
-  border: 1px solid #d7dce3;
-  border-bottom: none;
-  border-radius: 6px 6px 0 0;
-  background: #f4f6f9;
+  gap: 8px;
+  padding: 7px 14px;
+  border: none;
+  border-bottom: 2px solid transparent;
+  border-radius: var(--radius-ctl) var(--radius-ctl) 0 0;
+  background: transparent;
   cursor: pointer;
   font-size: 12px;
-  color: #4b5563;
+  color: var(--muted);
   white-space: nowrap;
 }
+.tab:hover {
+  color: var(--text);
+}
 .tab.on {
-  background: #ffffff;
-  color: #1f2329;
-  border-color: #c3cad4;
+  background: var(--panel);
+  color: var(--text);
+  font-weight: 500;
+  border-bottom-color: var(--accent);
 }
 .tab .close {
-  color: #9ca3af;
+  color: var(--line-strong);
   font-size: 13px;
   line-height: 1;
   padding: 0 2px;
 }
 .tab .close:hover {
-  color: #dc2626;
+  color: var(--danger);
 }
 .tab.add {
-  color: #6b7280;
+  color: var(--muted);
   border: none;
   background: transparent;
   cursor: pointer;
@@ -194,13 +354,13 @@ body {
 .toast {
   position: fixed;
   right: 20px;
-  bottom: 52px;
+  bottom: 56px;
   z-index: 30;
-  background: rgba(31, 35, 41, 0.92);
+  background: rgba(29, 41, 57, 0.92);
   color: #ffffff;
   font-size: 13px;
-  padding: 8px 14px;
-  border-radius: 6px;
+  padding: 9px 16px;
+  border-radius: var(--radius-ctl);
   pointer-events: none;
 }
 </style>

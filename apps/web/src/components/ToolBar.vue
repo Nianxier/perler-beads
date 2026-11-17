@@ -305,60 +305,70 @@ async function onJsonPicked(e: Event): Promise<void> {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 6px 14px;
-  padding: 8px 12px;
-  background: #ffffff;
-  border-bottom: 1px solid #e5e7eb;
+  gap: 8px 16px;
+  padding: 10px 16px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--line);
 }
 .group {
   display: flex;
   align-items: center;
-  gap: 5px;
-  padding-right: 12px;
-  border-right: 1px solid #eef0f3;
+  gap: 6px;
+  padding-right: 16px;
+  border-right: 1px solid var(--line);
 }
 .group:last-child {
   border-right: none;
+  padding-right: 0;
 }
 .btn {
-  padding: 5px 10px;
-  border: 1px solid #d1d5db;
-  border-radius: 4px;
-  background: #fff;
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-ctl);
+  background: var(--panel);
+  color: var(--text);
   cursor: pointer;
   font-size: 13px;
+  font-weight: 500;
+  transition:
+    background 0.12s,
+    border-color 0.12s;
 }
 .btn:hover:not(:disabled) {
-  background: #f3f4f6;
+  background: #f9fafb;
+  border-color: #98a2b3;
 }
 .btn:disabled {
   opacity: 0.45;
   cursor: default;
 }
 .btn.active {
-  background: #2563eb;
-  border-color: #2563eb;
-  color: #fff;
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #ffffff;
+}
+.num,
+.sel {
+  height: 32px;
+  padding: 0 8px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-ctl);
+  background: var(--panel);
+  color: var(--text);
+  font-size: 13px;
 }
 .num {
-  width: 52px;
-  padding: 4px 5px;
-  border: 1px solid #d1d5db;
-  border-radius: 4px;
-}
-.sel {
-  padding: 4px 5px;
-  border: 1px solid #d1d5db;
-  border-radius: 4px;
+  width: 56px;
 }
 .chk {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
   font-size: 13px;
 }
 .lbl {
-  color: #6b7280;
+  color: var(--muted);
   font-size: 12px;
 }
 </style>

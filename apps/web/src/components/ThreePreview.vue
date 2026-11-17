@@ -119,37 +119,41 @@ onBeforeUnmount(() => {
 }
 .panel {
   background: #1f2329;
-  border-radius: 10px;
-  padding: 14px 16px;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+  border-radius: var(--radius-card);
+  padding: 16px 18px;
+  box-shadow: var(--shadow-dialog);
 }
 .head {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 .title {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
   color: #ffffff;
 }
 .close {
   border: none;
   background: none;
-  font-size: 18px;
+  font-size: 16px;
   cursor: pointer;
   color: #9ca3af;
   line-height: 1;
+  padding: 4px;
+}
+.close:hover {
+  color: #ffffff;
 }
 .stage {
   width: 720px;
   height: 520px;
-  border-radius: 8px;
+  border-radius: var(--radius-ctl);
   overflow: hidden;
 }
 .hint {
-  margin: 8px 0 0;
+  margin: 10px 0 0;
   color: #9ca3af;
   font-size: 12px;
   text-align: center;

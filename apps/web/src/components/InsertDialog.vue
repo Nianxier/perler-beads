@@ -101,110 +101,11 @@ function apply(): void {
 </template>
 
 <style scoped>
-.overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(31, 35, 41, 0.35);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 20;
-}
-.card {
-  width: 480px;
-  background: #ffffff;
-  border-radius: 10px;
-  padding: 18px 20px;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
-}
-.head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.title {
-  font-size: 16px;
-  font-weight: 600;
-}
-.close {
-  border: none;
-  background: none;
-  font-size: 18px;
-  cursor: pointer;
-  color: #6b7280;
-  line-height: 1;
-}
-.sub {
-  margin: 6px 0 12px;
-  color: #6b7280;
-  font-size: 12px;
-}
-.seg {
-  display: inline-flex;
-  border: 1px solid #d1d5db;
-  border-radius: 6px;
-  overflow: hidden;
-  margin-bottom: 10px;
-}
-.seg-item {
-  padding: 5px 16px;
-  cursor: pointer;
-  font-size: 13px;
-}
-.seg-item.on {
-  background: #2563eb;
-  color: #ffffff;
-}
-.ta {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 8px 10px;
-  border: 1px solid #d1d5db;
-  border-radius: 6px;
-  font-size: 14px;
-  resize: vertical;
-}
 .form {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-top: 10px;
-}
-.num {
-  width: 58px;
-  padding: 5px 6px;
-  border: 1px solid #d1d5db;
-  border-radius: 4px;
-}
-.sel {
-  padding: 5px 6px;
-  border: 1px solid #d1d5db;
-  border-radius: 4px;
-}
-.chk {
-  font-size: 13px;
-}
-.lbl {
-  color: #6b7280;
-  font-size: 12px;
-}
-.actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 8px;
-  margin-top: 16px;
-}
-.btn {
-  padding: 7px 16px;
-  border: 1px solid #d1d5db;
-  border-radius: 6px;
-  background: #ffffff;
-  cursor: pointer;
-  font-size: 13px;
-}
-.btn.primary {
-  background: #2563eb;
-  border-color: #2563eb;
-  color: #ffffff;
+  margin-top: 12px;
+  flex-wrap: wrap;
 }
 </style>

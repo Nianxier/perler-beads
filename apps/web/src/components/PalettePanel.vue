@@ -116,25 +116,29 @@ function onPaletteChange(e: Event): void {
 .palette {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
   height: 100%;
 }
 .sel {
   width: 100%;
-  padding: 5px 6px;
-  border: 1px solid #d1d5db;
-  border-radius: 4px;
+  height: 32px;
+  padding: 0 8px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-ctl);
+  background: var(--panel);
+  color: var(--text);
+  font-size: 13px;
 }
 .current {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 .swatch {
-  width: 22px;
-  height: 22px;
-  border: 1px solid rgba(0, 0, 0, 0.18);
-  border-radius: 3px;
+  width: 24px;
+  height: 24px;
+  border: 1px solid rgba(16, 24, 40, 0.14);
+  border-radius: var(--radius-sm);
   padding: 0;
   cursor: pointer;
 }
@@ -144,22 +148,26 @@ function onPaletteChange(e: Event): void {
   cursor: default;
 }
 .swatch.active {
-  outline: 2px solid #2563eb;
+  outline: 2px solid var(--accent);
   outline-offset: 1px;
 }
 .meta .code {
   font-weight: 600;
+  font-size: 13px;
 }
 .meta .hex {
-  color: #6b7280;
+  color: var(--muted);
   font-size: 12px;
+  margin-top: 2px;
 }
 .search {
   width: 100%;
+  height: 32px;
   box-sizing: border-box;
-  padding: 6px 8px;
-  border: 1px solid #d1d5db;
-  border-radius: 4px;
+  padding: 0 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-ctl);
+  font-size: 13px;
 }
 .groups {
   display: flex;
@@ -167,28 +175,35 @@ function onPaletteChange(e: Event): void {
   gap: 4px;
 }
 .chip {
-  padding: 2px 8px;
-  border: 1px solid #d1d5db;
-  border-radius: 10px;
-  background: #ffffff;
+  padding: 3px 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-ctl);
+  background: var(--panel);
   cursor: pointer;
   font-size: 12px;
+  color: var(--muted);
+  transition:
+    background 0.12s,
+    color 0.12s;
+}
+.chip:hover {
+  color: var(--text);
 }
 .chip.on {
-  background: #2563eb;
-  border-color: #2563eb;
+  background: var(--accent);
+  border-color: var(--accent);
   color: #ffffff;
 }
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(22px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(24px, 1fr));
   gap: 4px;
   overflow-y: auto;
   min-height: 0;
   flex: 1;
 }
 .count {
-  color: #6b7280;
+  color: var(--muted);
   font-size: 12px;
 }
 </style>
